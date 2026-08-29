@@ -675,6 +675,15 @@
   opacity: 0.35;
   filter: grayscale(100%);
   transition: opacity var(--duration-base) var(--ease-out-quart);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-grid__item img {
+  max-height: 100%;
+  width: auto;
+  object-fit: contain;
 }
 
 .logo-grid__item:hover {
