@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Our Work — Zamify Portfolio</title>
+  <meta name="description" content="A selection of digital experiences Zamify has designed, developed, and grown. From e-commerce to brand launches.">
+  <link rel="canonical" href="https://zamify.com/pages/work.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+
+  <style>
+    .work-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: var(--space-8);
+      margin-top: var(--space-12);
+    }
+    .work-card {
+      border-radius: var(--radius-xl);
+      overflow: hidden;
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-card);
+      transition: all var(--duration-base) var(--ease-out-quart);
+    }
+    .work-card:hover {
+      border-color: var(--color-border-hover);
+      box-shadow: var(--shadow-xl);
+      transform: translateY(-4px);
+    }
+    .work-card__image {
+      aspect-ratio: 16 / 10;
+      overflow: hidden;
+    }
+    .work-card__image img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform var(--duration-slow) var(--ease-out-expo);
+    }
+    .work-card:hover .work-card__image img {
+      transform: scale(1.03);
+    }
+    .work-card__content {
+      padding: var(--space-6) var(--space-8) var(--space-8);
+    }
+    .work-card__tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-2);
+      margin-bottom: var(--space-4);
+    }
+    .work-card__name {
+      font-family: var(--font-display);
+      font-size: var(--text-2xl);
+      font-weight: var(--weight-semibold);
+      margin-bottom: var(--space-3);
+    }
+    .work-card__desc {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+      line-height: var(--leading-relaxed);
+      margin-bottom: var(--space-5);
+    }
+    .work-card__result {
+      display: inline-flex;
+      align-items: center;
+      gap: var(--space-2);
+      font-size: var(--text-sm);
+      font-weight: var(--weight-medium);
+      color: var(--color-text);
+      padding: var(--space-2) var(--space-4);
+      background: var(--color-bg-muted);
+      border-radius: var(--radius-pill);
+      margin-bottom: var(--space-5);
+    }
+    @media (max-width: 768px) {
+      .work-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo"><img src="../assets/images/logo.webp" width="2172" height="724" alt="Zamify"></a>
+      <div class="nav__links">
+        <a href="../index.html#services" class="nav__link">Services</a>
+        <a href="work.html" class="nav__link" style="color: var(--color-text);">Work</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="../index.html#process" class="nav__link">Process</a>
+        <a href="../index.html#faq" class="nav__link">Insights</a>
+        <a href="contact.html" class="nav__link">Contact</a>
+      </div>
+      <a href="contact.html" class="btn btn--primary btn--sm nav__cta nav__cta-desktop">
+        Get a Free Strategy Call <span class="btn__arrow">→</span>
+      </a>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu">
+      <a href="../index.html#services" class="nav__mobile-link">Services</a>
+      <a href="work.html" class="nav__mobile-link">Work</a>
+      <a href="about.html" class="nav__mobile-link">About</a>
+      <a href="contact.html" class="nav__mobile-link">Contact</a>
+      <a href="contact.html" class="btn btn--primary btn--lg nav__mobile-link" style="margin-top: var(--space-4);">Get a Free Strategy Call →</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section--lg" style="padding-top: 160px;">
+      <div class="container">
+        <h1 class="reveal" style="max-width: 700px;">Work that speaks for itself.</h1>
+        <p class="section-subtitle reveal reveal-delay-1" style="margin-top: var(--space-5);">A selection of digital experiences we've designed, developed, and grown.</p>
+
+        <div class="work-grid">
+          <!-- 7070 Sports -->
+          <a href="https://7070sportsayodhya.com/" target="_blank" rel="noopener" class="work-card reveal reveal-delay-1" style="text-decoration: none; color: inherit;">
+            <div class="work-card__image">
+              <img src="../assets/images/7070.webp" width="1895" height="850" alt="7070 Sports Ayodhya e-commerce website" loading="lazy" >
+            </div>
+            <div class="work-card__content">
+              <div class="work-card__tags">
+                <span class="badge--outline badge">E-commerce</span>
+                <span class="badge--outline badge">Web Development</span>
+                <span class="badge--outline badge">SEO</span>
+              </div>
+              <h2 class="work-card__name">7070 Sports Ayodhya</h2>
+              <p class="work-card__desc">Built and developed a complete e-commerce experience, combining a modern shopping experience with SEO-focused optimization.</p>
+              <div class="work-card__result"><i class="ph ph-trend-up"></i> 50K+ monthly website visits</div>
+              <div class="card__link">View Project <span>→</span></div>
+            </div>
+          </a>
+
+          <!-- Nibhyam Interiors -->
+          <a href="https://www.nibhyaminteriors.in/" target="_blank" rel="noopener" class="work-card reveal reveal-delay-2" style="text-decoration: none; color: inherit;">
+            <div class="work-card__image">
+              <img src="../assets/images/nibhiyaminteriors.webp" width="1901" height="880" alt="Nibhyam Interiors website" loading="lazy" >
+            </div>
+            <div class="work-card__content">
+              <div class="work-card__tags">
+                <span class="badge--outline badge">Website Redesign</span>
+                <span class="badge--outline badge">Digital Presence</span>
+              </div>
+              <h2 class="work-card__name">Nibhyam Interiors</h2>
+              <p class="work-card__desc">Redesigned the digital experience for an interior design brand with a stronger visual identity and improved online presence.</p>
+              <div class="card__link">View Project <span>→</span></div>
+            </div>
+          </a>
+
+          <!-- Furniture Hub -->
+          <a href="https://www.furniturehubayodhya.online/" target="_blank" rel="noopener" class="work-card reveal reveal-delay-1" style="text-decoration: none; color: inherit;">
+            <div class="work-card__image">
+              <img src="../assets/images/furniturehubayodhya.webp" width="1907" height="877" alt="Furniture Hub Ayodhya website" loading="lazy" >
+            </div>
+            <div class="work-card__content">
+              <div class="work-card__tags">
+                <span class="badge--outline badge">Brand Launch</span>
+                <span class="badge--outline badge">Web Development</span>
+              </div>
+              <h2 class="work-card__name">Furniture Hub Ayodhya</h2>
+              <p class="work-card__desc">Took the brand from idea to execution — building its website and establishing a digital presence designed to compete online.</p>
+              <div class="card__link">View Project <span>→</span></div>
+            </div>
+          </a>
+        </div>
+
+        <div class="reveal" style="text-align: center; margin-top: var(--space-16);">
+          <h2 style="margin-bottom: var(--space-5);">Have a project in mind?</h2>
+          <p class="section-subtitle" style="margin: 0 auto var(--space-8); max-width: 480px;">We'd love to hear about it. Let's talk about what we can build together.</p>
+          <a href="contact.html" class="btn btn--primary btn--lg">Start a Project <span class="btn__arrow">→</span></a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a href="../index.html" class="nav__logo"><img src="../assets/images/logo.webp" width="2172" height="724" alt="Zamify"></a>
+          <div class="footer__tagline">Build. Create. Grow.</div>
+          <p class="footer__brand-desc">A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.</p>
+        </div>
+        <div>
+          <div class="footer__col-title">Navigation</div>
+          <div class="footer__links">
+            <a href="../index.html#services" class="footer__link">Services</a>
+            <a href="work.html" class="footer__link">Work</a>
+            <a href="about.html" class="footer__link">About</a>
+            <a href="contact.html" class="footer__link">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Legal</div>
+          <div class="footer__links">
+            <a href="privacy.html" class="footer__link">Privacy Policy</a>
+            <a href="terms.html" class="footer__link">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; 2026 Zamify. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+</body>
+</html>

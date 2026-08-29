@@ -1,0 +1,160 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact Zamify — Get a Free Strategy Call</title>
+  <meta name="description" content="Ready to build something meaningful? Contact Zamify for a free strategy call. Tell us about your project and let's get started.">
+  <link rel="canonical" href="https://zamify.com/pages/contact.html">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="../site.webmanifest">
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <link rel="stylesheet" href="../css/tokens.css">
+  <link rel="stylesheet" href="../css/base.css">
+  <link rel="stylesheet" href="../css/components.css">
+  <link rel="stylesheet" href="../css/sections.css">
+  <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="../index.html" class="nav__logo"><img src="../assets/images/logo.webp" width="2172" height="724" alt="Zamify"></a>
+      <div class="nav__links">
+        <a href="../index.html#services" class="nav__link">Services</a>
+        <a href="work.html" class="nav__link">Work</a>
+        <a href="about.html" class="nav__link">About</a>
+        <a href="../index.html#process" class="nav__link">Process</a>
+        <a href="contact.html" class="nav__link" style="color: var(--color-text);">Contact</a>
+      </div>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu">
+      <a href="../index.html#services" class="nav__mobile-link">Services</a>
+      <a href="work.html" class="nav__mobile-link">Work</a>
+      <a href="about.html" class="nav__mobile-link">About</a>
+      <a href="contact.html" class="nav__mobile-link">Contact</a>
+    </div>
+  </nav>
+
+  <main>
+    <section class="section--lg" style="padding-top: 160px;">
+      <div class="container">
+        <div class="contact-section__grid">
+          <div>
+            <h1 class="reveal">Let's build something meaningful.</h1>
+            <p class="section-subtitle reveal reveal-delay-1" style="margin-top: var(--space-5);">Tell us about your project and we'll get back to you with ideas, a timeline, and next steps. No pressure, no hard sell.</p>
+
+            <div class="contact-section__info reveal reveal-delay-2">
+              <div class="contact-info__item">
+                <i class="ph ph-envelope contact-info__icon"></i>
+                <div>
+                  <div class="contact-info__label">Email</div>
+                  <div class="contact-info__value"><a href="mailto:[EMAIL]">[EMAIL]</a></div>
+                </div>
+              </div>
+              <div class="contact-info__item">
+                <i class="ph ph-phone contact-info__icon"></i>
+                <div>
+                  <div class="contact-info__label">Phone</div>
+                  <div class="contact-info__value"><a href="tel:[PHONE]">[PHONE]</a></div>
+                </div>
+              </div>
+              <div class="contact-info__item">
+                <i class="ph ph-whatsapp-logo contact-info__icon"></i>
+                <div>
+                  <div class="contact-info__label">WhatsApp</div>
+                  <div class="contact-info__value"><a href="[WHATSAPP LINK]" target="_blank" rel="noopener">[WHATSAPP]</a></div>
+                </div>
+              </div>
+
+              <div class="social-links" style="margin-top: var(--space-4);">
+                <a href="[INSTAGRAM LINK]" class="social-link" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
+                <a href="[LINKEDIN LINK]" class="social-link" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
+                <a href="[X LINK]" class="social-link" aria-label="X"><i class="ph ph-x-logo"></i></a>
+                <a href="[WHATSAPP LINK]" class="social-link" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
+              </div>
+            </div>
+          </div>
+
+          <form class="contact-section__form reveal reveal-delay-1" id="contact-form" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
+            <div class="contact-section__row">
+              <div class="form-group">
+                <label for="form-name" class="form-label">Name</label>
+                <input type="text" id="form-name" name="name" class="form-input" placeholder="Your name" required>
+              </div>
+              <div class="form-group">
+                <label for="form-email" class="form-label">Email</label>
+                <input type="email" id="form-email" name="email" class="form-input" placeholder="your@email.com" required>
+              </div>
+            </div>
+            <div class="contact-section__row">
+              <div class="form-group">
+                <label for="form-whatsapp" class="form-label">WhatsApp</label>
+                <input type="tel" id="form-whatsapp" name="whatsapp" class="form-input" placeholder="+91 XXXXXXXXXX">
+              </div>
+              <div class="form-group">
+                <label for="form-business" class="form-label">Business</label>
+                <input type="text" id="form-business" name="business" class="form-input" placeholder="Your business name">
+              </div>
+            </div>
+            <div class="form-group">
+              <label for="form-service" class="form-label">What do you need?</label>
+              <select id="form-service" name="service" class="form-select" required>
+                <option value="" disabled selected>Select a service</option>
+                <option value="website">Website</option>
+                <option value="website-redesign">Website Redesign</option>
+                <option value="ecommerce">E-commerce</option>
+                <option value="app">App</option>
+                <option value="seo">SEO</option>
+                <option value="google-ads">Google Ads</option>
+                <option value="meta-ads">Meta Ads</option>
+                <option value="ai-creative">AI Creative</option>
+                <option value="ai-video">AI Video</option>
+                <option value="branding">Branding</option>
+                <option value="social-media">Social Media</option>
+                <option value="ai-automation">AI Automation</option>
+                <option value="chatbot">Chatbot</option>
+                <option value="other">Something else</option>
+              </select>
+            </div>
+            <div class="form-group">
+              <label for="form-message" class="form-label">Tell us about your project</label>
+              <textarea id="form-message" name="message" class="form-textarea" placeholder="What are you looking to build or improve? Any specific goals or timeline?"></textarea>
+            </div>
+            <button type="submit" class="btn btn--primary btn--lg form-submit" style="width: 100%; justify-content: center; margin-top: var(--space-2);">
+              Request a Free Strategy Call <span class="btn__arrow">→</span>
+            </button>
+          </form>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__bottom" style="border-top: none; padding-top: 0;">
+        <span class="footer__copyright">&copy; 2026 Zamify. All rights reserved.</span>
+        <div style="display: flex; gap: var(--space-4);">
+          <a href="privacy.html" class="footer__link">Privacy Policy</a>
+          <a href="terms.html" class="footer__link">Terms</a>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script src="../js/form.js"></script>
+</body>
+</html>

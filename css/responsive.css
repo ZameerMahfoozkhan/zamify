@@ -1,0 +1,311 @@
+/* ==========================================================================
+   ZAMIFY — Responsive Styles
+   Intentional mobile layouts, not compressed desktop
+   ========================================================================== */
+
+/* ── Tablet (max-width: 1024px) ───────────────────────────────────────── */
+@media (max-width: 1024px) {
+  :root {
+    --section-py: var(--space-20);
+    --section-py-lg: var(--space-24);
+  }
+
+  .hero__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .hero__visual {
+    display: none;
+  }
+
+  .hero {
+    min-height: auto;
+    padding-top: 140px;
+    padding-bottom: var(--space-16);
+  }
+
+  .hero__content {
+    max-width: 640px;
+  }
+
+  .services__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .ai-feature__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .ai-feature__visual {
+    order: -1;
+  }
+
+  .case-study {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .case-study:nth-child(even) {
+    direction: ltr;
+  }
+
+  .industries__scroll {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .why-zamify__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .process__steps {
+    grid-template-columns: repeat(3, 1fr);
+    gap: var(--space-8);
+  }
+
+  .process__steps::before {
+    display: none;
+  }
+
+  .founders__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-stack__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .testimonials__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .stats-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .global-reach__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .global-reach__visual {
+    order: -1;
+  }
+
+  .contact-section__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-10);
+  }
+
+  .footer__grid {
+    grid-template-columns: 1fr 1fr;
+    gap: var(--space-8);
+  }
+}
+
+/* ── Mobile (max-width: 768px) ────────────────────────────────────────── */
+@media (max-width: 768px) {
+  :root {
+    --section-py: var(--space-16);
+    --section-py-lg: var(--space-20);
+    --container-px: var(--space-5);
+  }
+
+  h1 {
+    font-size: clamp(2.5rem, 10vw, 3.5rem);
+    letter-spacing: var(--tracking-tighter);
+    line-height: 1.1;
+  }
+
+  h2 {
+    font-size: clamp(2rem, 8vw, 2.75rem);
+    letter-spacing: var(--tracking-tighter);
+  }
+
+  .hero {
+    padding-top: 120px;
+    padding-bottom: var(--space-12);
+  }
+
+  .hero__subtitle {
+    font-size: var(--text-base);
+  }
+
+  .hero__actions {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .hero__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+
+  .hero__trust {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-2);
+  }
+
+  .hero__trust-sep {
+    display: none;
+  }
+
+  /* Nav mobile */
+  .nav__links {
+    display: none;
+  }
+
+  .nav__cta-desktop {
+    display: none;
+  }
+
+  .nav__toggle {
+    display: flex;
+  }
+
+  /* Trust Marquee */
+  .trust-strip {
+    overflow: hidden;
+  }
+
+  .trust-strip__stats {
+    flex-direction: row;
+    gap: var(--space-12);
+    width: max-content;
+    animation: scroll-x 20s linear infinite;
+  }
+
+  .logo-grid {
+    flex-wrap: nowrap;
+    width: max-content;
+    animation: scroll-x 20s linear infinite;
+    gap: var(--space-8);
+  }
+
+  @keyframes scroll-x {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(calc(-50% - var(--space-6))); }
+  }
+
+  /* Problem/Solution */
+  .problem-solution__comparison {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .problem-solution__divider-line {
+    width: 100%;
+    height: 1px;
+  }
+
+  /* Services */
+  .services__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* AI Feature */
+  .ai-feature__highlights {
+    grid-template-columns: 1fr;
+  }
+
+  .ai-visual {
+    max-width: 280px;
+  }
+
+  /* Industries */
+  .industries__scroll {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  /* Why Zamify */
+  .why-zamify__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Process */
+  .process__steps {
+    grid-template-columns: 1fr;
+    gap: var(--space-6);
+  }
+
+  .process__step {
+    text-align: left;
+    display: grid;
+    grid-template-columns: 56px 1fr;
+    gap: var(--space-4);
+    align-items: start;
+  }
+
+  .process__step-number {
+    margin: 0;
+  }
+
+  .process__step-content {
+    padding-top: var(--space-3);
+  }
+
+  /* Testimonials */
+  .testimonials__grid {
+    grid-template-columns: 1fr;
+  }
+
+  /* Stats */
+  .stats-section__grid {
+    grid-template-columns: repeat(2, 1fr);
+    gap: var(--space-6);
+  }
+
+  /* Contact form */
+  .contact-section__row {
+    grid-template-columns: 1fr;
+  }
+
+  /* Footer */
+  .footer__grid {
+    grid-template-columns: 1fr;
+    gap: var(--space-8);
+  }
+
+  .footer__bottom {
+    flex-direction: column;
+    gap: var(--space-4);
+    text-align: center;
+  }
+
+  /* Buttons full-width on small screens */
+  .final-cta__actions {
+    flex-direction: column;
+  }
+
+  .final-cta__actions .btn {
+    width: 100%;
+    justify-content: center;
+  }
+}
+
+/* ── Small mobile (max-width: 480px) ──────────────────────────────────── */
+@media (max-width: 480px) {
+  :root {
+    --container-px: var(--space-4);
+  }
+
+  .industries__scroll {
+    grid-template-columns: 1fr;
+  }
+
+  .tech-stack__grid {
+    grid-template-columns: 1fr;
+  }
+
+  .founder-card {
+    padding: var(--space-6);
+  }
+
+  .founder-card__header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+}

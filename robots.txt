@@ -1,0 +1,5 @@
+User-agent: *
+Allow: /
+Disallow: /scratch/
+
+Sitemap: https://zamify.com/sitemap.xml
