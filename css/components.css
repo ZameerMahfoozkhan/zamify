@@ -662,12 +662,34 @@
 }
 
 /* ── Logo Grid (Trust/Clients) ────────────────────────────────────────── */
+.logo-marquee {
+  width: 100%;
+  overflow: hidden;
+  position: relative;
+  /* Premium fade out on left and right edges */
+  mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  -webkit-mask-image: linear-gradient(to right, transparent, black 15%, black 85%, transparent);
+  padding: var(--space-4) 0;
+}
+
 .logo-grid {
   display: flex;
   align-items: center;
-  justify-content: center;
-  flex-wrap: wrap;
-  gap: var(--space-10);
+  flex-wrap: nowrap;
+  width: max-content;
+  gap: var(--space-16);
+  padding-right: var(--space-16); /* ensure gap at the end */
+  animation: marquee 30s linear infinite;
+}
+
+.logo-grid:hover {
+  animation-play-state: paused;
+}
+
+@keyframes marquee {
+  to {
+    transform: translateX(-50%);
+  }
 }
 
 .logo-grid__item {
