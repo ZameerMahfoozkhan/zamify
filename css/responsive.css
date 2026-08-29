@@ -255,7 +255,23 @@
 
   /* Industries */
   .industries__scroll {
-    grid-template-columns: repeat(2, 1fr);
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-4);
+    padding-bottom: var(--space-6);
+    -webkit-overflow-scrolling: touch;
+    scroll-padding: 0 var(--container-px);
+    margin: 0 calc(var(--container-px) * -1);
+    padding-inline: var(--container-px);
+    /* Remove grid columns on mobile */
+    grid-template-columns: none;
+  }
+
+  .industry-card {
+    min-width: 260px;
+    flex: 0 0 260px;
+    scroll-snap-align: start;
   }
 
   /* Why Zamify */
@@ -330,9 +346,7 @@
     --container-px: var(--space-4);
   }
 
-  .industries__scroll {
-    grid-template-columns: 1fr;
-  }
+  /* Remove industries__scroll grid-template-columns override since it's flex now */
 
   .tech-stack__grid {
     grid-template-columns: 1fr;
