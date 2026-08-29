@@ -27,6 +27,9 @@ body {
   color: var(--color-text);
   background-color: var(--color-bg);
   background-image: radial-gradient(circle at 50% 0%, var(--color-bg-subtle) 0%, transparent 60%);
+}
+
+html, body {
   overflow-x: hidden;
 }
 
