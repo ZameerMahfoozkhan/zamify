@@ -1508,16 +1508,17 @@
 }
 
 .premium-glass-card {
-  background: rgba(20, 20, 22, 0.6); /* Very dark, translucent */
+  background: var(--color-bg-glass);
   backdrop-filter: blur(20px);
   -webkit-backdrop-filter: blur(20px);
-  border: 1px solid rgba(255, 255, 255, 0.05);
+  border: 1px solid var(--color-border);
   border-radius: var(--radius-2xl);
   padding: var(--space-8);
   position: relative;
   overflow: hidden;
   transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-  box-shadow: 0 4px 24px -1px rgba(0, 0, 0, 0.2);
+  box-shadow: var(--shadow-md);
+  color: var(--color-text);
 }
 
 .premium-glass-card::before {
@@ -1535,8 +1536,8 @@
 
 .premium-glass-card:hover {
   transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.15);
-  box-shadow: 0 20px 40px -10px rgba(0, 0, 0, 0.4), 0 0 40px -10px rgba(99, 102, 241, 0.1);
+  border-color: var(--color-border-hover);
+  box-shadow: var(--shadow-xl);
 }
 
 .premium-glass-card--large {
