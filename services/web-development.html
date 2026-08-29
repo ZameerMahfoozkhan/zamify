@@ -4,288 +4,202 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Web Development Services — Zamify</title>
-  <meta name="description" content="Professional web development services by Zamify. Fast, responsive, SEO-ready websites built with modern technology. Get a free strategy call.">
-  <link rel="canonical" href="https://zamify.com/services/web-development.html">
+  <meta name="description" content="Premium web development services. Fast, scalable, and beautifully designed websites built to grow your business online.">
+
+  <!-- Open Graph -->
+  <meta property="og:title" content="Web Development Services — Zamify">
+  <meta property="og:description" content="Fast, scalable, and beautifully designed websites built to grow your business online.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zamify.com/services/web-development.html">
 
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
   <link rel="apple-touch-icon" sizes="180x180" href="../assets/images/apple-touch-icon.png">
-  <link rel="manifest" href="../site.webmanifest">
 
+  <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
+  <!-- Styles -->
   <link rel="stylesheet" href="../css/tokens.css?v=3">
   <link rel="stylesheet" href="../css/base.css?v=3">
   <link rel="stylesheet" href="../css/components.css?v=3">
   <link rel="stylesheet" href="../css/sections.css?v=3">
   <link rel="stylesheet" href="../css/responsive.css?v=3">
-
-  <!-- Service Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "Service",
-    "name": "Web Development",
-    "provider": { "@type": "Organization", "name": "Zamify" },
-    "description": "Professional web development services. Fast, responsive, SEO-ready websites built with modern technology.",
-    "serviceType": "Web Development"
-  }
-  </script>
-
-  <!-- Breadcrumb Schema -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "BreadcrumbList",
-    "itemListElement": [
-      { "@type": "ListItem", "position": 1, "name": "Home", "item": "https://zamify.com/" },
-      { "@type": "ListItem", "position": 2, "name": "Services", "item": "https://zamify.com/index.html#services" },
-      { "@type": "ListItem", "position": 3, "name": "Web Development" }
-    ]
-  }
-  </script>
-
-  <style>
-    .service-hero { padding-top: 140px; background: var(--color-bg-subtle); }
-    .breadcrumb { display: flex; gap: var(--space-2); font-size: var(--text-sm); color: var(--color-text-tertiary); margin-bottom: var(--space-6); }
-    .breadcrumb a { color: var(--color-text-tertiary); transition: color var(--duration-fast) var(--ease-out-quart); }
-    .breadcrumb a:hover { color: var(--color-text); }
-    .breadcrumb__sep { opacity: 0.4; }
-    .included-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: var(--space-4); margin-top: var(--space-8); }
-    .included-item { padding: var(--space-6); border-radius: var(--radius-lg); border: 1px solid var(--color-border-subtle); background: var(--color-bg-card); }
-    .included-item h3 { font-size: var(--text-base); margin-bottom: var(--space-2); }
-    .included-item p { font-size: var(--text-sm); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
-    .benefits-list { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-5); margin-top: var(--space-8); }
-    .benefit-item { display: flex; gap: var(--space-3); align-items: flex-start; }
-    .benefit-item i { color: var(--color-text); margin-top: 3px; flex-shrink: 0; }
-    .benefit-item p { font-size: var(--text-base); color: var(--color-text-secondary); line-height: var(--leading-relaxed); }
-    @media (max-width: 768px) {
-      .included-grid { grid-template-columns: 1fr; }
-      .benefits-list { grid-template-columns: 1fr; }
-    }
-  </style>
 </head>
 <body>
 
+  <!-- NAVIGATION -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner">
-      <a href="../index.html" class="nav__logo"><img src="../assets/images/logo.webp" width="2172" height="724" alt="Zamify"></a>
+      <a href="../index.html" class="nav__logo" aria-label="Zamify Home">
+        <img src="../assets/images/logo.webp" alt="Zamify Logo" width="2172" height="724" style="height: 32px; width: auto;">
+      </a>
+
       <div class="nav__links">
-        <a href="../index.html#services" class="nav__link" style="color: var(--color-text);">Services</a>
+        <a href="../index.html#services" class="nav__link">Services</a>
         <a href="../pages/work.html" class="nav__link">Work</a>
         <a href="../pages/about.html" class="nav__link">About</a>
         <a href="../index.html#process" class="nav__link">Process</a>
+        <a href="../index.html#faq" class="nav__link">Insights</a>
         <a href="../pages/contact.html" class="nav__link">Contact</a>
       </div>
+
       <a href="../pages/contact.html" class="btn btn--primary btn--sm nav__cta nav__cta-desktop">
         Get a Free Strategy Call <span class="btn__arrow">→</span>
       </a>
-      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false">
+
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
         <span></span><span></span><span></span>
       </button>
     </div>
-    <div class="nav__mobile" id="mobile-menu">
+
+    <!-- Mobile Menu -->
+    <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Navigation menu">
       <a href="../index.html#services" class="nav__mobile-link">Services</a>
       <a href="../pages/work.html" class="nav__mobile-link">Work</a>
       <a href="../pages/about.html" class="nav__mobile-link">About</a>
+      <a href="../index.html#process" class="nav__mobile-link">Process</a>
+      <a href="../index.html#faq" class="nav__mobile-link">Insights</a>
       <a href="../pages/contact.html" class="nav__mobile-link">Contact</a>
-      <a href="../pages/contact.html" class="btn btn--primary btn--lg" style="margin-top: var(--space-4); color: #ffffff !important; background-color: #000000 !important; opacity: 1 !important; transform: none !important; display: flex !important; justify-content: center !important;">Get a Free Strategy Call →</a>
+      <a href="../pages/contact.html" class="btn btn--primary btn--lg" style="margin-top: var(--space-4); color: #ffffff !important; background-color: #000000 !important;">
+        Get a Free Strategy Call <span class="btn__arrow">→</span>
+      </a>
     </div>
   </nav>
 
   <main>
-    <!-- Service Hero -->
-    <section class="service-hero section--lg">
+    <!-- SERVICE HERO -->
+    <section class="hero section" id="service-hero" style="padding-bottom: 0;">
+      <div class="hero__glow" style="background: radial-gradient(circle at 50% -20%, rgba(59, 130, 246, 0.15) 0%, transparent 60%);"></div>
       <div class="container">
-        <nav class="breadcrumb reveal" aria-label="Breadcrumb">
-          <a href="../index.html">Home</a>
-          <span class="breadcrumb__sep">/</span>
-          <a href="../index.html#services">Services</a>
-          <span class="breadcrumb__sep">/</span>
-          <span>Web Development</span>
-        </nav>
-
-        <div style="max-width: 700px;">
-          <h1 class="reveal">Web Development</h1>
-          <p class="section-subtitle reveal reveal-delay-1" style="margin-top: var(--space-6); max-width: 560px;">Fast, responsive, SEO-ready websites built with modern technology and clean code. From business websites to complex web applications.</p>
-          <div class="reveal reveal-delay-2" style="margin-top: var(--space-8);">
-            <a href="../pages/contact.html" class="btn btn--primary btn--lg">Get a Free Strategy Call <span class="btn__arrow">→</span></a>
+        <div class="hero__content" style="max-width: 800px; margin: 0 auto; text-align: center;">
+          <div class="reveal theme-blue" style="display: inline-block; padding: 6px 16px; border-radius: 100px; background: rgba(59, 130, 246, 0.1); color: var(--color-accent); font-weight: 600; font-size: 14px; margin-bottom: 24px;">Web Development</div>
+          <h1 class="hero__headline reveal reveal-delay-1" style="font-size: clamp(3rem, 6vw, 4.5rem);">Websites Built for Growth, <br><span style="color: var(--color-text-secondary);">Not Just Looks.</span></h1>
+          <p class="hero__subtitle reveal reveal-delay-2" style="margin: 24px auto;">We build fast, scalable, and deeply interactive web experiences that captivate your audience and drive real business outcomes.</p>
+          
+          <div class="hero__actions reveal reveal-delay-3" style="justify-content: center;">
+            <a href="../pages/contact.html" class="btn btn--primary btn--lg">Start a Project <span class="btn__arrow">→</span></a>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Problem -->
-    <section class="section">
-      <div class="container container--narrow">
-        <h2 class="reveal">Your website is your most important digital asset.</h2>
-        <p class="reveal reveal-delay-1" style="font-size: var(--text-lg); color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-top: var(--space-5); max-width: 600px;">Most businesses have a website. But most websites don't actually work for the business. They're slow, outdated, hard to navigate, and invisible to search engines. That means lost customers, lost credibility, and lost growth.</p>
-      </div>
-    </section>
-
-    <!-- Solution -->
-    <section class="section" style="background: var(--color-bg-subtle);">
-      <div class="container container--narrow">
-        <h2 class="reveal">What Zamify builds differently.</h2>
-        <p class="reveal reveal-delay-1" style="font-size: var(--text-lg); color: var(--color-text-secondary); line-height: var(--leading-relaxed); margin-top: var(--space-5); max-width: 600px;">We build websites that are fast, beautiful, and designed to convert. Every website we create is built on a foundation of performance, accessibility, SEO, and clean code — so it works for your business from day one.</p>
-      </div>
-    </section>
-
-    <!-- What's Included -->
-    <section class="section">
+    <!-- PREMIUM BENTO GRID (FEATURES) -->
+    <section class="section" style="padding-top: var(--space-16);">
       <div class="container">
-        <h2 class="reveal">What's included.</h2>
+        <h2 class="reveal" style="text-align: center; margin-bottom: var(--space-12);">Our Expertise</h2>
+        
+        <div class="bento-grid">
+          
+          <div class="bento-item bento-item--large reveal reveal-delay-1">
+            <div class="bento-item__content">
+              <i class="ph-duotone ph-rocket-launch bento-icon" style="color: var(--color-accent);"></i>
+              <h3>Custom Development</h3>
+              <p>We craft bespoke digital products tailored to your exact business requirements, bypassing the limitations of generic templates.</p>
+            </div>
+          </div>
 
-        <div class="included-grid">
-          <div class="included-item reveal reveal-delay-1">
-            <h3>Custom Design</h3>
-            <p>Original design tailored to your brand, audience, and business goals. No templates.</p>
+          <div class="bento-item reveal reveal-delay-2">
+            <div class="bento-item__content">
+              <i class="ph-duotone ph-shopping-bag bento-icon" style="color: #10b981;"></i>
+              <h3>E-Commerce</h3>
+              <p>High-converting storefronts built on modern infrastructure like Shopify and custom architectures.</p>
+            </div>
           </div>
-          <div class="included-item reveal reveal-delay-2">
-            <h3>Responsive Development</h3>
-            <p>Your website works beautifully on every device — desktop, tablet, and mobile.</p>
+
+          <div class="bento-item reveal reveal-delay-3">
+            <div class="bento-item__content">
+              <i class="ph-duotone ph-lightning bento-icon" style="color: #f59e0b;"></i>
+              <h3>Performance First</h3>
+              <p>Blazing fast load times and optimized Core Web Vitals to keep users engaged and Google happy.</p>
+            </div>
           </div>
-          <div class="included-item reveal reveal-delay-3">
-            <h3>SEO Foundation</h3>
-            <p>Semantic HTML, meta tags, structured data, fast loading, and clean URLs from day one.</p>
+
+          <div class="bento-item bento-item--wide reveal reveal-delay-4">
+            <div class="bento-item__content">
+              <i class="ph-duotone ph-paint-brush-broad bento-icon" style="color: #8b5cf6;"></i>
+              <h3>Pixel-Perfect Design</h3>
+              <p>We blend deep engineering expertise with award-winning design sensibilities to ensure every pixel serves a purpose and elevates your brand.</p>
+            </div>
           </div>
-          <div class="included-item reveal reveal-delay-1">
-            <h3>Performance Optimization</h3>
-            <p>Optimized images, minimal JavaScript, fast server response, and Core Web Vitals compliance.</p>
-          </div>
-          <div class="included-item reveal reveal-delay-2">
-            <h3>Content Management</h3>
-            <p>Easy-to-update content system so you can manage your website without technical knowledge.</p>
-          </div>
-          <div class="included-item reveal reveal-delay-3">
-            <h3>Analytics Integration</h3>
-            <p>Google Analytics, Search Console, and conversion tracking so you understand how your site performs.</p>
-          </div>
+
         </div>
       </div>
     </section>
 
-    <!-- Process -->
+    <!-- TECH STACK -->
     <section class="section" style="background: var(--color-bg-subtle);">
       <div class="container">
-        <h2 class="reveal" style="text-align: center;">How we work.</h2>
-
-        <div class="process__steps" style="margin-top: var(--space-12);">
-          <div class="process__step reveal reveal-delay-1">
-            <div class="process__step-number">01</div>
-            <div class="process__step-content">
-              <div class="process__step-title">Discovery</div>
-              <div class="process__step-desc">We learn about your business, audience, competitors, and goals.</div>
-            </div>
-          </div>
-          <div class="process__step reveal reveal-delay-2">
-            <div class="process__step-number">02</div>
-            <div class="process__step-content">
-              <div class="process__step-title">Strategy & Design</div>
-              <div class="process__step-desc">We create a site structure, wireframes, and visual design.</div>
-            </div>
-          </div>
-          <div class="process__step reveal reveal-delay-3">
-            <div class="process__step-number">03</div>
-            <div class="process__step-content">
-              <div class="process__step-title">Development</div>
-              <div class="process__step-desc">We build your website with clean code, fast performance, and SEO.</div>
-            </div>
-          </div>
-          <div class="process__step reveal reveal-delay-4">
-            <div class="process__step-number">04</div>
-            <div class="process__step-content">
-              <div class="process__step-title">Review & Launch</div>
-              <div class="process__step-desc">We test everything, get your approval, and deploy to production.</div>
-            </div>
-          </div>
-          <div class="process__step reveal reveal-delay-5">
-            <div class="process__step-number">05</div>
-            <div class="process__step-content">
-              <div class="process__step-title">Support & Growth</div>
-              <div class="process__step-desc">Ongoing maintenance, SEO, and optimization to keep growing.</div>
-            </div>
-          </div>
+        <h2 class="reveal" style="text-align: center; margin-bottom: var(--space-4);">Technology Stack</h2>
+        <p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin: 0 auto var(--space-10) auto;">We use the best tools for the job, ensuring scalability, security, and speed.</p>
+        
+        <div class="tech-stack-grid reveal reveal-delay-2">
+          <div class="tech-badge">React</div>
+          <div class="tech-badge">Next.js</div>
+          <div class="tech-badge">Node.js</div>
+          <div class="tech-badge">Tailwind CSS</div>
+          <div class="tech-badge">Shopify</div>
+          <div class="tech-badge">Webflow</div>
+          <div class="tech-badge">WordPress</div>
+          <div class="tech-badge">Figma</div>
         </div>
       </div>
     </section>
 
-    <!-- Technologies -->
-    <section class="section">
-      <div class="container container--narrow">
-        <h2 class="reveal">Technologies we use.</h2>
-        <div class="reveal reveal-delay-1" style="display: flex; flex-wrap: wrap; gap: var(--space-3); margin-top: var(--space-6);">
-          <span class="badge">React</span>
-          <span class="badge">Next.js</span>
-          <span class="badge">HTML5</span>
-          <span class="badge">CSS3</span>
-          <span class="badge">JavaScript</span>
-          <span class="badge">WordPress</span>
-          <span class="badge">Shopify</span>
-          <span class="badge">Node.js</span>
-          <span class="badge">Vercel</span>
-        </div>
-      </div>
-    </section>
-
-    <!-- Benefits -->
-    <section class="section" style="background: var(--color-bg-subtle);">
-      <div class="container container--narrow">
-        <h2 class="reveal">Why businesses choose Zamify for web development.</h2>
-
-        <div class="benefits-list">
-          <div class="benefit-item reveal reveal-delay-1">
-            <i class="ph ph-check-circle"></i>
-            <p>Custom design — no templates, no cookie-cutter layouts</p>
-          </div>
-          <div class="benefit-item reveal reveal-delay-2">
-            <i class="ph ph-check-circle"></i>
-            <p>SEO built into the foundation, not added later</p>
-          </div>
-          <div class="benefit-item reveal reveal-delay-1">
-            <i class="ph ph-check-circle"></i>
-            <p>Fast, responsive, and optimized for all devices</p>
-          </div>
-          <div class="benefit-item reveal reveal-delay-2">
-            <i class="ph ph-check-circle"></i>
-            <p>Clean code that's easy to maintain and scale</p>
-          </div>
-          <div class="benefit-item reveal reveal-delay-1">
-            <i class="ph ph-check-circle"></i>
-            <p>Strategy-first approach focused on business goals</p>
-          </div>
-          <div class="benefit-item reveal reveal-delay-2">
-            <i class="ph ph-check-circle"></i>
-            <p>Ongoing support and maintenance available</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- CTA -->
-    <section class="final-cta section--lg">
-      <div class="container" style="text-align: center;">
-        <h2 class="reveal">Ready to build your website?</h2>
-        <p class="section-subtitle reveal reveal-delay-1" style="color: var(--color-text-on-dark-secondary); margin: var(--space-6) auto var(--space-8); max-width: 480px;">Tell us about your project and let's figure out the best approach together.</p>
-        <div class="reveal reveal-delay-2">
-          <a href="../pages/contact.html" class="btn btn--on-dark btn--lg">Get a Free Strategy Call <span class="btn__arrow">→</span></a>
+    <!-- FINAL CTA -->
+    <section class="section final-cta" id="contact">
+      <div class="container">
+        <h2 class="reveal">Ready to build something extraordinary?</h2>
+        <p class="section-subtitle reveal reveal-delay-1">Let's talk about your project and how we can bring it to life.</p>
+        <div class="final-cta__actions reveal reveal-delay-2">
+          <a href="../pages/contact.html" class="btn btn--primary btn--lg">
+            Request a Proposal
+          </a>
         </div>
         <p class="final-cta__note reveal reveal-delay-3">No pressure. No hard sell. Just a conversation.</p>
       </div>
     </section>
+
   </main>
 
+  <!-- FOOTER -->
   <footer class="footer">
     <div class="container">
-      <div class="footer__bottom" style="border-top: none; padding-top: 0;">
-        <span class="footer__copyright">&copy; 2026 Zamify. All rights reserved.</span>
-        <div style="display: flex; gap: var(--space-4);">
-          <a href="../pages/privacy.html" class="footer__link">Privacy Policy</a>
-          <a href="../pages/terms.html" class="footer__link">Terms</a>
+      <div class="footer__grid">
+        <div>
+          <a href="../index.html" class="footer__logo">
+            <img src="../assets/images/logo.webp" alt="Zamify Footer Logo" width="2172" height="724" style="height: 40px; width: auto;">
+          </a>
+          <div class="footer__tagline">Build. Create. Grow.</div>
+          <p class="footer__brand-desc">A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.</p>
         </div>
+
+        <div>
+          <div class="footer__col-title">Navigation</div>
+          <div class="footer__links">
+            <a href="../index.html#services" class="footer__link">Services</a>
+            <a href="../pages/work.html" class="footer__link">Work</a>
+            <a href="../pages/about.html" class="footer__link">About</a>
+            <a href="../pages/contact.html" class="footer__link">Contact</a>
+          </div>
+        </div>
+
+        <div>
+          <div class="footer__col-title">Legal</div>
+          <div class="footer__links">
+            <a href="../pages/privacy.html" class="footer__link">Privacy Policy</a>
+            <a href="../pages/terms.html" class="footer__link">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="footer__bottom">
+        <span class="footer__copyright">&copy; 2026 Zamify. All rights reserved.</span>
       </div>
     </div>
   </footer>
@@ -294,4 +208,3 @@
   <script src="../js/main.js"></script>
 </body>
 </html>
-
