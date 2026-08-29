@@ -201,9 +201,34 @@
     height: 1px;
   }
 
-  /* Services */
+  /* Services - Horizontal Scroll Snap */
   .services__grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-4);
+    padding-bottom: var(--space-6);
+    margin: 0 calc(var(--container-px) * -1); /* Break out of container padding */
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+  }
+
+  .services__grid::-webkit-scrollbar {
+    display: none; /* Chrome, Safari and Opera */
+  }
+
+  .services__grid .service-card {
+    flex: 0 0 80vw; /* 80vw leaves 20vw for the next card to peek in */
+    scroll-snap-align: center;
+  }
+
+  /* Improve tap state for touch devices */
+  .service-card:active {
+    transform: scale(0.98);
+    background: var(--color-bg-subtle);
   }
 
   /* AI Feature */

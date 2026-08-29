@@ -227,6 +227,32 @@
   background: var(--color-bg-muted);
   margin-bottom: var(--space-5);
   color: var(--color-text);
+  transition: all var(--duration-base) var(--ease-out-quart);
+}
+
+/* Premium Category Themes */
+.theme-blue .service-card__icon {
+  background: var(--color-glow-blue);
+  color: #2563eb;
+}
+.theme-blue .service-card:hover {
+  border-color: rgba(37, 99, 235, 0.2);
+}
+
+.theme-green .service-card__icon {
+  background: var(--color-highlight-green);
+  color: #059669;
+}
+.theme-green .service-card:hover {
+  border-color: rgba(5, 150, 105, 0.2);
+}
+
+.theme-purple .service-card__icon {
+  background: var(--color-glow-purple);
+  color: #7c3aed;
+}
+.theme-purple .service-card:hover {
+  border-color: rgba(124, 58, 237, 0.2);
 }
 
 .service-card__icon svg {
