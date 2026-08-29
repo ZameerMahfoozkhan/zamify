@@ -346,14 +346,46 @@
 
 .services__category-title {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: var(--text-base);
   font-weight: var(--weight-semibold);
+  padding: 8px 16px;
+  border-radius: var(--radius-pill);
+  display: inline-flex;
+  align-items: center;
+  transition: all var(--duration-base) ease;
+}
+
+/* Category header themes */
+.theme-blue .services__category-title {
+  background: var(--color-glow-blue);
+  color: #2563eb;
+  border: 1px solid rgba(37, 99, 235, 0.2);
+}
+.theme-blue .services__category-line {
+  background: linear-gradient(90deg, rgba(37, 99, 235, 0.2) 0%, transparent 100%);
+}
+
+.theme-green .services__category-title {
+  background: var(--color-highlight-green);
+  color: #059669;
+  border: 1px solid rgba(5, 150, 105, 0.2);
+}
+.theme-green .services__category-line {
+  background: linear-gradient(90deg, rgba(5, 150, 105, 0.2) 0%, transparent 100%);
+}
+
+.theme-purple .services__category-title {
+  background: var(--color-glow-purple);
+  color: #7c3aed;
+  border: 1px solid rgba(124, 58, 237, 0.2);
+}
+.theme-purple .services__category-line {
+  background: linear-gradient(90deg, rgba(124, 58, 237, 0.2) 0%, transparent 100%);
 }
 
 .services__category-line {
   flex: 1;
   height: 1px;
-  background: var(--color-border-subtle);
 }
 
 .services__grid {

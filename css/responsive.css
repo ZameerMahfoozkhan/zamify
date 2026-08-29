@@ -104,12 +104,25 @@
   }
 }
 
+/* ── Utilities ───────────────────────────────────────────────────────── */
+.hide-mobile {
+  display: block;
+}
+.mobile-only {
+  display: none !important;
+}
+
+/* ── Media Queries ───────────────────────────────────────────────────── */
 /* ── Mobile (max-width: 768px) ────────────────────────────────────────── */
 @media (max-width: 768px) {
   :root {
     --section-py: var(--space-16);
     --section-py-lg: var(--space-20);
     --container-px: var(--space-5);
+  }
+
+  .mobile-only {
+    display: block !important;
   }
 
   h1 {

@@ -290,6 +290,15 @@
   transform: translateX(4px);
 }
 
+/* Text Gradients */
+.text-gradient-blue-purple {
+  background: linear-gradient(135deg, #2563eb 0%, #7c3aed 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  color: transparent;
+}
+
 /* ── Badge / Tag ──────────────────────────────────────────────────────── */
 .badge {
   display: inline-flex;
