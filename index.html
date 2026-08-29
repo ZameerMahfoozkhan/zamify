@@ -866,6 +866,7 @@
               <span class="badge">AI Creative</span>
               <span class="badge">Visual Storytelling</span>
             </div>
+            <a href="https://shreyansh-two.vercel.app/" target="_blank" rel="noopener" class="founder-card__link">Visit Website <span>→</span></a>
           </div>
         </div>
       </div>
@@ -1254,8 +1255,26 @@
             </div>
           </div>
         </div>
+        <div style="text-align: center; margin-top: var(--space-8);">
+          <button id="show-all-faqs-btn" class="btn btn--secondary">Show all FAQs</button>
+        </div>
       </div>
     </section>
+
+    <script>
+      document.addEventListener('DOMContentLoaded', () => {
+        const btn = document.getElementById('show-all-faqs-btn');
+        if (btn) {
+          btn.addEventListener('click', () => {
+            const hiddenFaqs = document.querySelectorAll('.faq-extra');
+            hiddenFaqs.forEach(faq => {
+              faq.style.display = 'block';
+            });
+            btn.style.display = 'none';
+          });
+        }
+      });
+    </script>
 
     <!-- FAQPage Schema -->
     <script type="application/ld+json">
@@ -1397,7 +1416,7 @@
   <!-- ================================================================
        20. FOOTER
        ================================================================ -->
-    <footer class="footer">
+      <footer class="footer">
     <div class="container">
       <div class="footer__grid">
         <div>
@@ -1436,7 +1455,7 @@
       </div>
 
       <div class="footer__bottom">
-        <span class="footer__copyright">&copy; 2026 Zamify. All rights reserved. <span style="opacity: 0.7; margin-left: 8px;">Developed by <a href="https://shreyansh-two.vercel.app/" target="_blank" rel="noopener" style="text-decoration: underline; color: inherit;">Shreyansh Yadav</a></span></span>
+        <span class="footer__copyright">&copy; 2026 Zamify. All rights reserved.</span>
       </div>
     </div>
   </footer>
