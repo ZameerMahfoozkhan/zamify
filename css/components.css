@@ -40,7 +40,7 @@
   transform: translateY(-1px);
 }
 
-/* Secondary — outlined */
+/* Secondary - outlined */
 .btn--secondary {
   background-color: transparent;
   color: var(--color-text);
@@ -50,6 +50,19 @@
 .btn--secondary:hover {
   border-color: var(--color-border-hover);
   background-color: var(--color-bg-subtle);
+}
+
+/* Outline White - for dark backgrounds */
+.btn--outline-white {
+  background-color: transparent;
+  color: #ffffff;
+  border: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.btn--outline-white:hover {
+  background-color: #ffffff;
+  color: var(--color-text); /* Switches text to dark so it's readable */
+  border-color: #ffffff;
 }
 
 /* Ghost — text only */
