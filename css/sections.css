@@ -1449,7 +1449,7 @@
 .hero-mesh {
   position: relative;
   overflow: hidden;
-  padding: var(--space-20) 0 var(--space-16) 0;
+  padding: var(--space-12) 0 var(--space-8) 0;
   background-color: var(--color-bg);
 }
 
@@ -1766,6 +1766,6 @@
   .premium-glass-card--large, .premium-glass-card--wide { grid-column: span 1; grid-row: span 1; }
   .checklist-grid { grid-template-columns: 1fr; }
   .process-timeline { grid-template-columns: 1fr; }
-  .hero-mesh { padding: var(--space-16) 0 var(--space-10) 0; }
+  .hero-mesh { padding: var(--space-8) 0 var(--space-6) 0; }
 }
 
