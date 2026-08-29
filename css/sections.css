@@ -1192,6 +1192,8 @@
   font-size: var(--text-sm);
   color: var(--color-text-on-dark-secondary);
   opacity: 0.7;
+  margin: 0 auto;
+  text-align: center;
 }
 
 /* ── Contact Form Section ─────────────────────────────────────────────── */
