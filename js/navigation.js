@@ -34,6 +34,7 @@ document.addEventListener('DOMContentLoaded', () => {
       isMenuOpen = !isMenuOpen;
       toggle.classList.toggle('is-active', isMenuOpen);
       mobileMenu.classList.toggle('is-open', isMenuOpen);
+      nav.classList.toggle('is-menu-open', isMenuOpen);
       document.body.style.overflow = isMenuOpen ? 'hidden' : '';
 
       // Update ARIA
@@ -46,6 +47,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isMenuOpen = false;
         toggle.classList.remove('is-active');
         mobileMenu.classList.remove('is-open');
+        nav.classList.remove('is-menu-open');
         document.body.style.overflow = '';
         toggle.setAttribute('aria-expanded', 'false');
       });
@@ -57,6 +59,7 @@ document.addEventListener('DOMContentLoaded', () => {
         isMenuOpen = false;
         toggle.classList.remove('is-active');
         mobileMenu.classList.remove('is-open');
+        nav.classList.remove('is-menu-open');
         document.body.style.overflow = '';
         toggle.setAttribute('aria-expanded', 'false');
         toggle.focus();
