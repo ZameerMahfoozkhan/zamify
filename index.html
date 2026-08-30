@@ -35,11 +35,11 @@
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="css/tokens.css?v=3">
-  <link rel="stylesheet" href="css/base.css?v=3">
-  <link rel="stylesheet" href="css/components.css?v=3">
-  <link rel="stylesheet" href="css/sections.css?v=3">
-  <link rel="stylesheet" href="css/responsive.css?v=3">
+  <link rel="stylesheet" href="css/tokens.css?v=4">
+  <link rel="stylesheet" href="css/base.css?v=4">
+  <link rel="stylesheet" href="css/components.css?v=4">
+  <link rel="stylesheet" href="css/sections.css?v=4">
+  <link rel="stylesheet" href="css/responsive.css?v=4">
 
   <!-- Schema: Organization -->
   <script type="application/ld+json">
@@ -123,7 +123,7 @@
       <div class="container">
         <div class="hero__grid">
           <div class="hero__content">
-            <h1 class="hero__headline reveal">Build a brand<br>the internet<br>can't ignore.</h1>
+            <h1 class="hero__headline reveal">Build a brand<br>the internet<br><span class="hero__highlight">can't ignore.</span></h1>
             <p class="hero__subtitle reveal reveal-delay-1">Zamify is a global digital agency combining web development, AI-powered creative, SEO, advertising, and digital strategy to help ambitious businesses grow online.</p>
             <div class="hero__actions reveal reveal-delay-2">
               <a href="#contact" class="btn btn--primary btn--lg">
@@ -132,11 +132,15 @@
               <a href="#work" class="btn btn--secondary btn--lg">Explore Our Work</a>
             </div>
             <div class="hero__trust reveal reveal-delay-3">
-              <span>50+ projects delivered</span>
-              <span class="hero__trust-sep"></span>
-              <span>2+ years of experience</span>
-              <span class="hero__trust-sep"></span>
-              <span>Clients worldwide</span>
+              <div class="hero__trust-badge">
+                <i class="ph-fill ph-check-circle"></i> 50+ projects delivered
+              </div>
+              <div class="hero__trust-badge">
+                <i class="ph-fill ph-star"></i> 2+ years of experience
+              </div>
+              <div class="hero__trust-badge">
+                <i class="ph-fill ph-globe"></i> Clients worldwide
+              </div>
             </div>
           </div>
 
@@ -229,27 +233,25 @@
          ================================================================ -->
     <section class="trust-strip" id="trust">
       <div class="container">
-        <p class="text-secondary reveal" style="font-size: var(--text-sm); font-weight: var(--weight-medium); margin-bottom: var(--space-8);">Built for businesses ready to grow.</p>
-
-        <div class="logo-marquee reveal reveal-delay-1">
-          <div class="logo-grid">
-            <!-- Client logos -->
-            <div class="logo-grid__item"><img src="assets/images/7070-logo.png" alt="7070" /></div>
-            <div class="logo-grid__item"><img src="assets/images/furniturehub-logo.png" alt="Furniture Hub" /></div>
-            <div class="logo-grid__item"><img src="assets/images/luxe-bite-logo.png" alt="Luxe Bite" /></div>
-            <div class="logo-grid__item"><img src="assets/images/nibhiyaminteriors-logo.png" alt="Nibhiyam Interiors" /></div>
-            <div class="logo-grid__item"><img src="assets/images/thememorymakers-logo.png" alt="The Memory Makers" /></div>
-            
-            <!-- Duplicated for seamless loop -->
-            <div class="logo-grid__item" aria-hidden="true"><img src="assets/images/7070-logo.png" alt="7070" /></div>
-            <div class="logo-grid__item" aria-hidden="true"><img src="assets/images/furniturehub-logo.png" alt="Furniture Hub" /></div>
-            <div class="logo-grid__item" aria-hidden="true"><img src="assets/images/luxe-bite-logo.png" alt="Luxe Bite" /></div>
-            <div class="logo-grid__item" aria-hidden="true"><img src="assets/images/nibhiyaminteriors-logo.png" alt="Nibhiyam Interiors" /></div>
-            <div class="logo-grid__item" aria-hidden="true"><img src="assets/images/thememorymakers-logo.png" alt="The Memory Makers" /></div>
+        <div class="brands-showcase reveal">
+          <span class="brands-showcase__label">Trusted by</span>
+          <div class="brands-showcase__divider"></div>
+          <div class="brands-showcase__logos">
+            <div class="brands-showcase__logo-item"><img src="assets/images/7070-logo.png" alt="7070" /></div>
+            <div class="brands-showcase__logo-item"><img src="assets/images/furniturehub-logo.png" alt="Furniture Hub" /></div>
+            <div class="brands-showcase__logo-item"><img src="assets/images/luxe-bite-logo.png" alt="Luxe Bite" /></div>
+            <div class="brands-showcase__logo-item"><img src="assets/images/nibhiyaminteriors-logo.png" alt="Nibhiyam Interiors" /></div>
+            <div class="brands-showcase__logo-item"><img src="assets/images/thememorymakers-logo.png" alt="The Memory Makers" /></div>
+            <!-- Duplicated for seamless mobile loop -->
+            <div class="brands-showcase__logo-item brands-showcase__logo-item--dup" aria-hidden="true"><img src="assets/images/7070-logo.png" alt="7070" /></div>
+            <div class="brands-showcase__logo-item brands-showcase__logo-item--dup" aria-hidden="true"><img src="assets/images/furniturehub-logo.png" alt="Furniture Hub" /></div>
+            <div class="brands-showcase__logo-item brands-showcase__logo-item--dup" aria-hidden="true"><img src="assets/images/luxe-bite-logo.png" alt="Luxe Bite" /></div>
+            <div class="brands-showcase__logo-item brands-showcase__logo-item--dup" aria-hidden="true"><img src="assets/images/nibhiyaminteriors-logo.png" alt="Nibhiyam Interiors" /></div>
+            <div class="brands-showcase__logo-item brands-showcase__logo-item--dup" aria-hidden="true"><img src="assets/images/thememorymakers-logo.png" alt="The Memory Makers" /></div>
           </div>
         </div>
 
-        <div class="trust-strip__stats reveal reveal-delay-2">
+        <div class="trust-strip__stats reveal reveal-delay-1">
           <div class="trust-strip__stat">
             <div class="trust-strip__stat-value" data-count="50" data-suffix="+">0+</div>
             <div class="trust-strip__stat-label">Projects delivered</div>
@@ -283,22 +285,25 @@
          4. PROBLEM → SOLUTION
          ================================================================ -->
     <section class="problem-solution section" id="problem-solution">
+      <div class="problem-solution__glow problem-solution__glow--1"></div>
+      <div class="problem-solution__glow problem-solution__glow--2"></div>
       <div class="container">
         <div class="problem-solution__grid">
           <div class="problem-solution__content">
-            <h2 class="reveal">Your business deserves more than just a website.</h2>
-            <p class="section-subtitle reveal reveal-delay-1" style="margin-top: var(--space-5);">Many businesses have outdated websites, weak online visibility, inconsistent branding, and no clear digital strategy. That's where Zamify comes in.</p>
-            <p class="reveal reveal-delay-2" style="font-size: var(--text-lg); color: var(--color-text-secondary); margin-top: var(--space-6); line-height: var(--leading-relaxed);">We bring technology, design, AI, creative, and growth together under one roof — so your digital presence doesn't just look good. It works.</p>
+            <span class="problem-solution__badge reveal">The Problem</span>
+            <h2 class="problem-solution__heading reveal reveal-delay-1">Your business deserves more than <span class="problem-solution__highlight">just a website.</span></h2>
+            <p class="problem-solution__sub reveal reveal-delay-2">Many businesses have outdated websites, weak online visibility, inconsistent branding, and no clear digital strategy. That's where Zamify comes in.</p>
+            <p class="problem-solution__desc reveal reveal-delay-3">We bring technology, design, AI, creative, and growth together under one roof — so your digital presence doesn't just look good. It works.</p>
           </div>
 
           <div class="problem-solution__comparison reveal reveal-delay-3">
             <div class="problem-solution__side problem-solution__side--before">
               <div class="problem-solution__side-title">Before</div>
               <div class="problem-solution__list">
-                <div class="problem-solution__item"><i class="ph ph-x" style="color: #D4D4D8;"></i> Invisible online</div>
-                <div class="problem-solution__item"><i class="ph ph-x" style="color: #D4D4D8;"></i> Outdated presence</div>
-                <div class="problem-solution__item"><i class="ph ph-x" style="color: #D4D4D8;"></i> Disconnected brand</div>
-                <div class="problem-solution__item"><i class="ph ph-x" style="color: #D4D4D8;"></i> No conversions</div>
+                <div class="problem-solution__item"><i class="ph ph-x-circle"></i> Invisible online</div>
+                <div class="problem-solution__item"><i class="ph ph-x-circle"></i> Outdated presence</div>
+                <div class="problem-solution__item"><i class="ph ph-x-circle"></i> Disconnected brand</div>
+                <div class="problem-solution__item"><i class="ph ph-x-circle"></i> No conversions</div>
               </div>
             </div>
 
@@ -307,10 +312,10 @@
             <div class="problem-solution__side problem-solution__side--after">
               <div class="problem-solution__side-title">After Zamify</div>
               <div class="problem-solution__list">
-                <div class="problem-solution__item"><i class="ph ph-check-circle" style="color: var(--color-text);"></i> Visible everywhere</div>
-                <div class="problem-solution__item"><i class="ph ph-check-circle" style="color: var(--color-text);"></i> Modern and fast</div>
-                <div class="problem-solution__item"><i class="ph ph-check-circle" style="color: var(--color-text);"></i> Connected brand</div>
-                <div class="problem-solution__item"><i class="ph ph-check-circle" style="color: var(--color-text);"></i> Built to convert</div>
+                <div class="problem-solution__item"><i class="ph ph-check-circle"></i> Visible everywhere</div>
+                <div class="problem-solution__item"><i class="ph ph-check-circle"></i> Modern and fast</div>
+                <div class="problem-solution__item"><i class="ph ph-check-circle"></i> Connected brand</div>
+                <div class="problem-solution__item"><i class="ph ph-check-circle"></i> Built to convert</div>
               </div>
             </div>
           </div>

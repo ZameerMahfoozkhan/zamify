@@ -21,8 +21,8 @@
 
   .hero {
     min-height: auto;
-    padding-top: 140px;
-    padding-bottom: var(--space-16);
+    padding-top: 100px;
+    padding-bottom: var(--space-8);
   }
 
   .hero__content {
@@ -137,8 +137,8 @@
   }
 
   .hero {
-    padding-top: 120px;
-    padding-bottom: var(--space-12);
+    padding-top: 90px;
+    padding-bottom: var(--space-8);
   }
 
   .hero__subtitle {
@@ -157,13 +157,15 @@
   }
 
   .hero__trust {
-    flex-direction: column;
-    align-items: flex-start;
-    gap: var(--space-2);
+    flex-direction: row;
+    flex-wrap: wrap;
+    align-items: center;
+    gap: var(--space-3);
   }
 
-  .hero__trust-sep {
-    display: none;
+  .hero__trust-badge {
+    font-size: 11px;
+    padding: var(--space-2) var(--space-3);
   }
 
   /* Nav mobile */
@@ -179,9 +181,37 @@
     display: flex;
   }
 
-  /* Trust Marquee */
+  /* Trust / Brands Showcase – Mobile */
   .trust-strip {
     overflow: hidden;
+  }
+
+  .brands-showcase {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: var(--space-3);
+  }
+
+  .brands-showcase__divider {
+    display: none;
+  }
+
+  .brands-showcase__logos {
+    width: max-content;
+    gap: var(--space-6);
+    animation: scroll-x 25s linear infinite;
+  }
+
+  .brands-showcase__logo-item.brands-showcase__logo-item--dup {
+    display: flex;
+  }
+
+  .brands-showcase__logo-item {
+    flex-shrink: 0;
+  }
+
+  .trust-strip__stat[aria-hidden="true"] {
+    display: block;
   }
 
   .trust-strip__stats {
@@ -191,13 +221,6 @@
     animation: scroll-x 20s linear infinite;
   }
 
-  .logo-grid {
-    flex-wrap: nowrap;
-    width: max-content;
-    animation: scroll-x 20s linear infinite;
-    gap: var(--space-8);
-  }
-
   @keyframes scroll-x {
     0% { transform: translateX(0); }
     100% { transform: translateX(calc(-50% - var(--space-6))); }
@@ -205,13 +228,29 @@
 
   /* Problem/Solution */
   .problem-solution__comparison {
-    grid-template-columns: 1fr;
-    gap: var(--space-6);
+    grid-template-columns: 1fr auto 1fr;
+    gap: var(--space-2);
+    padding: var(--space-3);
+  }
+
+  .problem-solution__side {
+    padding: var(--space-3);
+  }
+
+  .problem-solution__side-title {
+    font-size: var(--text-base);
+    margin-bottom: var(--space-4);
+  }
+
+  .problem-solution__item {
+    font-size: var(--text-xs);
+    gap: var(--space-2);
   }
 
   .problem-solution__divider-line {
-    width: 100%;
-    height: 1px;
+    width: 1px;
+    height: 100%;
+    background: linear-gradient(to bottom, transparent, rgba(255, 255, 255, 0.1), transparent);
   }
 
   /* Services - Horizontal Scroll Snap */
@@ -304,6 +343,22 @@
   /* Testimonials */
   .testimonials__grid {
     grid-template-columns: 1fr;
+    gap: var(--space-4);
+  }
+
+  .testimonial-card {
+    padding: var(--space-5);
+  }
+
+  .testimonial-card__quote {
+    font-size: var(--text-sm);
+    margin-bottom: var(--space-4);
+  }
+
+  .testimonial-card::before {
+    font-size: 80px;
+    top: -5px;
+    right: 15px;
   }
 
   /* Stats */
