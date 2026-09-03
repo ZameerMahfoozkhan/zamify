@@ -102,6 +102,24 @@
     grid-template-columns: 1fr 1fr;
     gap: var(--space-8);
   }
+
+  /* Prevent nav overflow on tablets while keeping desktop layout */
+  .nav__inner {
+    padding: 0 var(--space-4);
+  }
+  
+  .nav__links {
+    gap: 0;
+  }
+  
+  .nav__link {
+    padding: 8px 12px;
+    font-size: 13px;
+  }
+  
+  .nav__cta {
+    margin-left: var(--space-2);
+  }
 }
 
 /* ── Utilities ───────────────────────────────────────────────────────── */
@@ -114,7 +132,7 @@
 
 /* ── Media Queries ───────────────────────────────────────────────────── */
 /* ── Mobile (max-width: 768px) ────────────────────────────────────────── */
-@media (max-width: 768px) {
+@media (max-width: 1024px) {
   :root {
     --section-py: var(--space-16);
     --section-py-lg: var(--space-20);

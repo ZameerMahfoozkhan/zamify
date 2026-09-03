@@ -1,0 +1,513 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Premium Web Performance — Zamify</title>
+  <meta content="Speed optimization, Core Web Vitals, and technical performance improvements." name="description"/>
+  
+  <meta content="Premium Web Performance — Zamify" property="og:title"/>
+  <meta content="Speed optimization, Core Web Vitals, and technical performance improvements." property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <meta content="https://zamify.com/services/performance.html" property="og:url"/>
+  
+  <link href="../assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="../assets/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet"/>
+  
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  
+  <link href="../css/tokens.css?v=6" rel="stylesheet"/>
+  <link href="../css/base.css?v=6" rel="stylesheet"/>
+  <link href="../css/components.css?v=6" rel="stylesheet"/>
+  <link href="../css/sections.css?v=6" rel="stylesheet"/>
+  <link href="../css/responsive.css?v=6" rel="stylesheet"/>
+
+  <style>
+    /* ── Custom Performance Styles ── */
+    :root {
+      --accent-primary: #8B5CF6;
+      --accent-glow: rgba(139, 92, 246, 0.15);
+      --code-bg: #0D0D12;
+      --code-border: #1E1E2A;
+    }
+
+    body { overflow-x: hidden; }
+
+    /* Grid Background */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .hero-glow-blob {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(139, 92, 246, 0) 60%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Speed Dashboard Mockup */
+    .speed-dashboard {
+      position: relative;
+      max-width: 800px;
+      margin: 60px auto 0;
+      border-radius: 16px;
+      background: #FFF;
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: left;
+    }
+    
+    .dashboard-header {
+      padding: 16px 24px;
+      border-bottom: 1px solid var(--color-border-subtle);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      background: #F9FAFB;
+    }
+    
+    .dashboard-title { font-weight: 600; font-size: 14px; color: #111827; display: flex; align-items: center; gap: 8px;}
+    
+    .dashboard-body {
+      padding: 32px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+    }
+
+    .metric-card {
+      padding: 20px;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 12px;
+      background: #FFF;
+      box-shadow: 0 4px 6px rgba(0,0,0,0.02);
+    }
+    
+    .metric-header { display: flex; justify-content: space-between; align-items: center; margin-bottom: 12px; }
+    .metric-name { font-size: 12px; color: var(--color-text-secondary); font-weight: 600; }
+    .metric-icon { color: #10B981; }
+    
+    .metric-value { font-family: 'Fira Code', monospace; font-size: 28px; font-weight: 700; color: #111827; margin-bottom: 4px; }
+    .metric-desc { font-size: 11px; color: #10B981; font-weight: 500; }
+
+    /* Lighthouse Gauges (Dark Section) */
+    .lighthouse-section {
+      padding: 80px 0;
+      background: linear-gradient(180deg, #050505 0%, #0A0A10 100%);
+      border-top: 1px solid rgba(255,255,255,0.05);
+    }
+
+    .lighthouse-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      max-width: 900px;
+      margin: 60px auto 0;
+    }
+
+    .gauge-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .gauge {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+
+    .gauge-circle-bg {
+      fill: none;
+      stroke: #1E1E2A;
+      stroke-width: 8;
+    }
+
+    .gauge-circle-progress {
+      fill: none;
+      stroke: #10B981;
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 283;
+      stroke-dashoffset: 283;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+      animation: fillGauge 1.5s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    .gauge-value {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 28px;
+      font-weight: 500;
+      color: #10B981;
+    }
+
+    .gauge-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #A0A0B0;
+      font-weight: 500;
+    }
+
+    @keyframes fillGauge {
+      to { stroke-dashoffset: 0; }
+    }
+
+    @media (max-width: 768px) {
+      .dashboard-body { grid-template-columns: 1fr; }
+      .lighthouse-grid { grid-template-columns: 1fr 1fr; }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="bg-grid"></div>
+  
+  <!-- NAVIGATION -->
+  <nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
+    <div class="nav__inner">
+      <a aria-label="Zamify Home" class="nav__logo" href="../index.html">
+        <img alt="Zamify Logo" height="724" src="../assets/images/logo.webp" style="height: 32px; width: auto;" width="2172"/>
+      </a>
+      <div class="nav__links">
+        <a class="nav__link" href="../index.html#services">Services</a>
+        <a class="nav__link" href="../pages/work.html">Work</a>
+        <a class="nav__link" href="../pages/about.html">About</a>
+        <a class="nav__link" href="../index.html#process">Process</a>
+        <a class="nav__link" href="../pages/contact.html">Contact</a>
+      </div>
+      <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
+        Get a Quote <span class="btn__arrow">→</span>
+      </a>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+      <a href="../index.html#services" class="nav__mobile-link">Services</a>
+      <a href="../pages/work.html" class="nav__mobile-link">Work</a>
+      <a href="../pages/about.html" class="nav__mobile-link">About</a>
+      <a href="../index.html#process" class="nav__mobile-link">Process</a>
+      <a href="../index.html#faq" class="nav__mobile-link">Insights</a>
+      <a href="../pages/contact.html" class="nav__mobile-link">Contact</a>
+      <a href="../pages/contact.html" class="btn btn--primary btn--lg nav__mobile-link">
+        Get a Free Strategy Call <span class="btn__arrow">→</span>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="section" style="padding-top: 100px; padding-bottom: 80px; position: relative; z-index: 1;">
+      <div class="hero-glow-blob"></div>
+      <div class="container" style="text-align: center; position: relative; z-index: 2;">
+        <div class="reveal" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(139, 92, 246, 0.1); color: #8B5CF6; font-weight: 600; font-size: 13px; margin: 0 auto 24px auto; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(139, 92, 246, 0.2);">
+          <i class="ph-bold ph-gauge"></i> Core Web Vitals
+        </div>
+        
+        <h1 class="reveal reveal-delay-1" style="font-size: clamp(3rem, 6vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 24px; line-height: 1.1;">
+          Lightning-fast speed for <br>
+          <span style="color: #8B5CF6;">better rankings.</span>
+        </h1>
+        
+        <p class="section-subtitle reveal reveal-delay-2 mx-auto" style="color: var(--color-text-secondary); max-width: 650px; font-size: 1.125rem; margin-bottom: 48px;">
+          We optimize your website's technical foundation to pass Google Core Web Vitals and deliver sub-second load times. Stop losing customers to slow pages.
+        </p>
+        
+        <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center;">
+          <a href="../pages/contact.html" class="btn btn--primary btn--lg" style="background: #8B5CF6; color: #FFF; box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);">
+            Optimize My Site <span class="btn__arrow">→</span>
+          </a>
+        </div>
+
+        <!-- Dashboard Mockup -->
+        <div class="speed-dashboard reveal reveal-delay-4">
+          <div class="dashboard-header">
+            <div class="dashboard-title"><i class="ph-fill ph-activity"></i> Performance Real-time Analytics</div>
+            <div style="font-family: 'Fira Code', monospace; font-size: 11px; color: #6B7280;">LIVE • US-EAST</div>
+          </div>
+          <div class="dashboard-body">
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-name">LCP (Largest Contentful Paint)</span>
+                <i class="ph-fill ph-check-circle metric-icon"></i>
+              </div>
+              <div class="metric-value">0.8s</div>
+              <div class="metric-desc">Excellent (&lt; 2.5s)</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-name">INP (Interaction to Next Paint)</span>
+                <i class="ph-fill ph-check-circle metric-icon"></i>
+              </div>
+              <div class="metric-value">42ms</div>
+              <div class="metric-desc">Excellent (&lt; 200ms)</div>
+            </div>
+            <div class="metric-card">
+              <div class="metric-header">
+                <span class="metric-name">CLS (Cumulative Layout Shift)</span>
+                <i class="ph-fill ph-check-circle metric-icon"></i>
+              </div>
+              <div class="metric-value">0.01</div>
+              <div class="metric-desc">Excellent (&lt; 0.1)</div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- LIGHTHOUSE SCORES SECTION -->
+    <section class="lighthouse-section">
+      <div class="container text-center">
+        <h2 class="reveal" style="font-size: 2.5rem; margin-bottom: 16px; color: #FFF;">Perfect 100s. Guaranteed.</h2>
+        <p class="section-subtitle mx-auto reveal reveal-delay-1" style="color: #A0A0B0;">We obsess over Google Core Web Vitals. Because a faster website means better SEO and higher conversion rates.</p>
+        
+        <div class="lighthouse-grid reveal reveal-delay-2">
+          <div class="gauge-wrapper">
+            <div class="gauge">
+              <svg viewBox="0 0 100 100" width="120" height="120">
+                <circle class="gauge-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="gauge-circle-progress" cx="50" cy="50" r="45"></circle>
+              </svg>
+              <div class="gauge-value">100</div>
+            </div>
+            <div class="gauge-label">Performance</div>
+          </div>
+          <div class="gauge-wrapper">
+            <div class="gauge">
+              <svg viewBox="0 0 100 100" width="120" height="120">
+                <circle class="gauge-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="gauge-circle-progress" cx="50" cy="50" r="45"></circle>
+              </svg>
+              <div class="gauge-value">100</div>
+            </div>
+            <div class="gauge-label">Accessibility</div>
+          </div>
+          <div class="gauge-wrapper">
+            <div class="gauge">
+              <svg viewBox="0 0 100 100" width="120" height="120">
+                <circle class="gauge-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="gauge-circle-progress" cx="50" cy="50" r="45"></circle>
+              </svg>
+              <div class="gauge-value">100</div>
+            </div>
+            <div class="gauge-label">Best Practices</div>
+          </div>
+          <div class="gauge-wrapper">
+            <div class="gauge">
+              <svg viewBox="0 0 100 100" width="120" height="120">
+                <circle class="gauge-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="gauge-circle-progress" cx="50" cy="50" r="45"></circle>
+              </svg>
+              <div class="gauge-value">100</div>
+            </div>
+            <div class="gauge-label">SEO</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="section" style="background: var(--color-bg-subtle);">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 2.5rem; text-align: center; margin-bottom: 16px;">The Optimization Engine</h2>
+        <p class="section-subtitle mx-auto reveal reveal-delay-1" style="text-align: center; margin-bottom: 60px;">We go deep into the codebase to fix issues that generic plugins can't solve.</p>
+        
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+          <div class="glass-feature reveal reveal-delay-1" style="background: var(--color-bg); padding: 32px; border-radius: 16px; border: 1px solid var(--color-border-subtle); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <i class="ph-duotone ph-image" style="font-size: 32px; color: #F43F5E; margin-bottom: 20px;"></i>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Asset & Media Optimization</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.6;">Next-gen image formats (WebP/AVIF), video lazy-loading, and font subsetting to drastically reduce payload size.</p>
+          </div>
+          
+          <div class="glass-feature reveal reveal-delay-2" style="background: var(--color-bg); padding: 32px; border-radius: 16px; border: 1px solid var(--color-border-subtle); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <i class="ph-duotone ph-file-code" style="font-size: 32px; color: #06B6D4; margin-bottom: 20px;"></i>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">JavaScript Deferral</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.6;">Moving non-critical scripts off the main thread, reducing blocking time, and improving the First Input Delay (FID).</p>
+          </div>
+          
+          <div class="glass-feature reveal reveal-delay-3" style="background: var(--color-bg); padding: 32px; border-radius: 16px; border: 1px solid var(--color-border-subtle); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <i class="ph-duotone ph-cloud-lightning" style="font-size: 32px; color: #8B5CF6; margin-bottom: 20px;"></i>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Edge Caching & CDNs</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.6;">Implementing global content delivery networks so your site loads instantly for users anywhere in the world.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENT WORK -->
+    <section class="section" style="border-top: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Recent Optimizations</h2>
+        
+        <div class="featured-work__grid">
+          <article class="case-study reveal">
+            <div class="case-study__visual">
+              <div class="browser-mockup">
+                <div class="browser-mockup__bar">
+                  <span class="browser-mockup__dot" style="background: #FF5F56;"></span>
+                  <span class="browser-mockup__dot" style="background: #FFBD2E;"></span>
+                  <span class="browser-mockup__dot" style="background: #27C93F;"></span>
+                  <span class="browser-mockup__url">7070sportsayodhya.com</span>
+                </div>
+                <div class="browser-mockup__content">
+                  <img src="../assets/images/7070.webp" alt="7070 Sports Performance Check" class="portfolio-card__img" loading="lazy" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+            </div>
+            <div class="case-study__content">
+              <div class="case-study__category" style="color: #8B5CF6;">Performance Optimization · SEO</div>
+              <h3 class="case-study__name">7070 Sports Ayodhya</h3>
+              <p class="case-study__desc" style="color: var(--color-text-secondary);">Drastically improved page load times and Core Web Vitals for an e-commerce platform, leading to a massive increase in organic reach.</p>
+              <div class="case-study__result">
+                <i class="ph ph-trend-up" style="color: #8B5CF6;"></i>
+                Achieved 50K+ Monthly Traffic
+              </div>
+              <a href="https://7070sportsayodhya.com/" target="_blank" rel="noopener" class="card__link" style="margin-top: 24px;">
+                View Live Site <span>→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section" style="padding: 80px 0; text-align: center; border-top: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 3rem; margin-bottom: 24px;">Ready to speed up your site?</h2>
+        <p class="section-subtitle reveal reveal-delay-1 mx-auto" style="color: var(--color-text-secondary); margin-bottom: 40px;">Let's talk about your project and how we can bring it to life.</p>
+        <a href="../pages/contact.html" class="btn btn--primary btn--lg reveal reveal-delay-2" style="background: #8B5CF6; color: #FFF; box-shadow: 0 10px 25px rgba(139, 92, 246, 0.3);">
+          Request an Audit <span class="btn__arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section" id="faq" style="background: var(--color-bg-subtle);">
+      <div class="container container--narrow">
+        <h2 class="reveal" style="text-align: center;">Frequently asked questions.</h2>
+        <div style="margin-top: var(--space-12);">
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              What are Core Web Vitals?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Core Web Vitals are a set of specific factors that Google considers important in a webpage's overall user experience (LCP, FID/INP, and CLS). Passing them is crucial for SEO.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-question" aria-expanded="false">
+              Can't I just install a caching plugin?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Caching plugins only mask deeper issues. While they help, true performance optimization requires structural code changes, database indexing, and proper asset delivery pipelines.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-question" aria-expanded="false">
+              Will optimization break my site?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>No. We perform all optimizations on a safe staging environment first. Only after rigorous testing across devices and browsers do we deploy the speed improvements to production.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="footer__logo" href="../index.html">
+            <img alt="Zamify Footer Logo" height="724" src="../assets/images/logo.webp" style="height: 40px; width: auto;" width="2172"/>
+          </a>
+          <div class="footer__tagline">Build. Create. Grow.</div>
+          <p class="footer__brand-desc">A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.</p>
+          <div class="social-links" style="margin-top: var(--space-6);">
+            <a aria-label="WhatsApp" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-whatsapp-logo"></i></a>
+            <a aria-label="Instagram" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+            <a aria-label="LinkedIn" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+            <a aria-label="X" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-x-logo"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Navigation</div>
+          <div class="footer__links">
+            <a class="footer__link" href="../index.html#services">Services</a>
+            <a class="footer__link" href="../pages/work.html">Work</a>
+            <a class="footer__link" href="../pages/about.html">About</a>
+            <a class="footer__link" href="../index.html#process">Process</a>
+            <a class="footer__link" href="../pages/contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Legal</div>
+          <div class="footer__links">
+            <a class="footer__link" href="../pages/privacy.html">Privacy Policy</a>
+            <a class="footer__link" href="../pages/terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">© 2026 Zamify. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqs = document.querySelectorAll('.faq-question');
+      faqs.forEach(faq => {
+        faq.addEventListener('click', () => {
+          const expanded = faq.getAttribute('aria-expanded') === 'true';
+          faq.setAttribute('aria-expanded', !expanded);
+          const answer = faq.nextElementSibling;
+          if (expanded) {
+            answer.style.maxHeight = null;
+            faq.querySelector('i').classList.replace('ph-minus', 'ph-plus');
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            faq.querySelector('i').classList.replace('ph-plus', 'ph-minus');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

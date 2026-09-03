@@ -1,0 +1,455 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Premium Landing Pages — Zamify</title>
+  <meta content="High-converting landing pages designed for campaigns, launches, and lead generation." name="description"/>
+  
+  <meta content="Premium Landing Pages — Zamify" property="og:title"/>
+  <meta content="High-converting landing pages designed for campaigns, launches, and lead generation." property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <meta content="https://zamify.com/services/landing-pages.html" property="og:url"/>
+  
+  <link href="../assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="../assets/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet"/>
+  
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  
+  <link href="../css/tokens.css?v=6" rel="stylesheet"/>
+  <link href="../css/base.css?v=6" rel="stylesheet"/>
+  <link href="../css/components.css?v=6" rel="stylesheet"/>
+  <link href="../css/sections.css?v=6" rel="stylesheet"/>
+  <link href="../css/responsive.css?v=6" rel="stylesheet"/>
+  
+  <style>
+    /* ── Custom Landing Page Styles ── */
+    :root {
+      --accent-primary: #10B981;
+      --accent-glow: rgba(16, 185, 129, 0.15);
+    }
+
+    body { overflow-x: hidden; }
+
+    /* Grid Background */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .hero-glow-blob {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(16, 185, 129, 0) 60%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* AB Test Mockup */
+    .ab-mockup {
+      position: relative;
+      max-width: 800px;
+      margin: 60px auto 0;
+      border-radius: 16px;
+      background: #FFF;
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      text-align: left;
+      display: flex;
+    }
+    
+    .ab-panel {
+      flex: 1;
+      padding: 40px 30px;
+      position: relative;
+    }
+
+    .ab-panel--left { border-right: 1px solid var(--color-border-subtle); }
+
+    .ab-badge {
+      position: absolute;
+      top: 12px;
+      right: 12px;
+      padding: 4px 10px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+    }
+
+    .ab-badge--a { background: #F3F4F6; color: #4B5563; }
+    .ab-badge--b { background: #ECFDF5; color: #10B981; }
+
+    .skeleton-title { height: 24px; border-radius: 4px; background: #E5E7EB; margin-bottom: 16px; width: 80%; }
+    .skeleton-text { height: 12px; border-radius: 4px; background: #F3F4F6; margin-bottom: 8px; width: 100%; }
+    .skeleton-text.short { width: 60%; }
+    .skeleton-image { height: 120px; border-radius: 8px; background: #F3F4F6; margin-bottom: 24px; }
+    .skeleton-btn { height: 48px; border-radius: 8px; background: #E5E7EB; margin-top: 24px; width: 60%; }
+    .skeleton-btn--winner { background: var(--accent-primary); box-shadow: 0 4px 14px var(--accent-glow); position: relative; overflow: hidden;}
+    .skeleton-btn--winner::after {
+      content: ''; position: absolute; top: 0; left: -100%; width: 50%; height: 100%;
+      background: linear-gradient(to right, transparent, rgba(255,255,255,0.3), transparent);
+      animation: shimmer 2s infinite;
+    }
+
+    @keyframes shimmer { 100% { left: 200%; } }
+
+    .conversion-rate {
+      position: absolute;
+      bottom: -15px;
+      left: 50%;
+      transform: translateX(-50%);
+      background: #10B981;
+      color: #FFF;
+      padding: 6px 16px;
+      border-radius: 100px;
+      font-weight: 600;
+      font-size: 12px;
+      box-shadow: 0 4px 12px rgba(16, 185, 129, 0.3);
+      z-index: 10;
+      white-space: nowrap;
+    }
+
+    /* Marquee */
+    .tech-marquee-wrapper {
+      overflow: hidden;
+      white-space: nowrap;
+      position: relative;
+      padding: 20px 0;
+    }
+    .tech-marquee-wrapper::before, .tech-marquee-wrapper::after {
+      content: '';
+      position: absolute;
+      top: 0; width: 150px; height: 100%; z-index: 2;
+    }
+    .tech-marquee-wrapper::before {
+      left: 0; background: linear-gradient(to right, var(--color-bg) 0%, transparent 100%);
+    }
+    .tech-marquee-wrapper::after {
+      right: 0; background: linear-gradient(to left, var(--color-bg) 0%, transparent 100%);
+    }
+    .tech-marquee {
+      display: inline-block;
+      animation: scroll-left 30s linear infinite;
+    }
+    .tech-logo-card {
+      display: inline-flex; align-items: center; gap: 8px;
+      padding: 12px 24px; background: #FFF; border: 1px solid var(--color-border-subtle);
+      border-radius: 100px; margin: 0 12px; font-weight: 500; font-size: 14px;
+      box-shadow: 0 2px 10px rgba(0,0,0,0.02);
+    }
+    @keyframes scroll-left { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+    @media (max-width: 768px) {
+      .ab-mockup { flex-direction: column; }
+      .ab-panel--left { border-right: none; border-bottom: 1px solid var(--color-border-subtle); }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="bg-grid"></div>
+  
+  <!-- NAVIGATION -->
+  <nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
+    <div class="nav__inner">
+      <a aria-label="Zamify Home" class="nav__logo" href="../index.html">
+        <img alt="Zamify Logo" height="724" src="../assets/images/logo.webp" style="height: 32px; width: auto;" width="2172"/>
+      </a>
+      <div class="nav__links">
+        <a class="nav__link" href="../index.html#services">Services</a>
+        <a class="nav__link" href="../pages/work.html">Work</a>
+        <a class="nav__link" href="../pages/about.html">About</a>
+        <a class="nav__link" href="../index.html#process">Process</a>
+        <a class="nav__link" href="../pages/contact.html">Contact</a>
+      </div>
+      <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
+        Get a Quote <span class="btn__arrow">→</span>
+      </a>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+      <a href="../index.html#services" class="nav__mobile-link">Services</a>
+      <a href="../pages/work.html" class="nav__mobile-link">Work</a>
+      <a href="../pages/about.html" class="nav__mobile-link">About</a>
+      <a href="../index.html#process" class="nav__mobile-link">Process</a>
+      <a href="../index.html#faq" class="nav__mobile-link">Insights</a>
+      <a href="../pages/contact.html" class="nav__mobile-link">Contact</a>
+      <a href="../pages/contact.html" class="btn btn--primary btn--lg nav__mobile-link">
+        Get a Free Strategy Call <span class="btn__arrow">→</span>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="section" style="padding-top: 100px; padding-bottom: 80px; position: relative; z-index: 1;">
+      <div class="hero-glow-blob"></div>
+      <div class="container" style="text-align: center; position: relative; z-index: 2;">
+        <div class="reveal" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(16, 185, 129, 0.1); color: #10B981; font-weight: 600; font-size: 13px; margin: 0 auto 24px auto; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(16, 185, 129, 0.2);">
+          <i class="ph-bold ph-target"></i> Conversion Architecture
+        </div>
+        
+        <h1 class="reveal reveal-delay-1" style="font-size: clamp(3rem, 6vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 24px; line-height: 1.1;">
+          Landing pages that <br>
+          <span style="color: #10B981;">convert clicks to clients.</span>
+        </h1>
+        
+        <p class="section-subtitle reveal reveal-delay-2 mx-auto" style="color: var(--color-text-secondary); max-width: 650px; font-size: 1.125rem; margin-bottom: 48px;">
+          We design and develop hyper-focused landing pages built specifically to maximize your ad spend and lead generation. No distractions, just pure performance.
+        </p>
+        
+        <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center;">
+          <a href="../pages/contact.html" class="btn btn--primary btn--lg" style="background: #10B981; color: #FFF; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);">
+            Start a Campaign <span class="btn__arrow">→</span>
+          </a>
+        </div>
+
+        <!-- AB Test Mockup UI -->
+        <div class="ab-mockup reveal reveal-delay-4">
+          <div class="ab-panel ab-panel--left">
+            <div class="ab-badge ab-badge--a">Variant A</div>
+            <div class="skeleton-image"></div>
+            <div class="skeleton-title"></div>
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text short"></div>
+            <div class="skeleton-btn"></div>
+          </div>
+          <div class="ab-panel">
+            <div class="ab-badge ab-badge--b">Variant B</div>
+            <div class="skeleton-title" style="width: 100%;"></div>
+            <div class="skeleton-text"></div>
+            <div class="skeleton-text short"></div>
+            <div class="skeleton-btn skeleton-btn--winner"></div>
+            <div class="skeleton-image" style="margin-top: 24px; margin-bottom: 0;"></div>
+            <div class="conversion-rate"><i class="ph-bold ph-trend-up"></i> +42% Conversions</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- TECH MARQUEE -->
+    <section class="section" style="padding: 40px 0; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle); background: var(--color-bg-subtle);">
+      <div class="container">
+        <p style="text-align: center; color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 13px; margin-bottom: 24px;">Integrated with Marketing Stacks</p>
+      </div>
+      <div class="tech-marquee-wrapper reveal">
+        <div class="tech-marquee">
+          <!-- Duplicated for seamless loop -->
+          <div class="tech-logo-card"><i class="ph-fill ph-google-logo" style="color: #4285F4; font-size: 20px;"></i> Google Analytics</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-meta-logo" style="color: #0668E1; font-size: 20px;"></i> Meta Pixel</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-chart-line-up" style="color: #FF5E3A; font-size: 20px;"></i> Hotjar Heatmaps</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-envelope-simple" style="color: #007C89; font-size: 20px;"></i> Mailchimp</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-plugs" style="color: #FF4F00; font-size: 20px;"></i> Zapier</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-google-logo" style="color: #4285F4; font-size: 20px;"></i> Google Analytics</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-meta-logo" style="color: #0668E1; font-size: 20px;"></i> Meta Pixel</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-chart-line-up" style="color: #FF5E3A; font-size: 20px;"></i> Hotjar Heatmaps</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-envelope-simple" style="color: #007C89; font-size: 20px;"></i> Mailchimp</div>
+          <div class="tech-logo-card"><i class="ph-fill ph-plugs" style="color: #FF4F00; font-size: 20px;"></i> Zapier</div>
+        </div>
+      </div>
+    </section>
+
+    <!-- CORE FEATURES -->
+    <section class="section">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 2.5rem; text-align: center; margin-bottom: 16px;">Engineering Excellence</h2>
+        <p class="section-subtitle mx-auto reveal reveal-delay-1" style="text-align: center; margin-bottom: 60px;">Every pixel is crafted to give your business an unfair advantage.</p>
+        
+        <div class="grid" style="grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 32px;">
+          <div class="glass-feature reveal reveal-delay-1" style="background: var(--color-bg); padding: 32px; border-radius: 16px; border: 1px solid var(--color-border-subtle); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(59,130,246,0.1); display: flex; align-items: center; justify-content: center; color: #3B82F6; font-size: 24px; margin-bottom: 24px;">
+              <i class="ph-duotone ph-layout"></i>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">High-Converting Layouts</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.6;">Strategic wireframes focused entirely on guiding the user toward a single, definitive action.</p>
+          </div>
+          
+          <div class="glass-feature reveal reveal-delay-2" style="background: var(--color-bg); padding: 32px; border-radius: 16px; border: 1px solid var(--color-border-subtle); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(16,185,129,0.1); display: flex; align-items: center; justify-content: center; color: #10B981; font-size: 24px; margin-bottom: 24px;">
+              <i class="ph-duotone ph-lightning"></i>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Lightning Fast Load Times</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.6;">Pages optimized for sub-second loading, ensuring you don't lose expensive ad clicks to impatient users.</p>
+          </div>
+          
+          <div class="glass-feature reveal reveal-delay-3" style="background: var(--color-bg); padding: 32px; border-radius: 16px; border: 1px solid var(--color-border-subtle); box-shadow: 0 4px 6px rgba(0,0,0,0.02);">
+            <div style="width: 48px; height: 48px; border-radius: 12px; background: rgba(236,72,153,0.1); display: flex; align-items: center; justify-content: center; color: #EC4899; font-size: 24px; margin-bottom: 24px;">
+              <i class="ph-duotone ph-funnel"></i>
+            </div>
+            <h3 style="font-size: 1.25rem; margin-bottom: 8px;">Seamless Funnel Integration</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.9375rem; line-height: 1.6;">Direct connections to your CRM, email marketing software, and analytics dashboards for closed-loop tracking.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENT WORK -->
+    <section class="section" style="border-top: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Recent Work</h2>
+        
+        <div class="featured-work__grid">
+          <article class="case-study reveal">
+            <div class="case-study__visual">
+              <div class="browser-mockup">
+                <div class="browser-mockup__bar">
+                  <span class="browser-mockup__dot" style="background: #FF5F56;"></span>
+                  <span class="browser-mockup__dot" style="background: #FFBD2E;"></span>
+                  <span class="browser-mockup__dot" style="background: #27C93F;"></span>
+                  <span class="browser-mockup__url">anufix.com</span>
+                </div>
+                <div class="browser-mockup__content">
+                  <img src="../assets/images/anufix.png" alt="AnuFix Landing Page" class="portfolio-card__img" loading="lazy" style="width: 100%; height: auto; display: block;">
+                </div>
+              </div>
+            </div>
+            <div class="case-study__content">
+              <div class="case-study__category" style="color: #10B981;">Lead Generation · Landing Page</div>
+              <h3 class="case-study__name">AnuFix</h3>
+              <p class="case-study__desc" style="color: var(--color-text-secondary);">Designed and developed a high-converting landing page for AnuFix, focusing on clear calls-to-action and optimized user flows to drive lead generation.</p>
+              <div class="case-study__result">
+                <i class="ph ph-trend-up" style="color: #10B981;"></i>
+                Increased Lead Capture
+              </div>
+              <a href="https://anufix.com/" target="_blank" rel="noopener" class="card__link" style="margin-top: 24px;">
+                View Live Site <span>→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section" style="padding: 80px 0; text-align: center; border-top: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 3rem; margin-bottom: 24px;">Ready to build something extraordinary?</h2>
+        <p class="section-subtitle reveal reveal-delay-1 mx-auto" style="color: var(--color-text-secondary); margin-bottom: 40px;">Let's talk about your project and how we can bring it to life.</p>
+        <a href="../pages/contact.html" class="btn btn--primary btn--lg reveal reveal-delay-2" style="background: #10B981; color: #FFF; box-shadow: 0 10px 25px rgba(16, 185, 129, 0.3);">
+          Request a Proposal <span class="btn__arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section" id="faq" style="background: var(--color-bg-subtle);">
+      <div class="container container--narrow">
+        <h2 class="reveal" style="text-align: center;">Frequently asked questions.</h2>
+        <div style="margin-top: var(--space-12);">
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              What tracking do you implement?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>We implement complete pixel-perfect tracking for Google Ads, Meta (Facebook), TikTok, and custom CRMs, ensuring you capture 100% of your lead data.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-question" aria-expanded="false">
+              Can I easily duplicate the landing page?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Yes. If requested, we can build the page on a headless CMS or platforms like Webflow so your marketing team can duplicate and test variations without a developer.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-question" aria-expanded="false">
+              How quickly can you build a landing page?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Standard landing pages typically take 1 to 2 weeks from initial wireframe to launch, depending on the complexity of integrations and copy requirements.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="footer__logo" href="../index.html">
+            <img alt="Zamify Footer Logo" height="724" src="../assets/images/logo.webp" style="height: 40px; width: auto;" width="2172"/>
+          </a>
+          <div class="footer__tagline">Build. Create. Grow.</div>
+          <p class="footer__brand-desc">A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.</p>
+          <div class="social-links" style="margin-top: var(--space-6);">
+            <a aria-label="WhatsApp" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-whatsapp-logo"></i></a>
+            <a aria-label="Instagram" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+            <a aria-label="LinkedIn" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+            <a aria-label="X" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-x-logo"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Navigation</div>
+          <div class="footer__links">
+            <a class="footer__link" href="../index.html#services">Services</a>
+            <a class="footer__link" href="../pages/work.html">Work</a>
+            <a class="footer__link" href="../pages/about.html">About</a>
+            <a class="footer__link" href="../index.html#process">Process</a>
+            <a class="footer__link" href="../pages/contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Legal</div>
+          <div class="footer__links">
+            <a class="footer__link" href="../pages/privacy.html">Privacy Policy</a>
+            <a class="footer__link" href="../pages/terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">© 2026 Zamify. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqs = document.querySelectorAll('.faq-question');
+      faqs.forEach(faq => {
+        faq.addEventListener('click', () => {
+          const expanded = faq.getAttribute('aria-expanded') === 'true';
+          faq.setAttribute('aria-expanded', !expanded);
+          const answer = faq.nextElementSibling;
+          if (expanded) {
+            answer.style.maxHeight = null;
+            faq.querySelector('i').classList.replace('ph-minus', 'ph-plus');
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            faq.querySelector('i').classList.replace('ph-plus', 'ph-minus');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

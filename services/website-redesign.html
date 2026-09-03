@@ -1,0 +1,478 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8"/>
+  <meta content="width=device-width, initial-scale=1.0" name="viewport"/>
+  <title>Premium Website Redesign — Zamify</title>
+  <meta content="Transform your outdated website into a modern, conversion-focused digital experience." name="description"/>
+  
+  <meta content="Premium Website Redesign — Zamify" property="og:title"/>
+  <meta content="Transform your outdated website into a modern, conversion-focused digital experience." property="og:description"/>
+  <meta content="website" property="og:type"/>
+  <meta content="https://zamify.com/services/website-redesign.html" property="og:url"/>
+  
+  <link href="../assets/images/favicon-32x32.png" rel="icon" sizes="32x32" type="image/png"/>
+  <link href="../assets/images/apple-touch-icon.png" rel="apple-touch-icon" sizes="180x180"/>
+  
+  <link href="https://fonts.googleapis.com" rel="preconnect"/>
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect"/>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet"/>
+  
+  <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  
+  <link href="../css/tokens.css?v=6" rel="stylesheet"/>
+  <link href="../css/base.css?v=6" rel="stylesheet"/>
+  <link href="../css/components.css?v=6" rel="stylesheet"/>
+  <link href="../css/sections.css?v=6" rel="stylesheet"/>
+  <link href="../css/responsive.css?v=6" rel="stylesheet"/>
+
+  <style>
+    /* ── Custom Redesign Styles ── */
+    :root {
+      --accent-primary: #3B82F6;
+      --accent-glow: rgba(59, 130, 246, 0.15);
+    }
+
+    body { overflow-x: hidden; }
+
+    /* Grid Background */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, rgba(0,0,0,0.03) 1px, transparent 1px),
+                        linear-gradient(to bottom, rgba(0,0,0,0.03) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .hero-glow-blob {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, var(--accent-glow) 0%, rgba(59, 130, 246, 0) 60%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Before/After Split Mockup */
+    .split-mockup {
+      position: relative;
+      max-width: 900px;
+      margin: 60px auto 0;
+      border-radius: 16px;
+      background: #FFF;
+      border: 1px solid var(--color-border-subtle);
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
+      overflow: hidden;
+      height: 400px;
+      display: flex;
+    }
+
+    .split-side {
+      flex: 1;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .split-side--before {
+      background: #F9FAFB;
+      border-right: 2px dashed #D1D5DB;
+    }
+
+    .split-side--after {
+      background: #FFFFFF;
+    }
+
+    .split-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      padding: 4px 12px;
+      border-radius: 100px;
+      font-size: 11px;
+      font-weight: 600;
+      text-transform: uppercase;
+      letter-spacing: 0.05em;
+      z-index: 10;
+    }
+
+    .split-badge--before { background: #E5E7EB; color: #4B5563; }
+    .split-badge--after { background: #EFF6FF; color: #2563EB; }
+
+    /* Wireframe UI */
+    .wf-header { height: 40px; border-bottom: 1px solid #E5E7EB; display: flex; align-items: center; padding: 0 16px; gap: 8px;}
+    .wf-logo { width: 80px; height: 16px; background: #D1D5DB; }
+    .wf-nav { width: 40px; height: 8px; background: #E5E7EB; border-radius: 4px; }
+    
+    .wf-hero { padding: 40px 16px; }
+    .wf-title { height: 32px; background: #D1D5DB; margin-bottom: 16px; width: 80%; }
+    .wf-title.short { width: 50%; }
+    .wf-text { height: 12px; background: #E5E7EB; margin-bottom: 8px; width: 100%; }
+    .wf-btn { height: 40px; width: 120px; background: #9CA3AF; margin-top: 24px; }
+    .wf-image { height: 150px; background: #E5E7EB; margin-top: 32px; border: 2px dashed #D1D5DB; display: flex; align-items: center; justify-content: center;}
+    .wf-image::after { content: 'IMAGE PLACEHOLDER'; color: #9CA3AF; font-size: 10px; font-weight: bold; }
+
+    /* Hi-Fi UI */
+    .hf-header { height: 40px; border-bottom: 1px solid #F3F4F6; display: flex; align-items: center; padding: 0 16px; gap: 8px;}
+    .hf-logo { width: 80px; height: 16px; background: #111827; border-radius: 2px;}
+    .hf-nav { width: 40px; height: 8px; background: #9CA3AF; border-radius: 4px; }
+    
+    .hf-hero { padding: 40px 16px; }
+    .hf-title { height: 32px; background: #111827; margin-bottom: 16px; width: 80%; border-radius: 4px;}
+    .hf-title.short { width: 50%; background: var(--accent-primary); }
+    .hf-text { height: 12px; background: #6B7280; margin-bottom: 8px; width: 100%; border-radius: 4px;}
+    .hf-btn { height: 40px; width: 120px; background: var(--accent-primary); margin-top: 24px; border-radius: 8px; box-shadow: 0 4px 14px var(--accent-glow);}
+    .hf-image { height: 150px; background: linear-gradient(135deg, #EFF6FF, #DBEAFE); margin-top: 32px; border-radius: 12px; display: flex; align-items: center; justify-content: center;}
+    
+    .hf-image-inner { width: 60%; height: 60%; background: #FFF; border-radius: 8px; box-shadow: 0 10px 25px rgba(0,0,0,0.05); }
+
+    /* Process Timeline */
+    .process-timeline {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 24px;
+      margin-top: 60px;
+    }
+
+    .process-node {
+      background: #FFF;
+      border: 1px solid var(--color-border-subtle);
+      border-radius: 16px;
+      padding: 24px;
+      position: relative;
+      box-shadow: 0 4px 12px rgba(0,0,0,0.02);
+    }
+
+    .process-node::after {
+      content: '';
+      position: absolute;
+      top: 50%;
+      right: -24px;
+      width: 24px;
+      height: 2px;
+      background: var(--color-border-subtle);
+      z-index: 0;
+    }
+
+    .process-node:last-child::after { display: none; }
+    .process-num { font-size: 11px; font-weight: 700; color: var(--accent-primary); text-transform: uppercase; letter-spacing: 0.1em; margin-bottom: 12px; }
+
+    @media (max-width: 900px) {
+      .split-mockup { flex-direction: column; height: auto; }
+      .split-side--before { border-right: none; border-bottom: 2px dashed #D1D5DB; }
+      .process-timeline { grid-template-columns: 1fr; gap: 16px; }
+      .process-node::after { top: auto; bottom: -16px; left: 50%; width: 2px; height: 16px; transform: translateX(-50%); }
+    }
+  </style>
+</head>
+<body>
+  
+  <div class="bg-grid"></div>
+  
+  <!-- NAVIGATION -->
+  <nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
+    <div class="nav__inner">
+      <a aria-label="Zamify Home" class="nav__logo" href="../index.html">
+        <img alt="Zamify Logo" height="724" src="../assets/images/logo.webp" style="height: 32px; width: auto;" width="2172"/>
+      </a>
+      <div class="nav__links">
+        <a class="nav__link" href="../index.html#services">Services</a>
+        <a class="nav__link" href="../pages/work.html">Work</a>
+        <a class="nav__link" href="../pages/about.html">About</a>
+        <a class="nav__link" href="../index.html#process">Process</a>
+        <a class="nav__link" href="../pages/contact.html">Contact</a>
+      </div>
+      <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
+        Get a Quote <span class="btn__arrow">→</span>
+      </a>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+
+    <!-- Mobile Menu -->
+    <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+      <a href="../index.html#services" class="nav__mobile-link">Services</a>
+      <a href="../pages/work.html" class="nav__mobile-link">Work</a>
+      <a href="../pages/about.html" class="nav__mobile-link">About</a>
+      <a href="../index.html#process" class="nav__mobile-link">Process</a>
+      <a href="../index.html#faq" class="nav__mobile-link">Insights</a>
+      <a href="../pages/contact.html" class="nav__mobile-link">Contact</a>
+      <a href="../pages/contact.html" class="btn btn--primary btn--lg nav__mobile-link">
+        Get a Free Strategy Call <span class="btn__arrow">→</span>
+      </a>
+    </div>
+  </nav>
+
+  <main>
+    <!-- HERO SECTION -->
+    <section class="section" style="padding-top: 100px; padding-bottom: 80px; position: relative; z-index: 1;">
+      <div class="hero-glow-blob"></div>
+      <div class="container" style="text-align: center; position: relative; z-index: 2;">
+        <div class="reveal" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(59, 130, 246, 0.1); color: #3B82F6; font-weight: 600; font-size: 13px; margin: 0 auto 24px auto; text-transform: uppercase; letter-spacing: 0.05em; border: 1px solid rgba(59, 130, 246, 0.2);">
+          <i class="ph-bold ph-arrows-clockwise"></i> Digital Transformation
+        </div>
+        
+        <h1 class="reveal reveal-delay-1" style="font-size: clamp(3rem, 6vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 24px; line-height: 1.1;">
+          Elevate your brand's <br>
+          <span style="color: #3B82F6;">digital presence.</span>
+        </h1>
+        
+        <p class="section-subtitle reveal reveal-delay-2 mx-auto" style="color: var(--color-text-secondary); max-width: 650px; font-size: 1.125rem; margin-bottom: 48px;">
+          We completely overhaul outdated websites, bringing them up to modern design standards with blazing-fast performance and an intuitive user experience.
+        </p>
+        
+        <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center;">
+          <a href="../pages/contact.html" class="btn btn--primary btn--lg" style="background: #3B82F6; color: #FFF; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);">
+            Start Your Redesign <span class="btn__arrow">→</span>
+          </a>
+        </div>
+
+        <!-- Before / After Mockup -->
+        <div class="split-mockup reveal reveal-delay-4">
+          <div class="split-side split-side--before">
+            <div class="split-badge split-badge--before">Legacy Codebase</div>
+            <div class="wf-header">
+              <div class="wf-logo"></div>
+              <div style="flex: 1;"></div>
+              <div class="wf-nav"></div><div class="wf-nav"></div><div class="wf-nav"></div>
+            </div>
+            <div class="wf-hero">
+              <div class="wf-title"></div>
+              <div class="wf-title short"></div>
+              <br>
+              <div class="wf-text"></div>
+              <div class="wf-text"></div>
+              <div class="wf-text" style="width: 60%;"></div>
+              <div class="wf-btn"></div>
+              <div class="wf-image"></div>
+            </div>
+          </div>
+          <div class="split-side split-side--after">
+            <div class="split-badge split-badge--after">Zamify Architecture</div>
+            <div class="hf-header">
+              <div class="hf-logo"></div>
+              <div style="flex: 1;"></div>
+              <div class="hf-nav"></div><div class="hf-nav"></div><div class="hf-nav"></div>
+            </div>
+            <div class="hf-hero">
+              <div class="hf-title"></div>
+              <div class="hf-title short"></div>
+              <br>
+              <div class="hf-text"></div>
+              <div class="hf-text"></div>
+              <div class="hf-text" style="width: 60%;"></div>
+              <div class="hf-btn"></div>
+              <div class="hf-image">
+                <div class="hf-image-inner"></div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROCESS TIMELINE -->
+    <section class="section" style="background: var(--color-bg-subtle);">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 2.5rem; text-align: center; margin-bottom: 16px;">The Redesign Process</h2>
+        <p class="section-subtitle mx-auto reveal reveal-delay-1" style="text-align: center; margin-bottom: 40px;">We don't just change colors. We restructure your site from the ground up.</p>
+        
+        <div class="process-timeline reveal reveal-delay-2">
+          <div class="process-node">
+            <div class="process-num">Phase 01</div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 8px;">Comprehensive Audit</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.5;">We analyze your current site's analytics and UX flow to identify bottlenecks and drop-off points.</p>
+          </div>
+          <div class="process-node">
+            <div class="process-num">Phase 02</div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 8px;">Wireframing</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.5;">Mapping out the new information architecture and user journeys for maximum conversion rates.</p>
+          </div>
+          <div class="process-node">
+            <div class="process-num">Phase 03</div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 8px;">Modern Rebranding</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.5;">Applying fresh typography, updated color palettes, and contemporary layout structures.</p>
+          </div>
+          <div class="process-node">
+            <div class="process-num">Phase 04</div>
+            <h3 style="font-size: 1.125rem; margin-bottom: 8px;">Legacy Migration</h3>
+            <p style="color: var(--color-text-secondary); font-size: 0.875rem; line-height: 1.5;">Migrating from outdated platforms to modern, headless frameworks for ultimate security and speed.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- RECENT WORK -->
+    <section class="section" style="border-top: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Recent Transformations</h2>
+        
+        <div class="featured-work__grid">
+          <article class="case-study reveal">
+            <div class="case-study__visual">
+              <div class="browser-mockup">
+                <div class="browser-mockup__bar">
+                  <span class="browser-mockup__dot" style="background: #FF5F56;"></span>
+                  <span class="browser-mockup__dot" style="background: #FFBD2E;"></span>
+                  <span class="browser-mockup__dot" style="background: #27C93F;"></span>
+                  <span class="browser-mockup__url">thememorymakersphotography.com</span>
+                </div>
+                <div class="browser-mockup__content" style="position: relative; overflow: hidden;">
+                  <style>
+                    .browser-mockup__content:hover .before-overlay { opacity: 1 !important; }
+                    .browser-mockup__content:hover .hover-badge { opacity: 0 !important; }
+                  </style>
+                  
+                  <!-- After Image (Default) -->
+                  <img src="../assets/images/thememorymakeresnew.png" alt="The Memory Makers New Design" style="width: 100%; height: auto; display: block; transition: opacity 0.3s ease;">
+                  <div style="position: absolute; top: 12px; left: 12px; background: #3B82F6; color: #FFF; font-size: 11px; padding: 4px 12px; border-radius: 100px; font-weight: 600; box-shadow: 0 4px 12px rgba(59, 130, 246, 0.3); pointer-events: none; z-index: 2;">AFTER</div>
+                  
+                  <!-- Before Image (Hidden by default, shown on hover) -->
+                  <div class="before-overlay" style="position: absolute; inset: 0; opacity: 0; transition: opacity 0.3s ease; background: #FFF; overflow: hidden;">
+                    <img src="../assets/images/themememorymakersold.png" alt="The Memory Makers Old Design" style="width: 100%; height: auto; display: block; filter: grayscale(50%);">
+                    <div style="position: absolute; top: 12px; left: 12px; background: rgba(0,0,0,0.8); color: #FFF; font-size: 11px; padding: 4px 12px; border-radius: 100px; font-weight: 600; pointer-events: none; z-index: 2;">BEFORE</div>
+                  </div>
+                  
+                  <!-- Hover Instruction -->
+                  <div class="hover-badge" style="position: absolute; bottom: 12px; right: 12px; background: rgba(255,255,255,0.95); color: #111827; font-size: 11px; padding: 6px 12px; border-radius: 100px; font-weight: 600; display: flex; align-items: center; gap: 4px; box-shadow: 0 4px 12px rgba(0,0,0,0.1); transition: opacity 0.3s ease; z-index: 3;">
+                    <i class="ph-bold ph-hand-pointing"></i> Hover to see Before
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="case-study__content">
+              <div class="case-study__category" style="color: #3B82F6;">Website Redesign · Photography Portfolio</div>
+              <h3 class="case-study__name">The Memory Makers</h3>
+              <p class="case-study__desc" style="color: var(--color-text-secondary);">Completely overhauled an outdated portfolio into a modern, visually stunning digital experience that truly showcases their photography.</p>
+              <div class="case-study__result">
+                <i class="ph ph-lightning" style="color: #3B82F6;"></i>
+                Modernized Visual Identity
+              </div>
+              <a href="https://thememorymakersphotography.com/" target="_blank" rel="noopener" class="card__link" style="margin-top: 24px;">
+                View Live Site <span>→</span>
+              </a>
+            </div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <!-- FINAL CTA -->
+    <section class="section" style="padding: 80px 0; text-align: center; border-top: 1px solid var(--color-border-subtle);">
+      <div class="container">
+        <h2 class="reveal" style="font-size: 3rem; margin-bottom: 24px;">Ready to modernize your website?</h2>
+        <p class="section-subtitle reveal reveal-delay-1 mx-auto" style="color: var(--color-text-secondary); margin-bottom: 40px;">Let's talk about your project and how we can bring it to life.</p>
+        <a href="../pages/contact.html" class="btn btn--primary btn--lg reveal reveal-delay-2" style="background: #3B82F6; color: #FFF; box-shadow: 0 10px 25px rgba(59, 130, 246, 0.3);">
+          Request a Proposal <span class="btn__arrow">→</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- FAQ SECTION -->
+    <section class="section" id="faq" style="background: var(--color-bg-subtle);">
+      <div class="container container--narrow">
+        <h2 class="reveal" style="text-align: center;">Frequently asked questions.</h2>
+        <div style="margin-top: var(--space-12);">
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              Will a redesign hurt my SEO?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>When done incorrectly, yes. But our redesign process includes strict 301 redirection maps, URL preservation, and structural HTML improvements so your rankings typically improve after launch.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-question" aria-expanded="false">
+              Do I have to rewrite all my content?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Not necessarily. We can migrate your existing content, though we often recommend an editorial review during the redesign to ensure the copy aligns with the new visual standard.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-question" aria-expanded="false">
+              How long does a full redesign take?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>A comprehensive website redesign typically takes between 4 to 8 weeks, depending on the size of the site and the complexity of the required migrations.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- FOOTER -->
+  <footer class="footer">
+    <div class="container">
+      <div class="footer__grid">
+        <div>
+          <a class="footer__logo" href="../index.html">
+            <img alt="Zamify Footer Logo" height="724" src="../assets/images/logo.webp" style="height: 40px; width: auto;" width="2172"/>
+          </a>
+          <div class="footer__tagline">Build. Create. Grow.</div>
+          <p class="footer__brand-desc">A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.</p>
+          <div class="social-links" style="margin-top: var(--space-6);">
+            <a aria-label="WhatsApp" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-whatsapp-logo"></i></a>
+            <a aria-label="Instagram" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-instagram-logo"></i></a>
+            <a aria-label="LinkedIn" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-linkedin-logo"></i></a>
+            <a aria-label="X" class="social-link" href="#" rel="noopener" target="_blank"><i class="ph ph-x-logo"></i></a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Navigation</div>
+          <div class="footer__links">
+            <a class="footer__link" href="../index.html#services">Services</a>
+            <a class="footer__link" href="../pages/work.html">Work</a>
+            <a class="footer__link" href="../pages/about.html">About</a>
+            <a class="footer__link" href="../index.html#process">Process</a>
+            <a class="footer__link" href="../pages/contact.html">Contact</a>
+          </div>
+        </div>
+        <div>
+          <div class="footer__col-title">Legal</div>
+          <div class="footer__links">
+            <a class="footer__link" href="../pages/privacy.html">Privacy Policy</a>
+            <a class="footer__link" href="../pages/terms.html">Terms of Service</a>
+          </div>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <span class="footer__copyright">© 2026 Zamify. All rights reserved.</span>
+      </div>
+    </div>
+  </footer>
+  
+  <script src="../js/navigation.js"></script>
+  <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqs = document.querySelectorAll('.faq-question');
+      faqs.forEach(faq => {
+        faq.addEventListener('click', () => {
+          const expanded = faq.getAttribute('aria-expanded') === 'true';
+          faq.setAttribute('aria-expanded', !expanded);
+          const answer = faq.nextElementSibling;
+          if (expanded) {
+            answer.style.maxHeight = null;
+            faq.querySelector('i').classList.replace('ph-minus', 'ph-plus');
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            faq.querySelector('i').classList.replace('ph-plus', 'ph-minus');
+          }
+        });
+      });
+    });
+  </script>
+</body>
+</html>

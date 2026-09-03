@@ -1,14 +1,17 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-  <meta charset="UTF-8">
+  <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Premium Web Development — Zamify</title>
-  <meta name="description" content="Award-winning web development. We build lightning-fast, highly converting, and visually stunning digital experiences.">
+  <title>Premium Web Development Services | Zamify</title>
+  <meta name="description"
+    content="Zamify delivers award-winning, high-performance web development. We engineer lightning-fast, conversion-optimized, and visually stunning digital experiences.">
 
   <!-- Open Graph -->
-  <meta property="og:title" content="Premium Web Development — Zamify">
-  <meta property="og:description" content="We build lightning-fast, highly converting, and visually stunning digital experiences.">
+  <meta property="og:title" content="Premium Web Development | Zamify">
+  <meta property="og:description"
+    content="We build lightning-fast, highly converting, and visually stunning digital experiences.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zamify.com/services/web-development.html">
 
@@ -19,42 +22,377 @@
   <!-- Fonts -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  
+  <link
+    href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&family=Fira+Code:wght@400;500&display=swap"
+    rel="stylesheet">
+
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
   <!-- Styles -->
-  <link rel="stylesheet" href="../css/tokens.css?v=4">
-  <link rel="stylesheet" href="../css/base.css?v=4">
-  <link rel="stylesheet" href="../css/components.css?v=4">
-  <link rel="stylesheet" href="../css/sections.css?v=4">
-  <link rel="stylesheet" href="../css/responsive.css?v=4">
+  <link rel="stylesheet" href="../css/tokens.css?v=6">
+  <link rel="stylesheet" href="../css/base.css?v=6">
+  <link rel="stylesheet" href="../css/components.css?v=6">
+  <link rel="stylesheet" href="../css/sections.css?v=6">
+  <link rel="stylesheet" href="../css/responsive.css?v=6">
+
+  <!-- Page Specific Schema -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "Service",
+    "name": "Custom Web Development",
+    "provider": {
+      "@type": "Organization",
+      "name": "Zamify",
+      "url": "https://zamify.com"
+    },
+    "description": "High-performance web development, Next.js applications, and custom front-end engineering."
+  }
+  </script>
+
+  <style>
+    /* ── Web Dev Specific Styles ── */
+    :root {
+      --code-bg: #0D0D12;
+      --code-border: #1E1E2A;
+      --accent-neon: #00FF94;
+      --accent-blue: #00B8FF;
+    }
+
+    body {
+      overflow-x: hidden;
+    }
+
+    /* Grid Background */
+    .bg-grid {
+      position: absolute;
+      inset: 0;
+      background-image: linear-gradient(to right, rgba(255, 255, 255, 0.05) 1px, transparent 1px),
+        linear-gradient(to bottom, rgba(255, 255, 255, 0.05) 1px, transparent 1px);
+      background-size: 40px 40px;
+      mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
+      -webkit-mask-image: radial-gradient(ellipse 80% 50% at 50% 0%, black 40%, transparent 100%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    .hero-glow-blob {
+      position: absolute;
+      top: -20%;
+      left: 50%;
+      transform: translateX(-50%);
+      width: 60vw;
+      height: 60vw;
+      background: radial-gradient(circle, rgba(0, 184, 255, 0.15) 0%, rgba(0, 184, 255, 0) 60%);
+      z-index: -2;
+      pointer-events: none;
+    }
+
+    /* Terminal Mockup */
+    .terminal-window {
+      background: var(--code-bg);
+      border: 1px solid var(--code-border);
+      border-radius: 12px;
+      box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.7);
+      overflow: hidden;
+      max-width: 700px;
+      margin: 0 auto;
+      text-align: left;
+    }
+
+    .terminal-header {
+      display: flex;
+      align-items: center;
+      padding: 12px 16px;
+      background: #13131A;
+      border-bottom: 1px solid var(--code-border);
+    }
+
+    .terminal-dots {
+      display: flex;
+      gap: 6px;
+    }
+
+    .terminal-dot {
+      width: 12px;
+      height: 12px;
+      border-radius: 50%;
+    }
+
+    .terminal-title {
+      flex: 1;
+      text-align: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 12px;
+      color: #8B8B99;
+    }
+
+    .terminal-body {
+      padding: 24px;
+      font-family: 'Fira Code', monospace;
+      font-size: 14px;
+      line-height: 1.6;
+      color: #A0A0B0;
+      overflow-x: auto;
+    }
+
+    .token-keyword {
+      color: #FF7B72;
+    }
+
+    .token-function {
+      color: #D2A8FF;
+    }
+
+    .token-string {
+      color: #A5D6FF;
+    }
+
+    .token-comment {
+      color: #8B949E;
+    }
+
+    .typing-cursor {
+      display: inline-block;
+      width: 8px;
+      height: 16px;
+      background: var(--accent-neon);
+      vertical-align: middle;
+      animation: blink 1s step-end infinite;
+    }
+
+    @keyframes blink {
+      50% {
+        opacity: 0;
+      }
+    }
+
+    /* Lighthouse Gauges */
+    .lighthouse-section {
+      padding: 80px 0;
+      background: linear-gradient(180deg, #050505 0%, #0A0A10 100%);
+      border-top: 1px solid rgba(255, 255, 255, 0.05);
+    }
+
+    .lighthouse-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      max-width: 900px;
+      margin: 40px auto 0;
+    }
+
+    .gauge-wrapper {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+    }
+
+    .gauge {
+      position: relative;
+      width: 120px;
+      height: 120px;
+    }
+
+    .gauge-circle-bg {
+      fill: none;
+      stroke: #1E1E2A;
+      stroke-width: 8;
+    }
+
+    .gauge-circle-progress {
+      fill: none;
+      stroke: var(--accent-neon);
+      stroke-width: 8;
+      stroke-linecap: round;
+      stroke-dasharray: 283;
+      /* 2 * pi * r (r=45) */
+      stroke-dashoffset: 283;
+      transform: rotate(-90deg);
+      transform-origin: 50% 50%;
+      animation: fillGauge 1.5s ease-out forwards;
+      animation-delay: 0.5s;
+    }
+
+    .gauge-value {
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: 'Fira Code', monospace;
+      font-size: 28px;
+      font-weight: 500;
+      color: var(--accent-neon);
+    }
+
+    .gauge-label {
+      font-family: var(--font-body);
+      font-size: 14px;
+      color: #A0A0B0;
+      font-weight: 500;
+    }
+
+    @keyframes fillGauge {
+      to {
+        stroke-dashoffset: 0;
+      }
+
+      /* 100% */
+    }
+
+    /* Architecture Diagram */
+    .arch-diagram {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 40px;
+      padding: 60px 0;
+    }
+
+    .arch-node {
+      background: rgba(20, 20, 30, 0.8);
+      border: 1px solid rgba(255, 255, 255, 0.1);
+      border-radius: 16px;
+      padding: 24px;
+      text-align: center;
+      width: 200px;
+      position: relative;
+      z-index: 2;
+    }
+
+    .arch-node i {
+      font-size: 32px;
+      color: var(--accent-blue);
+      margin-bottom: 12px;
+    }
+
+    .arch-node h4 {
+      font-size: 16px;
+      margin-bottom: 4px;
+      color: #FFF;
+    }
+
+    .arch-node p {
+      font-size: 12px;
+      color: #8B8B99;
+      margin: 0;
+    }
+
+    .arch-connector {
+      flex: 1;
+      height: 2px;
+      background: rgba(255, 255, 255, 0.1);
+      position: relative;
+      min-width: 50px;
+    }
+
+    .arch-connector::after {
+      content: '';
+      position: absolute;
+      top: -3px;
+      left: 0;
+      width: 8px;
+      height: 8px;
+      border-radius: 50%;
+      background: var(--accent-blue);
+      box-shadow: 0 0 10px var(--accent-blue);
+      animation: data-flow 2s infinite linear;
+    }
+
+    @keyframes data-flow {
+      0% {
+        left: 0;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        left: 100%;
+        opacity: 0;
+      }
+    }
+
+    @media (max-width: 768px) {
+      .lighthouse-grid {
+        grid-template-columns: 1fr 1fr;
+      }
+
+      .arch-diagram {
+        flex-direction: column;
+        gap: 20px;
+      }
+
+      .arch-connector {
+        width: 2px;
+        height: 50px;
+        min-width: 2px;
+      }
+
+      .arch-connector::after {
+        top: 0;
+        left: -3px;
+        animation: data-flow-y 2s infinite linear;
+      }
+    }
+
+    @keyframes data-flow-y {
+      0% {
+        top: 0;
+        opacity: 0;
+      }
+
+      10% {
+        opacity: 1;
+      }
+
+      90% {
+        opacity: 1;
+      }
+
+      100% {
+        top: 100%;
+        opacity: 0;
+      }
+    }
+  </style>
 </head>
+
 <body>
+
+  <div class="bg-grid"></div>
+  <div class="hero-glow-blob"></div>
 
   <!-- NAVIGATION -->
   <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="../index.html" class="nav__logo" aria-label="Zamify Home">
-        <img src="../assets/images/logo.webp" alt="Zamify Logo" width="2172" height="724" style="height: 32px; width: auto;">
+        <img src="../assets/images/logo.webp" alt="Zamify Logo" width="2172" height="724"
+          style="height: 32px; width: auto;">
       </a>
-
       <div class="nav__links">
         <a href="../index.html#services" class="nav__link">Services</a>
         <a href="../pages/work.html" class="nav__link">Work</a>
         <a href="../pages/about.html" class="nav__link">About</a>
-        <a href="../index.html#process" class="nav__link">Process</a>
-        <a href="../index.html#faq" class="nav__link">Insights</a>
         <a href="../pages/contact.html" class="nav__link">Contact</a>
       </div>
-
-      <a href="../pages/contact.html" class="btn btn--primary btn--sm nav__cta nav__cta-desktop">
-        Get a Free Strategy Call <span class="btn__arrow">→</span>
+      <a href="../pages/contact.html" class="btn btn--primary btn--sm nav__cta nav__cta-desktop"
+        style="background: #FFF; color: #000;">
+        Get a Strategy Call <span class="btn__arrow">→</span>
       </a>
-
       <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
-        <span></span><span></span><span></span>
+        <span></span>
+        <span></span>
+        <span></span>
       </button>
     </div>
 
@@ -64,311 +402,326 @@
       <a href="../pages/work.html" class="nav__mobile-link">Work</a>
       <a href="../pages/about.html" class="nav__mobile-link">About</a>
       <a href="../index.html#process" class="nav__mobile-link">Process</a>
-      <a href="../index.html#faq" class="nav__mobile-link">Insights</a>
       <a href="../pages/contact.html" class="nav__mobile-link">Contact</a>
-      <a href="../pages/contact.html" class="btn btn--primary btn--lg" style="margin-top: var(--space-4); color: #ffffff !important; background-color: #000000 !important;">
+      <a href="../pages/contact.html" class="btn btn--primary btn--lg"
+        style="margin-top: var(--space-4); color: #ffffff !important; background-color: #000000 !important; opacity: 1 !important; transform: none !important; display: flex !important;">
         Get a Free Strategy Call <span class="btn__arrow">→</span>
       </a>
     </div>
   </nav>
 
   <main>
-    <!-- ULTRA PREMIUM HERO -->
-    <section class="hero-mesh">
-      <div class="container" style="text-align: center; max-width: 900px;">
-        <div class="reveal theme-blue" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(99, 102, 241, 0.1); border: 1px solid rgba(99, 102, 241, 0.2); color: var(--color-accent); font-weight: 600; font-size: 14px; margin-bottom: 32px;">
-          <span style="display: block; width: 6px; height: 6px; border-radius: 50%; background: var(--color-accent); box-shadow: 0 0 10px var(--color-accent);"></span>
-          Zamify Web Engineering
+    <!-- HERO SECTION -->
+    <section class="section"
+      style="padding-top: 100px; padding-bottom: 80px; text-align: center; position: relative; z-index: 1;">
+      <div class="hero-glow-blob"></div>
+      <div class="container">
+        <div class="reveal"
+          style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(0, 184, 255, 0.1); border: 1px solid rgba(0, 184, 255, 0.2); color: var(--accent-blue); font-family: 'Fira Code', monospace; font-size: 12px; margin-bottom: 24px;">
+          <i class="ph-bold ph-terminal-window"></i> Zamify Web Engineering
         </div>
-        
-        <h1 class="reveal reveal-delay-1" style="font-size: clamp(3.5rem, 7vw, 5.5rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 24px;">
-          Digital experiences that <br>
-          <span style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">command attention.</span>
+
+        <h1 class="reveal reveal-delay-1"
+          style="font-size: clamp(3rem, 6vw, 4.5rem); letter-spacing: -0.03em; margin-bottom: 24px;">
+          Websites engineered for <br>
+          <span style="color: var(--accent-neon);">peak performance.</span>
         </h1>
-        
-        <p class="reveal reveal-delay-2" style="font-size: clamp(1.125rem, 2vw, 1.25rem); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto 40px auto; line-height: 1.6;">
-          We engineer high-performance, conversion-focused websites with award-winning design and bulletproof technical architecture.
+
+        <p class="section-subtitle reveal reveal-delay-2 mx-auto"
+          style="color: var(--color-text-secondary); max-width: 650px; font-size: 1.125rem; margin-bottom: 48px;">
+          We build completely custom, wildly fast, and conversion-optimized digital experiences. No bloated templates.
+          Just pure, scalable code designed to give your brand an unfair advantage.
         </p>
-        
-        <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-          <a href="../pages/contact.html" class="btn btn--primary btn--lg" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
-            Start a Project <span class="btn__arrow">→</span>
-          </a>
-          <a href="../pages/work.html" class="btn btn--secondary btn--lg" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-            View Our Work
+
+        <div class="reveal reveal-delay-3"
+          style="display: flex; gap: 16px; justify-content: center; margin-bottom: 64px;">
+          <a href="../pages/contact.html" class="btn btn--primary btn--lg"
+            style="background: var(--accent-neon); color: #050505; box-shadow: 0 0 20px rgba(0, 255, 148, 0.3);">
+            Deploy Your Project <span class="btn__arrow">→</span>
           </a>
         </div>
 
-        <div class="trust-badges reveal reveal-delay-4">
-          <div class="trust-badge-item">
-            <i class="ph-fill ph-check-circle"></i> 50+ Projects Delivered
+        <!-- Terminal UI -->
+        <div class="terminal-window reveal reveal-delay-4">
+          <div class="terminal-header">
+            <div class="terminal-dots">
+              <div class="terminal-dot" style="background: #FF5F56;"></div>
+              <div class="terminal-dot" style="background: #FFBD2E;"></div>
+              <div class="terminal-dot" style="background: #27C93F;"></div>
+            </div>
+            <div class="terminal-title">zamify-engine.tsx</div>
           </div>
-          <div class="trust-badge-item">
-            <i class="ph-fill ph-lightning"></i> Sub-second Load Times
-          </div>
-          <div class="trust-badge-item">
-            <i class="ph-fill ph-magnifying-glass"></i> Built for SEO
+          <div class="terminal-body">
+            <span class="token-keyword">import</span> { optimize, scale } <span class="token-keyword">from</span> <span
+              class="token-string">'@zamify/core'</span>;<br><br>
+            <span class="token-comment">// 🚀 Initializing next-generation web architecture</span><br>
+            <span class="token-keyword">export default async function</span> <span
+              class="token-function">buildDigitalExperience</span>(brand) {<br>
+            &nbsp;&nbsp;<span class="token-keyword">const</span> performance = <span class="token-keyword">await</span>
+            <span class="token-function">optimize</span>(brand.assets);<br>
+            &nbsp;&nbsp;<span class="token-keyword">const</span> architecture = <span
+              class="token-function">scale</span>(performance, { globalEdge: <span class="token-keyword">true</span>
+            });<br><br>
+            &nbsp;&nbsp;<span class="token-keyword">return</span> (<br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&lt;HighConversionUI <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;speed={<span class="token-string">"sub-second"</span>} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;design={<span class="token-string">"award-winning"</span>} <br>
+            &nbsp;&nbsp;&nbsp;&nbsp;/&gt;<br>
+            &nbsp;&nbsp;);<br>
+            }<span class="typing-cursor"></span>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- PREMIUM GLASS BENTO GRID -->
-    <section class="section" style="background: var(--color-bg); position: relative; z-index: 2;">
+    <!-- LIGHTHOUSE SCORES -->
+    <section class="lighthouse-section">
+      <div class="container text-center">
+        <h2 class="reveal" style="font-size: 2.5rem; margin-bottom: 16px;">Green Across the Board</h2>
+        <p class="section-subtitle mx-auto reveal reveal-delay-1" style="color: #A0A0B0;">We obsess over Google Core Web
+          Vitals. Because a faster website means better SEO and higher conversion rates.</p>
+
+        <div class="lighthouse-grid reveal reveal-delay-2">
+          <!-- Performance -->
+          <div class="gauge-wrapper">
+            <div class="gauge">
+              <svg viewBox="0 0 100 100" width="120" height="120">
+                <circle class="gauge-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="gauge-circle-progress" cx="50" cy="50" r="45" stroke="#00FF94"></circle>
+              </svg>
+              <div class="gauge-value" style="color: #00FF94;">100</div>
+            </div>
+            <div class="gauge-label">Performance</div>
+          </div>
+
+          <!-- Accessibility -->
+          <div class="gauge-wrapper">
+            <div class="gauge">
+              <svg viewBox="0 0 100 100" width="120" height="120">
+                <circle class="gauge-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="gauge-circle-progress" cx="50" cy="50" r="45" stroke="#00FF94"></circle>
+              </svg>
+              <div class="gauge-value" style="color: #00FF94;">100</div>
+            </div>
+            <div class="gauge-label">Accessibility</div>
+          </div>
+
+          <!-- Best Practices -->
+          <div class="gauge-wrapper">
+            <div class="gauge">
+              <svg viewBox="0 0 100 100" width="120" height="120">
+                <circle class="gauge-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="gauge-circle-progress" cx="50" cy="50" r="45" stroke="#00FF94"></circle>
+              </svg>
+              <div class="gauge-value" style="color: #00FF94;">100</div>
+            </div>
+            <div class="gauge-label">Best Practices</div>
+          </div>
+
+          <!-- SEO -->
+          <div class="gauge-wrapper">
+            <div class="gauge">
+              <svg viewBox="0 0 100 100" width="120" height="120">
+                <circle class="gauge-circle-bg" cx="50" cy="50" r="45"></circle>
+                <circle class="gauge-circle-progress" cx="50" cy="50" r="45" stroke="#00FF94"></circle>
+              </svg>
+              <div class="gauge-value" style="color: #00FF94;">100</div>
+            </div>
+            <div class="gauge-label">SEO</div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- ARCHITECTURE -->
+    <section class="section">
+      <div class="container text-center">
+        <h2 class="reveal" style="font-size: 2.5rem; margin-bottom: 16px;">Modern Architecture</h2>
+        <p class="section-subtitle mx-auto reveal reveal-delay-1" style="color: var(--color-text-secondary);">Decoupled
+          frontends, headless CMS, and edge networking.</p>
+
+        <div class="arch-diagram reveal reveal-delay-2">
+          <div class="arch-node">
+            <i class="ph-duotone ph-device-mobile"></i>
+            <h4>Global Edge</h4>
+            <p>Vercel / Cloudflare</p>
+          </div>
+          <div class="arch-connector"></div>
+          <div class="arch-node" style="border-color: rgba(0,184,255,0.4); box-shadow: 0 0 30px rgba(0,184,255,0.1);">
+            <i class="ph-duotone ph-brackets-curly"></i>
+            <h4>Next.js Frontend</h4>
+            <p>React + Tailwind</p>
+          </div>
+          <div class="arch-connector"></div>
+          <div class="arch-node">
+            <i class="ph-duotone ph-database"></i>
+            <h4>Headless Backend</h4>
+            <p>CMS / PostgreSQL</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- SERVICES / FEATURES -->
+    <section class="section" style="border-top: 1px solid var(--color-border-subtle);">
       <div class="container">
-        <h2 class="reveal" style="font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: -0.02em; margin-bottom: var(--space-4);">Engineering Excellence</h2>
-        <p class="section-subtitle reveal reveal-delay-1" style="margin-bottom: var(--space-12); max-width: 600px;">We don't use generic templates. Every line of code and every pixel is crafted to give your business an unfair advantage.</p>
-        
-        <div class="premium-bento-grid">
-          
-          <div class="premium-glass-card premium-glass-card--large reveal reveal-delay-1">
-            <div class="premium-icon-wrapper" style="color: var(--color-accent);">
-              <div class="premium-icon-glow"></div>
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px;">
+          <div class="reveal">
+            <div
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(0,184,255,0.1); display: flex; align-items: center; justify-content: center; color: var(--accent-blue); font-size: 24px; margin-bottom: 24px;">
               <i class="ph-duotone ph-code"></i>
             </div>
-            <h3>Bespoke Custom Development</h3>
-            <p>From complex web applications to interactive landing pages, we build completely custom solutions on modern tech stacks. By avoiding bloaty templates, we ensure your site is secure, incredibly fast, and scalable for years to come.</p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Custom Development</h3>
+            <p style="color: var(--color-text-secondary); line-height: 1.6;">We build from scratch using modern
+              frameworks. No off-the-shelf themes means zero bloat, complete control over design, and absolute security.
+            </p>
           </div>
-
-          <div class="premium-glass-card reveal reveal-delay-2">
-            <div class="premium-icon-wrapper" style="color: #10b981;">
-              <div class="premium-icon-glow"></div>
-              <i class="ph-duotone ph-shopping-cart"></i>
+          <div class="reveal reveal-delay-1">
+            <div
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(0,255,148,0.1); display: flex; align-items: center; justify-content: center; color: var(--accent-neon); font-size: 24px; margin-bottom: 24px;">
+              <i class="ph-duotone ph-magnifying-glass"></i>
             </div>
-            <h3>E-Commerce & Shopify</h3>
-            <p>We build frictionless shopping experiences. From custom Shopify architectures to headless e-commerce builds, we focus on maximizing your conversion rates and average order value.</p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Technical SEO Built-in</h3>
+            <p style="color: var(--color-text-secondary); line-height: 1.6;">Proper semantic HTML, dynamic sitemaps,
+              structured schema data, and perfectly optimized metadata are included in every single build.</p>
           </div>
-
-          <div class="premium-glass-card reveal reveal-delay-3">
-            <div class="premium-icon-wrapper" style="color: #f59e0b;">
-              <div class="premium-icon-glow"></div>
-              <i class="ph-duotone ph-gauge"></i>
-            </div>
-            <h3>Performance Optimization</h3>
-            <p>Speed is revenue. We engineer everything to pass Google Core Web Vitals with flying colors. Image optimization, code splitting, and edge caching come standard.</p>
-          </div>
-
-          <div class="premium-glass-card premium-glass-card--wide reveal reveal-delay-4">
-            <div class="premium-icon-wrapper" style="color: #ec4899;">
-              <div class="premium-icon-glow"></div>
+          <div class="reveal reveal-delay-2">
+            <div
+              style="width: 48px; height: 48px; border-radius: 12px; background: rgba(168,85,247,0.1); display: flex; align-items: center; justify-content: center; color: #a855f7; font-size: 24px; margin-bottom: 24px;">
               <i class="ph-duotone ph-magic-wand"></i>
             </div>
-            <h3>Immersive, Pixel-Perfect UI</h3>
-            <p>Great code deserves great design. Our development process includes micro-interactions, smooth scroll animations (GSAP), and responsive fluidity that makes your website feel like a premium software product.</p>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- WHAT'S INCLUDED CHECKLIST -->
-    <section class="section" style="background: var(--color-bg-subtle);">
-      <div class="container">
-        <h2 class="reveal" style="font-size: clamp(2rem, 3vw, 2.5rem);">Built-in by Default</h2>
-        <p class="section-subtitle reveal reveal-delay-1">The critical features other agencies charge extra for, we include as standard.</p>
-        
-        <div class="checklist-grid reveal reveal-delay-2">
-          
-          <div class="checklist-item">
-            <div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-            <div class="checklist-content">
-              <h4>Technical SEO Foundation</h4>
-              <p>Perfect heading structures, meta tags, schemas, and semantic HTML for Google.</p>
-            </div>
-          </div>
-
-          <div class="checklist-item">
-            <div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-            <div class="checklist-content">
-              <h4>Flawless Responsiveness</h4>
-              <p>Tested across hundreds of device sizes, from ultra-wide monitors to old mobile phones.</p>
-            </div>
-          </div>
-
-          <div class="checklist-item">
-            <div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-            <div class="checklist-content">
-              <h4>Analytics Integration</h4>
-              <p>Google Analytics 4, Meta Pixel, and conversion tracking properly set up.</p>
-            </div>
-          </div>
-
-          <div class="checklist-item">
-            <div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-            <div class="checklist-content">
-              <h4>CMS Training</h4>
-              <p>We provide personalized video walkthroughs so your team can easily update content.</p>
-            </div>
-          </div>
-
-          <div class="checklist-item">
-            <div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-            <div class="checklist-content">
-              <h4>Global CDN Setup</h4>
-              <p>Assets are served from edge servers around the world for instant loading.</p>
-            </div>
-          </div>
-
-          <div class="checklist-item">
-            <div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-            <div class="checklist-content">
-              <h4>Security hardening</h4>
-              <p>SSL certificates, DDoS protection, and clean, injection-proof code.</p>
-            </div>
-          </div>
-
-        </div>
-      </div>
-    </section>
-
-    <!-- PROCESS TIMELINE -->
-    <section class="section" style="background: var(--color-bg);">
-      <div class="container">
-        <h2 class="reveal" style="text-align: center;">How We Work</h2>
-        
-        <div class="process-timeline reveal reveal-delay-1">
-          <div class="process-step">
-            <div class="process-step__num">Phase 1</div>
-            <h3>Discovery & Strategy</h3>
-            <p>We analyze your market, competitors, and technical requirements to architect the perfect solution.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step__num">Phase 2</div>
-            <h3>UX/UI Design</h3>
-            <p>We design high-fidelity wireframes and interactive prototypes in Figma for your approval.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step__num">Phase 3</div>
-            <h3>Engineering</h3>
-            <p>Our developers bring the designs to life using clean, scalable, and secure code architectures.</p>
-          </div>
-          <div class="process-step">
-            <div class="process-step__num">Phase 4</div>
-            <h3>Launch & Scale</h3>
-            <p>After rigorous QA testing, we deploy the site, integrate analytics, and train your team.</p>
+            <h3 style="font-size: 1.5rem; margin-bottom: 12px;">Micro-Interactions</h3>
+            <p style="color: var(--color-text-secondary); line-height: 1.6;">We bring static designs to life with fluid
+              GSAP animations, scroll triggers, and state transitions that make the web feel like native software.</p>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- CASE STUDY TEASERS -->
-    <section class="section" style="background: var(--color-bg-subtle);">
+    <!-- RECENT WORK -->
+    <section class="section" style="border-top: 1px solid var(--color-border-subtle);">
       <div class="container">
-        <div style="display: flex; flex-direction: column; gap: var(--space-12);">
-          
-          <div class="case-teaser reveal">
-            <div>
-              <div class="theme-blue" style="font-weight: 600; font-size: 14px; color: var(--color-accent); margin-bottom: 12px;">Case Study</div>
-              <h2 style="font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 16px; letter-spacing: -0.02em;">Furniture Hub Ayodhya</h2>
-              <p style="color: var(--color-text-secondary); line-height: 1.6; font-size: var(--text-lg);">We engineered a high-converting digital storefront that transformed their online presence and established dominance in the local market.</p>
-              
-              <div class="case-teaser__metrics">
-                <div class="case-metric-item">
-                  <div class="case-metric-val">300%</div>
-                  <div class="case-metric-label">Traffic Increase</div>
+        <h2 class="reveal" style="font-size: 2.5rem; text-align: center; margin-bottom: 40px;">Recent Work</h2>
+
+        <div class="featured-work__grid">
+          <!-- Case Study 01 -->
+          <article class="case-study reveal">
+            <div class="case-study__visual">
+              <div class="browser-mockup">
+                <div class="browser-mockup__bar">
+                  <span class="browser-mockup__dot" style="background: #FF5F56;"></span>
+                  <span class="browser-mockup__dot" style="background: #FFBD2E;"></span>
+                  <span class="browser-mockup__dot" style="background: #27C93F;"></span>
+                  <span class="browser-mockup__url">7070sportsayodhya.com</span>
                 </div>
-                <div class="case-metric-item">
-                  <div class="case-metric-val">#1</div>
-                  <div class="case-metric-label">Local Ranking</div>
+                <div class="browser-mockup__content">
+                  <img src="../assets/images/7070.webp" alt="7070 - Real Estate Landing Page"
+                    class="portfolio-card__img" loading="lazy" width="1895" height="850">
                 </div>
               </div>
-
-              <a href="https://www.furniturehubayodhya.online/" target="_blank" rel="noopener" class="btn btn--secondary" style="margin-top: 16px;">View Website <span class="btn__arrow">→</span></a>
             </div>
-            <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl); border: 1px solid var(--color-border-subtle); background: var(--color-bg-card);">
-              <img src="../assets/images/furniturehubayodhya.webp" alt="Furniture Hub Case Study" style="width: 100%; height: auto; display: block;">
-            </div>
-          </div>
-
-          <div class="case-teaser reveal">
-            <div>
-              <div class="theme-blue" style="font-weight: 600; font-size: 14px; color: var(--color-accent); margin-bottom: 12px;">Case Study</div>
-              <h2 style="font-size: clamp(2rem, 3vw, 2.5rem); margin-bottom: 16px; letter-spacing: -0.02em;">7070 Sports Ayodhya</h2>
-              <p style="color: var(--color-text-secondary); line-height: 1.6; font-size: var(--text-lg);">Built and developed a complete e-commerce experience combining a modern shopping aesthetic with SEO-focused optimization.</p>
-              
-              <div class="case-teaser__metrics">
-                <div class="case-metric-item">
-                  <div class="case-metric-val">50K+</div>
-                  <div class="case-metric-label">Monthly Visits</div>
-                </div>
-                <div class="case-metric-item">
-                  <div class="case-metric-val">40%</div>
-                  <div class="case-metric-label">Conversion Lift</div>
-                </div>
+            <div class="case-study__content">
+              <div class="case-study__category" style="color: var(--accent-blue);">E-commerce · Web Development · SEO
               </div>
-
-              <a href="../pages/work.html" class="btn btn--secondary" style="margin-top: 16px;">Read Case Study <span class="btn__arrow">→</span></a>
+              <h3 class="case-study__name">7070 Sports Ayodhya</h3>
+              <p class="case-study__desc" style="color: var(--color-text-secondary);">Built and developed a complete
+                e-commerce experience for 7070 Sports Ayodhya, combining a modern shopping experience with SEO-focused
+                optimization.</p>
+              <div class="case-study__result">
+                <i class="ph ph-trend-up" style="color: var(--accent-neon);"></i>
+                50K+ monthly website visits
+              </div>
+              <p style="font-size: var(--text-sm); color: var(--color-text-secondary); margin-bottom: var(--space-6);">
+                Orders coming from customers worldwide.</p>
+              <a href="https://7070sportsayodhya.com/" target="_blank" rel="noopener" class="card__link">
+                View Case Study <span>→</span>
+              </a>
             </div>
-            <div style="border-radius: var(--radius-xl); overflow: hidden; box-shadow: var(--shadow-xl); border: 1px solid var(--color-border-subtle); background: var(--color-bg-card);">
-              <img src="../assets/images/7070.webp" alt="7070 Sports Case Study" style="width: 100%; height: auto; display: block;">
-            </div>
-          </div>
-          
+          </article>
         </div>
-      </div>
-    </section>
-
-    <!-- TECH STACK MARQUEE -->
-    <section class="section" style="padding: var(--space-12) 0; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
-      <div class="container">
-        <p style="text-align: center; color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 13px; margin-bottom: var(--space-8);">Powered by Modern Technology</p>
-      </div>
-      <div class="tech-marquee-wrapper reveal">
-        <div class="tech-marquee">
-          <!-- Duplicated for seamless loop -->
-          <div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
-          
-          <div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-          <div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
+        <div class="reveal" style="text-align: center; margin-top: var(--space-12);">
+          <a href="../pages/work.html" class="btn btn--secondary btn--lg">View All Work</a>
         </div>
       </div>
     </section>
 
     <!-- FINAL CTA -->
-    <section class="section final-cta" id="contact">
+    <section class="section"
+      style="padding: 80px 0; text-align: center; border-top: 1px solid var(--color-border-subtle);">
       <div class="container">
-        <h2 class="reveal">Ready to build something extraordinary?</h2>
-        <p class="section-subtitle reveal reveal-delay-1">Let's talk about your project and how we can bring it to life.</p>
-        <div class="final-cta__actions reveal reveal-delay-2">
-          <a href="../pages/contact.html" class="btn btn--primary btn--lg">
-            Request a Proposal
-          </a>
-        </div>
-        <p class="final-cta__note reveal reveal-delay-3">No pressure. No hard sell. Just a conversation.</p>
+        <h2 class="reveal" style="font-size: 3rem; margin-bottom: 24px;">Ready to upgrade your tech stack?</h2>
+        <p class="section-subtitle reveal reveal-delay-1 mx-auto"
+          style="color: var(--color-text-secondary); margin-bottom: 40px;">Let's build a digital experience that
+          converts.</p>
+        <a href="../pages/contact.html" class="btn btn--primary btn--lg reveal reveal-delay-2">
+          Start Your Project <span class="btn__arrow">→</span>
+        </a>
       </div>
     </section>
 
+    <!-- FAQ SECTION -->
+    <section class="section" id="faq">
+      <div class="container container--narrow">
+        <h2 class="reveal" style="text-align: center;">Frequently asked questions.</h2>
+        <div style="margin-top: var(--space-12);">
+          <div class="faq-item reveal">
+            <button class="faq-question" aria-expanded="false">
+              What tech stack do you use?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>We primarily build custom solutions using Next.js (React) or plain modern HTML/CSS/JS for high
+                performance. We also work with headless CMS options or Shopify depending on your business requirements.
+              </p>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-1">
+            <button class="faq-question" aria-expanded="false">
+              Do you offer website maintenance?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Yes. We offer ongoing maintenance, technical support, performance monitoring, and security updates to
+                keep your web presence running flawlessly.</p>
+            </div>
+          </div>
+          <div class="faq-item reveal reveal-delay-2">
+            <button class="faq-question" aria-expanded="false">
+              Is technical SEO included?
+              <span class="faq-icon"><i class="ph ph-plus"></i></span>
+            </button>
+            <div class="faq-answer" role="region">
+              <p>Absolutely. Every build includes robust semantic HTML, schema markups, fast loading speeds, and
+                optimized metadata right out of the box.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
   </main>
 
   <!-- FOOTER -->
-        <footer class="footer">
+  <footer class="footer">
     <div class="container">
       <div class="footer__grid">
-        <div>
-          <a href="../index.html" class="footer__logo">
-            <img src="../assets/images/logo.webp" alt="Zamify Footer Logo" width="2172" height="724" style="height: 40px; width: auto;">
+        <div class="footer__brand">
+          <a href="../index.html" aria-label="Zamify Home" class="footer__logo">
+            <img src="../assets/images/logo.webp" alt="Zamify Footer Logo" width="2172" height="724"
+              style="height: 40px; width: auto;">
           </a>
           <div class="footer__tagline">Build. Create. Grow.</div>
-          <p class="footer__brand-desc">A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.</p>
+          <p class="footer__brand-desc">A global digital agency helping ambitious businesses build stronger brands,
+            better digital experiences, and sustainable online growth.</p>
 
           <div class="social-links" style="margin-top: var(--space-6);">
-            <a href="[WHATSAPP LINK]" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i class="ph ph-whatsapp-logo"></i></a>
-            <a href="[INSTAGRAM LINK]" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i class="ph ph-instagram-logo"></i></a>
-            <a href="[LINKEDIN LINK]" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i class="ph ph-linkedin-logo"></i></a>
-            <a href="[X LINK]" target="_blank" rel="noopener" class="social-link" aria-label="X"><i class="ph ph-x-logo"></i></a>
+            <a href="#" target="_blank" rel="noopener" class="social-link" aria-label="WhatsApp"><i
+                class="ph ph-whatsapp-logo"></i></a>
+            <a href="#" target="_blank" rel="noopener" class="social-link" aria-label="Instagram"><i
+                class="ph ph-instagram-logo"></i></a>
+            <a href="#" target="_blank" rel="noopener" class="social-link" aria-label="LinkedIn"><i
+                class="ph ph-linkedin-logo"></i></a>
+            <a href="#" target="_blank" rel="noopener" class="social-link" aria-label="X"><i
+                class="ph ph-x-logo"></i></a>
           </div>
         </div>
 
@@ -398,7 +751,28 @@
     </div>
   </footer>
 
+  <!-- Scripts -->
   <script src="../js/navigation.js"></script>
   <script src="../js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const faqs = document.querySelectorAll('.faq-question');
+      faqs.forEach(faq => {
+        faq.addEventListener('click', () => {
+          const expanded = faq.getAttribute('aria-expanded') === 'true';
+          faq.setAttribute('aria-expanded', !expanded);
+          const answer = faq.nextElementSibling;
+          if (expanded) {
+            answer.style.maxHeight = null;
+            faq.querySelector('i').classList.replace('ph-minus', 'ph-plus');
+          } else {
+            answer.style.maxHeight = answer.scrollHeight + 'px';
+            faq.querySelector('i').classList.replace('ph-plus', 'ph-minus');
+          }
+        });
+      });
+    });
+  </script>
 </body>
+
 </html>

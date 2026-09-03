@@ -484,7 +484,8 @@
   display: block;
   width: 22px;
   height: 1.5px;
-  background: var(--color-text);
+  background: #FFF;
+  mix-blend-mode: difference;
   transition: all var(--duration-base) var(--ease-spring);
   transform-origin: center;
 }
