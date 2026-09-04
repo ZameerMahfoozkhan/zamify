@@ -92,8 +92,9 @@
 
     /* iPhone Mockup (CSS Only) */
     .iphone-mockup {
-      width: 320px;
-      height: 650px;
+      width: 100%;
+      max-width: 320px;
+      aspect-ratio: 320 / 650;
       background: #FFFFFF;
       border: 12px solid #0F172A;
       border-radius: 48px;
@@ -272,7 +273,7 @@
     .store-badges-container {
       display: flex;
       gap: 16px;
-      flex-wrap: nowrap;
+      flex-wrap: wrap;
     }
 
     @media (max-width: 991px) {
@@ -316,8 +317,10 @@
 
 <body>
 
-  <div class="hero-gradient-bg"></div>
-  <div class="mesh-blob"></div>
+  <div style="position: absolute; top: 0; left: 0; right: 0; height: 100vh; overflow: hidden; z-index: -1; pointer-events: none;">
+    <div class="hero-gradient-bg" style="z-index: 0;"></div>
+    <div class="mesh-blob" style="z-index: 0;"></div>
+  </div>
 
   <!-- NAVIGATION -->
   <nav class="nav" id="nav" role="navigation">
