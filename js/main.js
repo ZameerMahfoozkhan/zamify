@@ -1,9 +1,50 @@
 /* ==========================================================================
    ZAMIFY — Main JavaScript
-   Scroll animations, stat counter, parallax
+   Scroll animations, stat counter, parallax, theme management
    ========================================================================== */
 
+// ── Theme Management (Run immediately) ────────────────────────────────
+const savedTheme = localStorage.getItem('theme');
+const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches;
+if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
+  document.documentElement.setAttribute('data-theme', 'dark');
+}
+
 document.addEventListener('DOMContentLoaded', () => {
+  // Theme Toggle Event Listener
+  const themeToggles = document.querySelectorAll('.theme-toggle');
+  
+  function updateThemeIcon() {
+    const isDark = document.documentElement.getAttribute('data-theme') === 'dark';
+    themeToggles.forEach(toggle => {
+      const icon = toggle.querySelector('i');
+      if (icon) {
+        if (isDark) {
+          icon.classList.remove('ph-moon');
+          icon.classList.add('ph-sun');
+        } else {
+          icon.classList.remove('ph-sun');
+          icon.classList.add('ph-moon');
+        }
+      }
+    });
+  }
+
+  // Initial icon update
+  updateThemeIcon();
+
+  themeToggles.forEach(toggle => {
+    toggle.addEventListener('click', () => {
+      const currentTheme = document.documentElement.getAttribute('data-theme');
+      const newTheme = currentTheme === 'dark' ? 'light' : 'dark';
+      
+      document.documentElement.setAttribute('data-theme', newTheme);
+      localStorage.setItem('theme', newTheme);
+      updateThemeIcon();
+    });
+  });
+
+  // Respect reduced motion
   // Respect reduced motion
   const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 

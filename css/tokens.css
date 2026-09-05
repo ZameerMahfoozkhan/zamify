@@ -145,3 +145,51 @@
   --z-modal: 40;
   --z-toast: 50;
 }
+
+/* ==========================================================================
+   Dark Theme Overrides
+   ========================================================================== */
+[data-theme="dark"] {
+  /* Backgrounds */
+  --color-bg: #09090B;
+  --color-bg-subtle: #18181B;
+  --color-bg-muted: #27272A;
+  --color-bg-card: #09090B;
+  --color-bg-dark: #0A0A0A;
+  --color-bg-dark-subtle: #111111;
+  --color-bg-overlay: rgba(9, 9, 11, 0.8);
+  --color-bg-glass: rgba(9, 9, 11, 0.7);
+  --color-bg-dark-glass: rgba(10, 10, 10, 0.7);
+
+  /* Text */
+  --color-text: #FAFAFA;
+  --color-text-secondary: #A1A1AA;
+  --color-text-tertiary: #52525B;
+  --color-text-on-dark: #FAFAFA;
+  --color-text-on-dark-secondary: #A1A1AA;
+
+  /* Borders */
+  --color-border: #27272A;
+  --color-border-subtle: #18181B;
+  --color-border-hover: #3F3F46;
+  --color-border-glow: rgba(255, 255, 255, 0.05);
+
+  /* Accent */
+  --color-accent: #FAFAFA;
+  --color-accent-hover: #E4E4E7;
+  --color-accent-text: #09090B;
+
+  /* Subtle accent for highlights */
+  --color-highlight: #18181B;
+  --color-highlight-blue: #082F49;
+  --color-highlight-green: #064E3B;
+  
+  /* Shadows (Dark mode shadows are often less visible, use borders instead) */
+  --shadow-xs: 0 2px 4px rgba(0, 0, 0, 0.5);
+  --shadow-sm: 0 4px 12px rgba(0, 0, 0, 0.5);
+  --shadow-md: 0 10px 30px rgba(0, 0, 0, 0.6);
+  --shadow-lg: 0 20px 40px rgba(0, 0, 0, 0.8);
+  --shadow-xl: 0 30px 60px rgba(0, 0, 0, 0.9);
+  --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.4), inset 0 1px 0 rgba(255, 255, 255, 0.1);
+  --shadow-card-hover: 0 12px 40px rgba(0, 0, 0, 0.6), inset 0 1px 0 rgba(255, 255, 255, 0.2);
+}

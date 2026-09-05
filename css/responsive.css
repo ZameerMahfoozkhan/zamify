@@ -195,6 +195,10 @@
     display: none;
   }
 
+  .theme-toggle {
+    margin-left: auto;
+  }
+
   .nav__toggle {
     display: flex;
   }

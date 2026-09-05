@@ -25,8 +25,196 @@
 <link href="../css/base.css?v=6" rel="stylesheet"/>
 <link href="../css/components.css?v=6" rel="stylesheet"/>
 <link href="../css/sections.css?v=6" rel="stylesheet"/>
-<link href="../css/responsive.css?v=6" rel="stylesheet"/></head>
-<body><div class="animated-bg"></div>
+<link href="../css/responsive.css?v=6" rel="stylesheet"/>
+<style>
+  html, body {
+    overflow-x: hidden;
+    background-color: var(--color-bg-subtle);
+  }
+  
+  /* Content Creation Specific Styles */
+  .editorial-hero {
+    padding-top: clamp(140px, 18vh, 180px);
+    padding-bottom: 80px;
+    background: var(--color-bg-muted);
+    position: relative;
+    border-bottom: 1px solid var(--color-border-subtle);
+  }
+
+  .editorial-grid {
+    display: grid;
+    grid-template-columns: 1.2fr 0.8fr;
+    gap: 40px;
+    align-items: center;
+  }
+
+  .editorial-heading {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: clamp(3rem, 6vw, 5.5rem);
+    line-height: 1.05;
+    color: var(--color-text);
+    margin-bottom: 24px;
+    letter-spacing: -0.03em;
+  }
+
+  .notion-mockup {
+    background: var(--color-bg-card);
+    border-radius: 12px;
+    box-shadow: 0 20px 40px rgba(0,0,0,0.06), 0 1px 3px rgba(0,0,0,0.05);
+    padding: 32px;
+    border: 1px solid var(--color-border-subtle);
+    position: relative;
+    transform: rotate(2deg);
+    transition: transform 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .notion-mockup:hover {
+    transform: rotate(0deg) translateY(-10px);
+    box-shadow: 0 30px 60px rgba(0,0,0,0.08);
+  }
+
+  .doc-skeleton-title {
+    height: 32px;
+    width: 60%;
+    background: var(--color-border);
+    border-radius: 4px;
+    margin-bottom: 24px;
+  }
+
+  .doc-skeleton-line {
+    height: 12px;
+    background: var(--color-bg-muted);
+    border-radius: 4px;
+    margin-bottom: 12px;
+  }
+
+  .doc-skeleton-line:last-child { margin-bottom: 0; width: 80%; }
+  .doc-skeleton-line:nth-child(2) { width: 95%; }
+  .doc-skeleton-line:nth-child(3) { width: 85%; }
+
+  /* Masonry Content Ecosystem */
+  .ecosystem-section {
+    padding: 100px 0;
+    background: var(--color-bg-card);
+  }
+
+  .masonry-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+    gap: 32px;
+    margin-top: 60px;
+  }
+
+  .editorial-card {
+    background: var(--color-bg-subtle);
+    border: 1px solid var(--color-border);
+    padding: 40px 32px;
+    border-radius: 16px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    transition: all 0.3s ease;
+  }
+
+  .editorial-card:hover {
+    background: var(--color-bg-card);
+    border-color: var(--color-border-hover);
+    box-shadow: 0 10px 30px rgba(0,0,0,0.04);
+    transform: translateY(-4px);
+  }
+
+  .editorial-card-icon {
+    font-size: 32px;
+    color: var(--color-text);
+    margin-bottom: 24px;
+  }
+
+  .editorial-card h3 {
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 24px;
+    color: var(--color-text);
+    margin-bottom: 12px;
+  }
+
+  .editorial-card p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    font-size: 15px;
+  }
+  
+  /* Additional Detailed Sections */
+  .editorial-process-list {
+    max-width: 800px;
+    margin: 0 auto;
+    padding-left: 0;
+    list-style: none;
+    counter-reset: process-counter;
+  }
+  .editorial-process-item {
+    position: relative;
+    padding-left: 64px;
+    margin-bottom: 48px;
+  }
+  .editorial-process-item::before {
+    counter-increment: process-counter;
+    content: "0" counter(process-counter) ".";
+    position: absolute;
+    left: 0;
+    top: 0;
+    font-family: 'Playfair Display', Georgia, serif;
+    font-size: 32px;
+    color: var(--color-text-tertiary);
+    line-height: 1;
+    font-weight: 400;
+  }
+  .editorial-process-item h3 {
+    font-size: 24px;
+    color: var(--color-text);
+    margin-bottom: 12px;
+    font-family: 'Playfair Display', Georgia, serif;
+  }
+  .editorial-process-item p {
+    color: var(--color-text-secondary);
+    line-height: 1.6;
+    font-size: 16px;
+  }
+  .standards-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 32px;
+    margin-top: 48px;
+  }
+  .standard-card {
+    border-top: 2px solid var(--color-border-hover);
+    padding-top: 24px;
+  }
+  .standard-card h3 {
+    font-size: 20px;
+    color: var(--color-text);
+    margin-bottom: 8px;
+  }
+  .standard-card p {
+    color: var(--color-text-secondary);
+    font-size: 15px;
+    line-height: 1.5;
+  }
+
+  @media (max-width: 991px) {
+    .editorial-grid {
+      grid-template-columns: 1fr;
+      gap: 60px;
+    }
+    .notion-mockup {
+      transform: none;
+    }
+    .notion-mockup:hover {
+      transform: translateY(-5px);
+    }
+  }
+</style>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;1,400&display=swap" rel="stylesheet">
+</head>
+<body>
 <!-- NAVIGATION -->
 <nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
 <div class="nav__inner">
@@ -44,7 +232,10 @@
 <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
         Get a Free Strategy Call <span class="btn__arrow">→</span>
 </a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
+<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="ph-bold ph-moon"></i>
+      </button>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
 <span></span><span></span><span></span>
 </button>
 </div>
@@ -62,281 +253,146 @@
     </div>
   </nav>
 <main>
-<!-- ULTRA PREMIUM HERO -->
-<section class="hero-mesh" style="padding-top: clamp(110px, 12vh, 140px); padding-bottom: 60px;">
-<div class="container" style="text-align: center; max-width: 900px;">
-<div class="reveal theme-create" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--color-text); font-weight: 500; font-size: 13px; margin: 0 auto 20px auto; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-<span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);"></span>
-          Zamify Creative Content
+<section class="editorial-hero">
+<div class="container">
+  <div class="editorial-grid">
+    <div class="hero-text">
+      <div class="reveal" style="display: inline-block; padding: 4px 12px; border: 1px solid var(--color-border-subtle); border-radius: 4px; font-size: 12px; text-transform: uppercase; letter-spacing: 0.1em; font-weight: 600; color: var(--color-text-secondary); margin-bottom: 24px; background: var(--color-bg-card);">
+        Editorial &amp; Strategy
+      </div>
+      <h1 class="reveal reveal-delay-1 editorial-heading">
+        Words that build <br>
+        <span style="font-style: italic; color: var(--color-text-secondary);">authority &amp; trust.</span>
+      </h1>
+      <p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 500px; margin-bottom: 40px; line-height: 1.6;">
+        We craft deeply researched, strategic content that cuts through the noise, ranks on search engines, and establishes your brand as the definitive industry leader.
+      </p>
+      <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; align-items: center; flex-wrap: wrap;">
+        <a class="btn btn--primary btn--lg" href="../pages/contact.html" style="background: #18181B; color: #FFF; border-radius: 4px;">
+          Start Publishing
+        </a>
+        <a class="btn btn--secondary btn--lg" href="../pages/work.html" style="border: none; background: transparent; color: var(--color-text); border-radius: 4px; padding-left: 0;">
+          Read Case Studies <i class="ph-bold ph-arrow-right" style="margin-left: 8px;"></i>
+        </a>
+      </div>
+      
+      <div class="trust-badges reveal reveal-delay-4" style="justify-content: flex-start; margin-top: 48px; border-top: 1px solid var(--color-border-subtle); padding-top: 24px;">
+        <div class="trust-badge-item" style="color: var(--color-text-secondary); background: transparent; border: none; padding: 0;">
+          <i class="ph-fill ph-ranking" style="color: var(--color-text);"></i> #1 Search Rankings
         </div>
-<h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
-          Compelling content that <br/>
-<span class="shimmer" style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">tells your story.</span>
-</h1>
-<p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto 32px auto; line-height: 1.5;">
-          We create strategic written and visual content that resonates with your audience and establishes brand authority.
-        </p>
-<div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-<a class="btn btn--primary btn--lg" href="../pages/contact.html" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
-            Start a Project <span class="btn__arrow">→</span>
-</a>
-<a class="btn btn--secondary btn--lg" href="../pages/work.html" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-            View Our Work
-          </a>
+        <div class="trust-badge-item" style="color: var(--color-text-secondary); background: transparent; border: none; padding: 0; margin-left: 24px;">
+          <i class="ph-fill ph-users-three" style="color: var(--color-text);"></i> High Readability
+        </div>
+      </div>
+    </div>
+    
+    <div class="hero-visual reveal reveal-delay-4">
+      <div class="notion-mockup">
+        <div style="font-size: 48px; margin-bottom: 24px;">✍️</div>
+        <div class="doc-skeleton-title"></div>
+        <div style="margin-bottom: 32px;">
+          <div class="doc-skeleton-line"></div>
+          <div class="doc-skeleton-line"></div>
+          <div class="doc-skeleton-line"></div>
+          <div class="doc-skeleton-line"></div>
+        </div>
+        <div style="width: 100%; height: 120px; background: var(--color-bg-muted); border-radius: 8px; margin-bottom: 32px; display: flex; align-items: center; justify-content: center; color: var(--color-text-tertiary);">
+          <i class="ph-duotone ph-image" style="font-size: 32px;"></i>
+        </div>
+        <div>
+          <div class="doc-skeleton-line"></div>
+          <div class="doc-skeleton-line"></div>
+          <div class="doc-skeleton-line"></div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<div class="trust-badges reveal reveal-delay-4">
-<div class="trust-badge-item">
-<i class="ph-fill ph-check-circle"></i> 50+ Projects Delivered
-          </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-lightning"></i> Sub-second Load Times
-          </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-magnifying-glass"></i> Built for SEO
-          </div>
+</section>
+<!-- MASONRY ECOSYSTEM -->
+<section class="ecosystem-section">
+<div class="container">
+<h2 class="reveal" style="font-family: 'Playfair Display', serif; font-size: clamp(2.5rem, 4vw, 3.5rem); color: var(--color-text); margin-bottom: var(--space-4); max-width: 600px;">The Content Ecosystem</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="max-width: 600px; color: var(--color-text-secondary);">We don't just write words. We build an interconnected web of high-value assets that nurture your audience at every stage of their journey.</p>
+
+<div class="masonry-grid">
+  
+  <div class="editorial-card reveal reveal-delay-1">
+    <div class="editorial-card-icon"><i class="ph-duotone ph-article"></i></div>
+    <h3>SEO Blog Articles</h3>
+    <p>Publishing deeply researched, high-ranking blog content that answers user questions, captures intent, and drives passive, high-quality organic traffic to your domain.</p>
+  </div>
+
+  <div class="editorial-card reveal reveal-delay-2" style="background: #18181B; color: #FFF; border-color: #27272A;">
+    <div class="editorial-card-icon"><i class="ph-duotone ph-book-open" style="color: #FFF;"></i></div>
+    <h3 style="color: #FFF;">Thought Leadership</h3>
+    <p style="color: var(--color-text-tertiary);">Crafting premium whitepapers, case studies, and executive LinkedIn articles that establish your founders and team as the definitive authorities in your niche.</p>
+  </div>
+
+  <div class="editorial-card reveal reveal-delay-3">
+    <div class="editorial-card-icon"><i class="ph-duotone ph-envelope-open"></i></div>
+    <h3>Email Newsletters</h3>
+    <p>Writing engaging, high-retention weekly newsletters that nurture your audience, share exclusive insights, and keep your brand consistently top-of-mind without feeling spammy.</p>
+  </div>
+
+  <div class="editorial-card reveal reveal-delay-4">
+    <div class="editorial-card-icon"><i class="ph-duotone ph-share-network"></i></div>
+    <h3>Social Media Copy</h3>
+    <p>Distilling complex long-form content into punchy, highly shareable social media threads, captions, and posts engineered for engagement and algorithmic reach.</p>
+  </div>
+
 </div>
 </div>
 </section>
-<!-- PREMIUM GLASS BENTO GRID -->
-<section class="section" style="background: var(--color-bg); position: relative; z-index: 2;">
+
+<!-- THE EDITORIAL PROCESS -->
+<section class="section" style="background: var(--color-bg-card);">
 <div class="container">
-<h2 class="reveal shimmer" style="font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: -0.02em; margin-bottom: var(--space-4);">Engineering Excellence</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="margin-bottom: var(--space-12); max-width: 600px;">We don't use generic templates. Every line of code and every pixel is crafted to give your business an unfair advantage.</p>
-<div class="premium-bento-grid">
-<div class="premium-glass-card premium-glass-card--large reveal reveal-delay-1">
-<div class="premium-icon-wrapper" style="color: var(--color-accent);">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-article"></i>
-</div>
-<h3>SEO Blog Articles</h3>
-<p>Publishing deeply researched, high-ranking blog content that answers user questions and drives passive organic traffic.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-2">
-<div class="premium-icon-wrapper" style="color: #10b981;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-book-open"></i>
-</div>
-<h3>Thought Leadership</h3>
-<p>Crafting premium whitepapers, case studies, and LinkedIn articles that establish your executive team as industry authorities.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-3">
-<div class="premium-icon-wrapper" style="color: #f59e0b;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-envelope-open"></i>
-</div>
-<h3>Email Newsletters</h3>
-<p>Writing engaging, high-retention weekly newsletters that nurture your audience and keep your brand top-of-mind.</p>
-</div>
-<div class="premium-glass-card premium-glass-card--wide reveal reveal-delay-4">
-<div class="premium-icon-wrapper" style="color: #ec4899;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-palette"></i>
-</div>
-<h3>Visual Assets</h3>
-<p>Designing bespoke infographics, data visualizations, and social media carousels that encourage shares and backlinks.</p>
-</div>
-</div>
+<h2 class="reveal" style="text-align: center; font-family: 'Playfair Display', serif; color: var(--color-text); margin-bottom: 16px;">The Editorial Process</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 64px; color: var(--color-text-secondary);">A rigorous workflow ensuring quality at every step.</p>
+<ul class="editorial-process-list">
+  <li class="editorial-process-item reveal">
+    <h3>Deep Subject Matter Research</h3>
+    <p>We don't just scratch the surface. We interview your internal experts, review academic papers, and analyze competitor gaps to ensure every piece brings net-new value to the internet.</p>
+  </li>
+  <li class="editorial-process-item reveal reveal-delay-1">
+    <h3>Strategic Outline &amp; Approval</h3>
+    <p>Before a single word is drafted, we present a comprehensive outline detailing the exact headers, target keywords, and narrative arc for your sign-off.</p>
+  </li>
+  <li class="editorial-process-item reveal reveal-delay-2">
+    <h3>Expert Drafting &amp; Human Review</h3>
+    <p>Our senior writers draft the content, focusing on cadence, readability, and authority. A human editor then reviews the piece for tonal consistency and factual accuracy.</p>
+  </li>
+  <li class="editorial-process-item reveal reveal-delay-3">
+    <h3>Technical SEO Polish</h3>
+    <p>We weave in LSI keywords, optimize meta descriptions, structure schema markup, and ensure the piece is perfectly tuned for search engine crawlers before publication.</p>
+  </li>
+</ul>
 </div>
 </section>
-<section class="section">
+
+<!-- CONTENT STANDARDS -->
+<section class="section" style="background: var(--color-bg-muted);">
 <div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Visual Transformation</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">See the tangible difference our creative engine brings to a brand's aesthetic.</p>
-<div class="before-after-card reveal reveal-delay-2">
-<div class="ba-section before">
-<div class="ba-label">Before Zamify</div>
-<div class="ba-content">Generic templates, low engagement, inconsistent branding.</div>
-</div>
-<div class="ba-section after">
-<div class="ba-label">After Zamify</div>
-<div class="ba-content" style="font-weight: 600;">Custom AI-generated assets, highly engaging viral hooks, premium identity.</div>
-</div>
-</div>
-<h2 class="reveal" style="text-align: center; margin-top: 80px; margin-bottom: 16px;">Creative Portfolio Gallery</h2>
-<div class="masonry-gallery reveal reveal-delay-2">
-<div class="masonry-item">
-<img alt="Creative Mockup 1" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Brand Identity Design</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 2" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">AI Generated Campaign</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 3" src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Product Visualization</div>
-</div>
-</div>
-</div>
-</section>
-<!-- WHAT'S INCLUDED CHECKLIST -->
-<section class="tech-stack-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Technology &amp; Tools</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">We leverage industry-leading software to deliver world-class results.</p>
-<div class="tech-stack-grid reveal reveal-delay-2">
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-pen-nib"></i></div>
-<div class="tech-name">Jasper/Copy.ai</div>
-<div class="tech-desc">AI-assisted copywriting</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-camera"></i></div>
-<div class="tech-name">Midjourney</div>
-<div class="tech-desc">AI image generation</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-video-camera"></i></div>
-<div class="tech-name">Premiere Pro</div>
-<div class="tech-desc">Professional video editing</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-framer-logo"></i></div>
-<div class="tech-name">Canva Enterprise</div>
-<div class="tech-desc">Rapid graphic design</div>
-</div>
-</div>
-</div>
-</section>
-<section class="process-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Our Process</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">A proven framework for consistent success.</p>
-<div class="process-timeline reveal reveal-delay-2">
-<div class="process-step">
-<div class="process-number">1</div>
-<div class="process-content">
-<h4>Brand Voice Sync</h4>
-<p>Establishing your tone, visual style guidelines, and core messaging pillars.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">2</div>
-<div class="process-content">
-<h4>Content Calendar</h4>
-<p>Mapping out a 30-day strategy across blogs, social media, and email newsletters.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">3</div>
-<div class="process-content">
-<h4>Production</h4>
-<p>Writing copy, designing graphics, and editing video assets in high-volume batches.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">4</div>
-<div class="process-content">
-<h4>Review &amp; Scheduling</h4>
-<p>Client approval rounds followed by automated scheduling across all platforms.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="section" style="background: var(--color-bg-subtle);">
-<div class="container">
-<h2 class="reveal" style="font-size: clamp(2rem, 3vw, 2.5rem);">Built-in by Default</h2>
-<p class="section-subtitle reveal reveal-delay-1">The critical features other agencies charge extra for, we include as standard.</p>
-<div class="checklist-grid reveal reveal-delay-2">
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Content Strategy Development</h4>
-<p>Mapping out content pillars based on audience intent.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Subject Matter Expert Interviews</h4>
-<p>Extracting unique insights from your team for original content.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Content Repurposing</h4>
-<p>Turning one long-form article into a month of social posts.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Editorial Calendars</h4>
-<p>Consistent, reliable publishing schedules.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Tone of Voice Guidelines</h4>
-<p>Ensuring a unified brand personality across all writers.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Performance Tracking</h4>
-<p>Measuring content success via traffic, time-on-page, and leads.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- PROCESS TIMELINE -->
-<section class="section" style="background: var(--color-bg);">
-<div class="container">
-<h2 class="reveal" style="text-align: center;">How We Work</h2>
-<div class="process-timeline reveal reveal-delay-1">
-<div class="process-step">
-<div class="process-step__num">Phase 1</div>
-<h3>Discovery &amp; Strategy</h3>
-<p>We analyze your market, competitors, and technical requirements to architect the perfect solution.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 2</div>
-<h3>UX/UI Design</h3>
-<p>We design high-fidelity wireframes and interactive prototypes in Figma for your approval.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 3</div>
-<h3>Engineering</h3>
-<p>Our developers bring the designs to life using clean, scalable, and secure code architectures.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 4</div>
-<h3>Launch &amp; Scale</h3>
-<p>After rigorous QA testing, we deploy the site, integrate analytics, and train your team.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- CASE STUDY TEASERS -->
-<!-- TECH STACK MARQUEE -->
-<section class="section" style="padding: var(--space-12) 0; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
-<div class="container">
-<p style="text-align: center; color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 13px; margin-bottom: var(--space-8);">Powered by Modern Technology</p>
-</div>
-<div class="tech-marquee-wrapper reveal">
-<div class="tech-marquee">
-<!-- Duplicated for seamless loop -->
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
+<h2 class="reveal" style="text-align: center; font-family: 'Playfair Display', serif; color: var(--color-text); margin-bottom: 16px;">Our Content Standards</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px; color: var(--color-text-secondary);">The non-negotiable benchmarks for everything we publish.</p>
+<div class="standards-grid reveal reveal-delay-2">
+  <div class="standard-card">
+    <h3>Zero Plagiarism</h3>
+    <p>Every article passes through strict Copyscape and originality checks. We guarantee 100% unique, bespoke content.</p>
+  </div>
+  <div class="standard-card">
+    <h3>Human-in-the-Loop</h3>
+    <p>While we leverage AI for research and outlining, all final drafting and editing is performed by expert human writers.</p>
+  </div>
+  <div class="standard-card">
+    <h3>High Readability</h3>
+    <p>We score every piece on the Flesch-Kincaid scale to ensure it is accessible, engaging, and devoid of unnecessary jargon.</p>
+  </div>
+  <div class="standard-card">
+    <h3>Semantic SEO</h3>
+    <p>We don't keyword stuff. We use natural language processing (NLP) to ensure semantic relevance for Google's Helpful Content update.</p>
+  </div>
 </div>
 </div>
 </section>

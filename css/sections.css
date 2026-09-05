@@ -1932,3 +1932,15 @@
   .hero-mesh { padding: var(--space-8) 0 var(--space-6) 0; }
 }
 
+
+/* Dark Theme Specific Overrides */
+[data-theme='dark'] .hero__trust-badge {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.1);
+  color: var(--color-text);
+}
+
+[data-theme='dark'] .brands-showcase__logo-item img {
+  filter: brightness(0) invert(1);
+  opacity: 0.8;
+}

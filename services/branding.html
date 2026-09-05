@@ -25,7 +25,177 @@
 <link href="../css/base.css?v=6" rel="stylesheet"/>
 <link href="../css/components.css?v=6" rel="stylesheet"/>
 <link href="../css/sections.css?v=6" rel="stylesheet"/>
-<link href="../css/responsive.css?v=6" rel="stylesheet"/></head>
+<link href="../css/responsive.css?v=6" rel="stylesheet"/>
+<style>
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Branding Specific Styles */
+  .ad-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .brand-mockup {
+    background: #FAFAFA;
+    border-radius: 24px;
+    border: 1px solid rgba(0,0,0,0.05);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.15);
+    padding: 24px;
+    position: relative;
+    max-width: 100%;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    grid-template-rows: auto 1fr;
+    gap: 16px;
+    height: 480px;
+  }
+
+  .brand-mockup::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #F59E0B, #EC4899, #8B5CF6);
+    border-radius: 26px;
+    z-index: -1;
+    opacity: 0.3;
+    filter: blur(10px);
+  }
+
+  .brand-logo-showcase {
+    grid-column: span 2;
+    background: #0F172A;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    padding: 40px;
+    color: #FFF;
+    font-size: 32px;
+    font-weight: 700;
+    font-family: var(--font-display);
+    letter-spacing: -0.05em;
+  }
+  
+  .brand-color-palette {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    background: var(--color-bg-card);
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.05);
+  }
+  
+  .color-swatch {
+    height: 32px;
+    border-radius: 8px;
+    display: flex;
+    align-items: center;
+    padding: 0 12px;
+    font-size: 10px;
+    font-family: monospace;
+    color: rgba(255,255,255,0.9);
+    font-weight: 600;
+  }
+  
+  .brand-typography {
+    background: var(--color-bg-card);
+    padding: 16px;
+    border-radius: 16px;
+    border: 1px solid rgba(0,0,0,0.05);
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+  
+  .type-sample {
+    border-bottom: 1px solid rgba(0,0,0,0.05);
+    padding-bottom: 8px;
+  }
+  
+  .type-label {
+    font-size: 10px;
+    color: #94A3B8;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+    margin-bottom: 4px;
+  }
+  
+  .type-preview {
+    color: #0F172A;
+  }
+
+  .lifecycle-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  .lifecycle-timeline::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #EC4899, transparent);
+  }
+  .lifecycle-item {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .lifecycle-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-bg-card);
+    border: 2px solid #EC4899;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #EC4899;
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(236, 72, 153, 0.15);
+  }
+  .lifecycle-content {
+    padding-top: 12px;
+  }
+  
+  .marketing-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .marketing-stack-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  .marketing-stack-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 991px) {
+    .ad-hero-grid { grid-template-columns: 1fr; }
+    .lifecycle-timeline::before { left: 24px; }
+    .lifecycle-icon { width: 48px; height: 48px; font-size: 20px; }
+  }
+</style>
+</head>
 <body><div class="animated-bg"></div>
 <!-- NAVIGATION -->
 <nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
@@ -44,7 +214,10 @@
 <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
         Get a Free Strategy Call <span class="btn__arrow">→</span>
 </a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
+<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="ph-bold ph-moon"></i>
+      </button>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
 <span></span><span></span><span></span>
 </button>
 </div>
@@ -62,292 +235,154 @@
     </div>
   </nav>
 <main>
-<!-- ULTRA PREMIUM HERO -->
 <section class="hero-mesh" style="padding-top: clamp(110px, 12vh, 140px); padding-bottom: 60px;">
-<div class="container" style="text-align: center; max-width: 900px;">
-<div class="reveal theme-create" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--color-text); font-weight: 500; font-size: 13px; margin: 0 auto 20px auto; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-<span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);"></span>
-          Zamify Brand Identity
-        </div>
-<h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
-          Iconic brands that <br/>
-<span class="shimmer" style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">leave a lasting mark.</span>
-</h1>
-<p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto 32px auto; line-height: 1.5;">
-          We craft comprehensive brand identities, from logo design to visual guidelines, ensuring your business stands out.
-        </p>
-<div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-<a class="btn btn--primary btn--lg" href="../pages/contact.html" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
-            Start a Project <span class="btn__arrow">→</span>
-</a>
-<a class="btn btn--secondary btn--lg" href="../pages/work.html" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-            View Our Work
-          </a>
-</div>
-<div class="trust-badges reveal reveal-delay-4">
-<div class="trust-badge-item">
-<i class="ph-fill ph-check-circle"></i> 50+ Projects Delivered
-          </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-lightning"></i> Sub-second Load Times
-          </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-magnifying-glass"></i> Built for SEO
-          </div>
-</div>
-</div>
-</section>
-<!-- PREMIUM GLASS BENTO GRID -->
-<section class="section" style="background: var(--color-bg); position: relative; z-index: 2;">
 <div class="container">
-<h2 class="reveal shimmer" style="font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: -0.02em; margin-bottom: var(--space-4);">Engineering Excellence</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="margin-bottom: var(--space-12); max-width: 600px;">We don't use generic templates. Every line of code and every pixel is crafted to give your business an unfair advantage.</p>
-<div class="premium-bento-grid">
-<div class="premium-glass-card premium-glass-card--large reveal reveal-delay-1">
-<div class="premium-icon-wrapper" style="color: var(--color-accent);">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-bezier-curve"></i>
+  <div class="ad-hero-grid">
+    <div class="hero-text" style="text-align: left;">
+      <div class="reveal theme-create" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--color-text); font-weight: 500; font-size: 13px; margin-bottom: 20px; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+      <span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #EC4899; box-shadow: 0 0 12px rgba(236, 72, 153, 0.8);"></span>
+                Zamify Brand Identity
+              </div>
+      <h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
+                Iconic brands that <br/>
+      <span class="shimmer" style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">leave a lasting mark.</span>
+      </h1>
+      <p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 500px; margin-bottom: 32px; line-height: 1.5;">
+                We craft comprehensive brand identities, from logo design to visual guidelines, ensuring your business stands out and builds absolute trust in your market.
+              </p>
+      <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <a class="btn btn--primary btn--lg" href="../pages/contact.html" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
+                  Start a Project <span class="btn__arrow">→</span>
+      </a>
+      <a class="btn btn--secondary btn--lg" href="../pages/work.html" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+                  View Our Work
+                </a>
+      </div>
+      <div class="trust-badges reveal reveal-delay-4" style="justify-content: flex-start; margin-top: 32px;">
+      <div class="trust-badge-item">
+      <i class="ph-fill ph-bezier-curve"></i> Comprehensive Guidelines
+                </div>
+      <div class="trust-badge-item">
+      <i class="ph-fill ph-swatches"></i> Strategic Positioning
+                </div>
+      </div>
+    </div>
+    
+    <div class="hero-visual reveal reveal-delay-4">
+      <div class="brand-mockup">
+        <div class="brand-logo-showcase">
+          <div style="display: flex; align-items: center; gap: 12px;">
+            <div style="width: 48px; height: 48px; background: #EC4899; border-radius: 12px; display: flex; align-items: center; justify-content: center;">
+              <div style="width: 24px; height: 24px; border: 3px solid #FFF; border-radius: 50%;"></div>
+            </div>
+            Oculus
+          </div>
+        </div>
+        
+        <div class="brand-color-palette">
+          <div class="type-label">Primary Palette</div>
+          <div class="color-swatch" style="background: #0F172A;">#0F172A</div>
+          <div class="color-swatch" style="background: #EC4899;">#EC4899</div>
+          <div class="color-swatch" style="background: #8B5CF6;">#8B5CF6</div>
+          <div class="color-swatch" style="background: #F1F5F9; color: #0F172A; border: 1px solid #E2E8F0;">#F1F5F9</div>
+        </div>
+        
+        <div class="brand-typography">
+          <div class="type-sample">
+            <div class="type-label">Display (Outfit)</div>
+            <div class="type-preview" style="font-family: var(--font-display); font-size: 24px; font-weight: 700; line-height: 1.1;">Aa Bb Cc</div>
+          </div>
+          <div class="type-sample">
+            <div class="type-label">Body (Inter)</div>
+            <div class="type-preview" style="font-family: var(--font-body); font-size: 16px; font-weight: 400; line-height: 1.5;">Aa Bb Cc Dd Ee Ff Gg</div>
+          </div>
+          <div>
+            <div class="type-label">Iconography</div>
+            <div style="display: flex; gap: 12px; margin-top: 8px; color: #0F172A; font-size: 20px;">
+              <i class="ph-duotone ph-rocket"></i>
+              <i class="ph-duotone ph-lightning"></i>
+              <i class="ph-duotone ph-cube"></i>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
-<h3>Logo &amp; Visual Identity</h3>
-<p>Designing memorable, timeless logos and comprehensive visual systems that instantly communicate your market positioning.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-2">
-<div class="premium-icon-wrapper" style="color: #10b981;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-text-aa"></i>
-</div>
-<h3>Typography &amp; Color</h3>
-<p>Curating strategic color palettes and typography scales that evoke the right psychological response from your audience.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-3">
-<div class="premium-icon-wrapper" style="color: #f59e0b;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-book-bookmark"></i>
-</div>
-<h3>Brand Guidelines</h3>
-<p>Creating exhaustive brand books that ensure consistency across every internal department and external agency.</p>
-</div>
-<div class="premium-glass-card premium-glass-card--wide reveal reveal-delay-4">
-<div class="premium-icon-wrapper" style="color: #ec4899;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-megaphone"></i>
-</div>
-<h3>Brand Strategy &amp; Voice</h3>
-<p>Defining your core mission, vision, values, and the unique tone of voice that differentiates you from competitors.</p>
-</div>
+</section>
+
+<!-- BRANDING LIFECYCLE -->
+<section class="section" style="background: #FAFAFA;">
+<div class="container">
+<h2 class="reveal shimmer" style="text-align: center; color: #0F172A; margin-bottom: 16px;">Our Branding Process</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px;">How we engineer brands that capture attention and build absolute trust.</p>
+<div class="lifecycle-timeline">
+  <div class="lifecycle-item reveal">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-compass"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: #0F172A; font-size: 24px; margin-bottom: 12px;">1. Discovery &amp; Strategy</h3>
+      <p style="color: #475569; font-size: 16px; line-height: 1.6;">We define your core mission, target audience, brand archetype, and positioning to find your unique white space in the market.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-1">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-palette"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: #0F172A; font-size: 24px; margin-bottom: 12px;">2. Visual Exploration</h3>
+      <p style="color: #475569; font-size: 16px; line-height: 1.6;">Creating targeted mood boards and exploring multiple logo concepts to nail the perfect aesthetic direction that resonates with your audience.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-2">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-bezier-curve"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: #0F172A; font-size: 24px; margin-bottom: 12px;">3. System Design</h3>
+      <p style="color: #475569; font-size: 16px; line-height: 1.6;">Fleshing out the chosen concept into a robust visual system: selecting typography scales, defining psychological color palettes, and creating supporting graphic elements.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-3">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-book-open"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: #0F172A; font-size: 24px; margin-bottom: 12px;">4. Delivery &amp; Guidelines</h3>
+      <p style="color: #475569; font-size: 16px; line-height: 1.6;">Providing a comprehensive brand book and a massive folder of all logo variations and social kits, ensuring absolute consistency across every touchpoint.</p>
+    </div>
+  </div>
 </div>
 </div>
 </section>
+
+<!-- TECH STACK -->
 <section class="section">
 <div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Visual Transformation</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">See the tangible difference our creative engine brings to a brand's aesthetic.</p>
-<div class="before-after-card reveal reveal-delay-2">
-<div class="ba-section before">
-<div class="ba-label">Before Zamify</div>
-<div class="ba-content">Generic templates, low engagement, inconsistent branding.</div>
-</div>
-<div class="ba-section after">
-<div class="ba-label">After Zamify</div>
-<div class="ba-content" style="font-weight: 600;">Custom AI-generated assets, highly engaging viral hooks, premium identity.</div>
-</div>
-</div>
-<h2 class="reveal" style="text-align: center; margin-top: 80px; margin-bottom: 16px;">Creative Portfolio Gallery</h2>
-<div class="masonry-gallery reveal reveal-delay-2">
-<div class="masonry-item">
-<img alt="Creative Mockup 1" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Brand Identity Design</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 2" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">AI Generated Campaign</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 3" src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Product Visualization</div>
-</div>
+<h2 class="reveal shimmer" style="text-align: center; color: #0F172A; margin-bottom: 16px;">Design Arsenal</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px;">The tools we use to craft pixel-perfect identities.</p>
+<div class="marketing-stack-grid reveal reveal-delay-2">
+  <div class="marketing-stack-card">
+    <i class="ph-fill ph-bezier-curve" style="font-size: 48px; color: #FF9A00; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: #0F172A;">Adobe Illustrator</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-fill ph-paint-brush" style="font-size: 48px; color: #F24E1E; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: #0F172A;">Figma</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-duotone ph-text-t" style="font-size: 48px; color: #3B82F6; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: #0F172A;">Custom Typography</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-duotone ph-swatches" style="font-size: 48px; color: #EC4899; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: #0F172A;">Color Theory</h3>
+  </div>
 </div>
 </div>
 </section>
-<!-- WHAT'S INCLUDED CHECKLIST -->
-<section class="tech-stack-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Technology &amp; Tools</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">We leverage industry-leading software to deliver world-class results.</p>
-<div class="tech-stack-grid reveal reveal-delay-2">
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-bezier-curve"></i></div>
-<div class="tech-name">Adobe Illustrator</div>
-<div class="tech-desc">Vector logo design</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-swatches"></i></div>
-<div class="tech-name">Color Theory</div>
-<div class="tech-desc">Psychological palette selection</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-text-t"></i></div>
-<div class="tech-name">Typography</div>
-<div class="tech-desc">Custom font curation</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-book-open"></i></div>
-<div class="tech-name">Brand Guidelines</div>
-<div class="tech-desc">Comprehensive rulebooks</div>
-</div>
-</div>
-</div>
-</section>
-<section class="process-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Our Process</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">A proven framework for consistent success.</p>
-<div class="process-timeline reveal reveal-delay-2">
-<div class="process-step">
-<div class="process-number">1</div>
-<div class="process-content">
-<h4>Brand Strategy</h4>
-<p>Defining your mission, target audience, brand archetype, and positioning in the market.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">2</div>
-<div class="process-content">
-<h4>Visual Exploration</h4>
-<p>Creating mood boards and multiple logo concepts to find the perfect visual direction.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">3</div>
-<div class="process-content">
-<h4>System Design</h4>
-<p>Fleshing out the chosen concept with colors, typography, and supporting graphic elements.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">4</div>
-<div class="process-content">
-<h4>Asset Delivery</h4>
-<p>Providing a massive folder of all logo variations, social kits, and a PDF brand guideline book.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="section" style="background: var(--color-bg-subtle);">
-<div class="container">
-<h2 class="reveal" style="font-size: clamp(2rem, 3vw, 2.5rem);">Built-in by Default</h2>
-<p class="section-subtitle reveal reveal-delay-1">The critical features other agencies charge extra for, we include as standard.</p>
-<div class="checklist-grid reveal reveal-delay-2">
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Market Positioning</h4>
-<p>Finding your unique white space in the industry.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Target Audience Personas</h4>
-<p>Deep psychological profiling of your ideal customers.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Marketing Collateral</h4>
-<p>Designing business cards, letterheads, and presentation decks.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Social Media Templates</h4>
-<p>Ready-to-use Canva or Figma templates for your feed.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Brand Naming</h4>
-<p>Developing catchy, available, and legally protectable names.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Packaging Design</h4>
-<p>Creating premium unboxing experiences for physical products.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- PROCESS TIMELINE -->
-<section class="section" style="background: var(--color-bg);">
-<div class="container">
-<h2 class="reveal" style="text-align: center;">How We Work</h2>
-<div class="process-timeline reveal reveal-delay-1">
-<div class="process-step">
-<div class="process-step__num">Phase 1</div>
-<h3>Discovery &amp; Strategy</h3>
-<p>We analyze your market, competitors, and technical requirements to architect the perfect solution.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 2</div>
-<h3>UX/UI Design</h3>
-<p>We design high-fidelity wireframes and interactive prototypes in Figma for your approval.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 3</div>
-<h3>Engineering</h3>
-<p>Our developers bring the designs to life using clean, scalable, and secure code architectures.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 4</div>
-<h3>Launch &amp; Scale</h3>
-<p>After rigorous QA testing, we deploy the site, integrate analytics, and train your team.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- CASE STUDY TEASERS -->
-<!-- TECH STACK MARQUEE -->
-<section class="section" style="padding: var(--space-12) 0; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
-<div class="container">
-<p style="text-align: center; color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 13px; margin-bottom: var(--space-8);">Powered by Modern Technology</p>
-</div>
-<div class="tech-marquee-wrapper reveal">
-<div class="tech-marquee">
-<!-- Duplicated for seamless loop -->
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
-</div>
-</div>
-</section>
+
 <!-- FINAL CTA -->
 <section class="section final-cta" id="contact">
 <div class="container">
-<h2 class="reveal">Ready to build something extraordinary?</h2>
-<p class="section-subtitle reveal reveal-delay-1">Let's talk about your project and how we can bring it to life.</p>
+<h2 class="reveal">Ready to build an iconic brand?</h2>
+<p class="section-subtitle reveal reveal-delay-1">Let's talk about your vision and how we can bring it to life.</p>
 <div class="final-cta__actions reveal reveal-delay-2">
 <a class="btn btn--primary btn--lg" href="../pages/contact.html">
-            Request a Proposal
+            Start Your Journey
           </a>
 </div>
 <p class="final-cta__note reveal reveal-delay-3">No pressure. No hard sell. Just a conversation.</p>

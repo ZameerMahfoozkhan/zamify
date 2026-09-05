@@ -25,7 +25,165 @@
 <link href="../css/base.css?v=6" rel="stylesheet"/>
 <link href="../css/components.css?v=6" rel="stylesheet"/>
 <link href="../css/sections.css?v=6" rel="stylesheet"/>
-<link href="../css/responsive.css?v=6" rel="stylesheet"/></head>
+<link href="../css/responsive.css?v=6" rel="stylesheet"/>
+<style>
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* Automation Specific Styles */
+  .ad-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .workflow-mockup {
+    background: #0F172A;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    padding: 24px;
+    position: relative;
+    max-width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .workflow-mockup::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #10B981, #3B82F6, #8B5CF6);
+    border-radius: 26px;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(10px);
+  }
+
+  .workflow-node {
+    background: rgba(255,255,255,0.05);
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    align-items: center;
+    gap: 16px;
+  }
+  
+  .node-icon {
+    width: 48px;
+    height: 48px;
+    border-radius: 12px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 24px;
+  }
+  
+  .node-content {
+    flex: 1;
+  }
+  
+  .node-title {
+    color: #FFF;
+    font-size: 16px;
+    font-weight: 600;
+  }
+  
+  .node-desc {
+    color: #94A3B8;
+    font-size: 13px;
+  }
+  
+  .workflow-connector {
+    width: 2px;
+    height: 24px;
+    background: linear-gradient(to bottom, #10B981, transparent);
+    margin: 0 auto;
+    position: relative;
+  }
+  .workflow-connector::after {
+    content: '';
+    position: absolute;
+    bottom: -4px;
+    left: -4px;
+    width: 10px;
+    height: 10px;
+    border-left: 2px solid #10B981;
+    border-bottom: 2px solid #10B981;
+    transform: rotate(-45deg);
+  }
+
+  .lifecycle-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  .lifecycle-timeline::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #10B981, transparent);
+  }
+  .lifecycle-item {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .lifecycle-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-bg-card);
+    border: 2px solid #10B981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #10B981;
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.15);
+  }
+  .lifecycle-content {
+    padding-top: 12px;
+  }
+  
+  .marketing-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .marketing-stack-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  .marketing-stack-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 991px) {
+    .ad-hero-grid { grid-template-columns: 1fr; }
+    .lifecycle-timeline::before { left: 24px; }
+    .lifecycle-icon { width: 48px; height: 48px; font-size: 20px; }
+  }
+</style>
+</head>
 <body><div class="animated-bg"></div>
 <!-- NAVIGATION -->
 <nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
@@ -44,7 +202,10 @@
 <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
         Get a Free Strategy Call <span class="btn__arrow">→</span>
 </a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
+<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="ph-bold ph-moon"></i>
+      </button>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
 <span></span><span></span><span></span>
 </button>
 </div>
@@ -62,315 +223,174 @@
     </div>
   </nav>
 <main>
-<!-- ULTRA PREMIUM HERO -->
 <section class="hero-mesh" style="padding-top: clamp(110px, 12vh, 140px); padding-bottom: 60px;">
-<div class="container" style="text-align: center; max-width: 900px;">
-<div class="reveal theme-create" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--color-text); font-weight: 500; font-size: 13px; margin: 0 auto 20px auto; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-<span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);"></span>
-          Zamify AI Systems
-        </div>
-<h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
-          Scale operations with <br/>
-<span class="shimmer" style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">intelligent automation.</span>
-</h1>
-<p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto 32px auto; line-height: 1.5;">
-          We build custom AI automation systems that streamline your workflows, save hundreds of hours, and reduce costs.
-        </p>
-<div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-<a class="btn btn--primary btn--lg" href="../pages/contact.html" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
-            Start a Project <span class="btn__arrow">→</span>
-</a>
-<a class="btn btn--secondary btn--lg" href="../pages/work.html" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-            View Our Work
-          </a>
-</div>
-<div class="trust-badges reveal reveal-delay-4">
-<div class="trust-badge-item">
-<i class="ph-fill ph-check-circle"></i> 50+ Projects Delivered
-          </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-lightning"></i> Sub-second Load Times
-          </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-magnifying-glass"></i> Built for SEO
-          </div>
-</div>
-</div>
-</section>
-<section class="section" style="padding-top: 0;">
 <div class="container">
-<div class="mockup-container reveal">
-<div class="mockup-header">
-<div class="mockup-dots">
-<div class="mockup-dot red"></div><div class="mockup-dot yellow"></div><div class="mockup-dot green"></div>
-</div>
-<div class="mockup-title">Zamify AI Assistant</div>
-</div>
-<div class="mockup-body mockup-chat">
-<div class="chat-bubble chat-user">
-          Hi! Can you help me integrate a new API endpoint?
+  <div class="ad-hero-grid">
+    <div class="hero-text" style="text-align: left;">
+      <div class="reveal theme-create" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--color-text); font-weight: 500; font-size: 13px; margin-bottom: 20px; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+      <span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);"></span>
+                Zamify AI Systems
+              </div>
+      <h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
+                Scale operations with <br/>
+      <span class="shimmer" style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">intelligent automation.</span>
+      </h1>
+      <p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 500px; margin-bottom: 32px; line-height: 1.5;">
+                We build custom AI automation systems that streamline your workflows, save hundreds of hours, and reduce costs.
+              </p>
+      <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <a class="btn btn--primary btn--lg" href="../pages/contact.html" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
+                  Start a Project <span class="btn__arrow">→</span>
+      </a>
+      <a class="btn btn--secondary btn--lg" href="../pages/work.html" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+                  View Our Work
+                </a>
+      </div>
+      <div class="trust-badges reveal reveal-delay-4" style="justify-content: flex-start; margin-top: 32px;">
+      <div class="trust-badge-item">
+      <i class="ph-fill ph-check-circle"></i> 50+ Automations Built
+                </div>
+      <div class="trust-badge-item">
+      <i class="ph-fill ph-clock"></i> 1,000+ Hours Saved
+                </div>
+      </div>
+    </div>
+    
+    <div class="hero-visual reveal reveal-delay-4">
+      <div class="workflow-mockup">
+        <div class="dash-header" style="display: flex; justify-content: space-between; align-items: center; padding-bottom: 16px; border-bottom: 1px solid rgba(255,255,255,0.1);">
+          <div style="color: #FFF; font-weight: 600; font-family: var(--font-display);">Lead Processing Flow</div>
+          <div style="display: flex; gap: 8px;">
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #EF4444;"></span>
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #F59E0B;"></span>
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #10B981;"></span>
+          </div>
         </div>
-<div class="chat-bubble chat-ai">
-          Of course! I've analyzed your database schema. Here is the exact Python code to securely integrate that endpoint, complete with error handling.
+        
+        <div class="workflow-node">
+          <div class="node-icon" style="background: #E0E7FF; color: #4338CA;">
+            <i class="ph-bold ph-envelope-simple"></i>
+          </div>
+          <div class="node-content">
+            <div class="node-title">New Lead Received</div>
+            <div class="node-desc">Triggered via Webform</div>
+          </div>
         </div>
-<div class="chat-bubble chat-ai chat-ai-typing">
-<div class="chat-dot"></div><div class="chat-dot"></div><div class="chat-dot"></div>
-</div>
-</div>
-</div>
+        
+        <div class="workflow-connector"></div>
+        
+        <div class="workflow-node">
+          <div class="node-icon" style="background: #DCFCE7; color: #15803D;">
+            <i class="ph-bold ph-robot"></i>
+          </div>
+          <div class="node-content">
+            <div class="node-title">AI Qualification</div>
+            <div class="node-desc">GPT-4 analyzes lead data</div>
+          </div>
+        </div>
+        
+        <div class="workflow-connector"></div>
+        
+        <div class="workflow-node">
+          <div class="node-icon" style="background: #FEF3C7; color: #B45309;">
+            <i class="ph-bold ph-database"></i>
+          </div>
+          <div class="node-content">
+            <div class="node-title">Update CRM</div>
+            <div class="node-desc">HubSpot / Salesforce Sync</div>
+          </div>
+        </div>
+        
+        <div class="workflow-connector"></div>
+        
+        <div class="workflow-node" style="border-color: #10B981;">
+          <div class="node-icon" style="background: #10B981; color: #FFF;">
+            <i class="ph-bold ph-check"></i>
+          </div>
+          <div class="node-content">
+            <div class="node-title">Send Calendar Link</div>
+            <div class="node-desc">Personalized outreach email sent</div>
+          </div>
+        </div>
+        
+      </div>
+    </div>
+  </div>
 </div>
 </section>
-<!-- PREMIUM GLASS BENTO GRID -->
-<section class="section" style="background: var(--color-bg); position: relative; z-index: 2;">
+
+<!-- AUTOMATION LIFECYCLE -->
+<section class="section" style="background: #FAFAFA;">
 <div class="container">
-<h2 class="reveal shimmer" style="font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: -0.02em; margin-bottom: var(--space-4);">Engineering Excellence</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="margin-bottom: var(--space-12); max-width: 600px;">We don't use generic templates. Every line of code and every pixel is crafted to give your business an unfair advantage.</p>
-<div class="premium-bento-grid">
-<div class="premium-glass-card premium-glass-card--large reveal reveal-delay-1">
-<div class="premium-icon-wrapper" style="color: var(--color-accent);">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-git-branch"></i>
-</div>
-<h3>Workflow Integration</h3>
-<p>Connecting your disparate software tools via Zapier/Make to eliminate manual data entry and streamline operations.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-2">
-<div class="premium-icon-wrapper" style="color: #10b981;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-envelope"></i>
-</div>
-<h3>Automated Outreach</h3>
-<p>Building AI systems that research prospects, draft hyper-personalized emails, and manage follow-ups entirely on autopilot.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-3">
-<div class="premium-icon-wrapper" style="color: #f59e0b;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-database"></i>
-</div>
-<h3>Data Processing</h3>
-<p>Using AI to automatically extract, categorize, and analyze data from invoices, forms, and emails instantly.</p>
-</div>
-<div class="premium-glass-card premium-glass-card--wide reveal reveal-delay-4">
-<div class="premium-icon-wrapper" style="color: #ec4899;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-clock"></i>
-</div>
-<h3>Time Reclamation</h3>
-<p>Identifying repetitive bottlenecks in your business and replacing them with robust, error-free automated scripts.</p>
-</div>
+<h2 class="reveal shimmer" style="text-align: center; color: #0F172A; margin-bottom: 16px;">The Implementation Process</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px;">How we turn manual bottlenecks into autonomous systems.</p>
+<div class="lifecycle-timeline">
+  <div class="lifecycle-item reveal">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-magnifying-glass"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: #0F172A; font-size: 24px; margin-bottom: 12px;">1. Workflow Audit</h3>
+      <p style="color: #475569; font-size: 16px; line-height: 1.6;">Mapping out your current manual processes to identify the highest-ROI automation targets across your operations.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-1">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-bezier-curve"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: #0F172A; font-size: 24px; margin-bottom: 12px;">2. Architecture Design</h3>
+      <p style="color: #475569; font-size: 16px; line-height: 1.6;">Drafting the precise data flow between your CRM, email, billing, and operational software to ensure seamless integration.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-2">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-code"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: #0F172A; font-size: 24px; margin-bottom: 12px;">3. Scripting &amp; Assembly</h3>
+      <p style="color: #475569; font-size: 16px; line-height: 1.6;">Building the integration logic via Zapier, Make, or custom Python scripts, complete with robust error handling.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-3">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-shield-check"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: #0F172A; font-size: 24px; margin-bottom: 12px;">4. Testing &amp; Deployment</h3>
+      <p style="color: #475569; font-size: 16px; line-height: 1.6;">Running extensive edge-case scenarios to guarantee bulletproof reliability before migrating the system to your live environment.</p>
+    </div>
+  </div>
 </div>
 </div>
 </section>
+
+<!-- AUTOMATION STACK -->
 <section class="section">
 <div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Visual Transformation</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">See the tangible difference our creative engine brings to a brand's aesthetic.</p>
-<div class="before-after-card reveal reveal-delay-2">
-<div class="ba-section before">
-<div class="ba-label">Before Zamify</div>
-<div class="ba-content">Generic templates, low engagement, inconsistent branding.</div>
-</div>
-<div class="ba-section after">
-<div class="ba-label">After Zamify</div>
-<div class="ba-content" style="font-weight: 600;">Custom AI-generated assets, highly engaging viral hooks, premium identity.</div>
-</div>
-</div>
-<h2 class="reveal" style="text-align: center; margin-top: 80px; margin-bottom: 16px;">Creative Portfolio Gallery</h2>
-<div class="masonry-gallery reveal reveal-delay-2">
-<div class="masonry-item">
-<img alt="Creative Mockup 1" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Brand Identity Design</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 2" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">AI Generated Campaign</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 3" src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Product Visualization</div>
-</div>
+<h2 class="reveal shimmer" style="text-align: center; color: #0F172A; margin-bottom: 16px;">Technology &amp; Integrations</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px;">We connect the tools you already use.</p>
+<div class="marketing-stack-grid reveal reveal-delay-2">
+  <div class="marketing-stack-card">
+    <i class="ph-fill ph-plugs" style="font-size: 48px; color: #3B82F6; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: #0F172A;">Make / Integromat</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-fill ph-lightning" style="font-size: 48px; color: #F59E0B; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: #0F172A;">Zapier</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-fill ph-robot" style="font-size: 48px; color: #10B981; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: #0F172A;">OpenAI API</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-duotone ph-brackets-curly" style="font-size: 48px; color: #8B5CF6; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: #0F172A;">Custom Webhooks</h3>
+  </div>
 </div>
 </div>
 </section>
-<!-- WHAT'S INCLUDED CHECKLIST -->
-<section class="tech-stack-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Technology &amp; Tools</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">We leverage industry-leading software to deliver world-class results.</p>
-<div class="tech-stack-grid reveal reveal-delay-2">
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-plugs"></i></div>
-<div class="tech-name">Make/Integromat</div>
-<div class="tech-desc">Visual automation building</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-lightning"></i></div>
-<div class="tech-name">Zapier</div>
-<div class="tech-desc">App integration ecosystem</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-code"></i></div>
-<div class="tech-name">Custom Webhooks</div>
-<div class="tech-desc">Direct API connections</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-robot"></i></div>
-<div class="tech-name">AI Agents</div>
-<div class="tech-desc">Autonomous task execution</div>
-</div>
-</div>
-</div>
-</section>
-<section class="process-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Our Process</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">A proven framework for consistent success.</p>
-<div class="process-timeline reveal reveal-delay-2">
-<div class="process-step">
-<div class="process-number">1</div>
-<div class="process-content">
-<h4>Workflow Audit</h4>
-<p>Mapping out your current manual processes to identify the highest-ROI automation targets.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">2</div>
-<div class="process-content">
-<h4>Architecture Design</h4>
-<p>Drafting the data flow between your CRM, email, billing, and operational software.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">3</div>
-<div class="process-content">
-<h4>Scripting &amp; Assembly</h4>
-<p>Building the integration logic, writing custom scripts, and setting up error handling.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">4</div>
-<div class="process-content">
-<h4>Testing &amp; Handover</h4>
-<p>Running edge-case scenarios to ensure bulletproof reliability before going live.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="section" style="background: var(--color-bg-subtle);">
-<div class="container">
-<h2 class="reveal" style="font-size: clamp(2rem, 3vw, 2.5rem);">Built-in by Default</h2>
-<p class="section-subtitle reveal reveal-delay-1">The critical features other agencies charge extra for, we include as standard.</p>
-<div class="checklist-grid reveal reveal-delay-2">
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Process Auditing</h4>
-<p>Identifying the most inefficient bottlenecks in your business.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Custom GPT Development</h4>
-<p>Building internal AI assistants trained on your company SOPs.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>CRM Automation</h4>
-<p>Automatically updating deal stages and assigning tasks.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Social Media Automation</h4>
-<p>Setting up approvals and auto-publishing pipelines.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Onboarding Flows</h4>
-<p>Automating client or employee onboarding sequences.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Error Handling &amp; Logging</h4>
-<p>Ensuring automations are resilient and alert you to failures.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- PROCESS TIMELINE -->
-<section class="section" style="background: var(--color-bg);">
-<div class="container">
-<h2 class="reveal" style="text-align: center;">How We Work</h2>
-<div class="process-timeline reveal reveal-delay-1">
-<div class="process-step">
-<div class="process-step__num">Phase 1</div>
-<h3>Discovery &amp; Strategy</h3>
-<p>We analyze your market, competitors, and technical requirements to architect the perfect solution.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 2</div>
-<h3>UX/UI Design</h3>
-<p>We design high-fidelity wireframes and interactive prototypes in Figma for your approval.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 3</div>
-<h3>Engineering</h3>
-<p>Our developers bring the designs to life using clean, scalable, and secure code architectures.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 4</div>
-<h3>Launch &amp; Scale</h3>
-<p>After rigorous QA testing, we deploy the site, integrate analytics, and train your team.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- CASE STUDY TEASERS -->
-<!-- TECH STACK MARQUEE -->
-<section class="section" style="padding: var(--space-12) 0; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
-<div class="container">
-<p style="text-align: center; color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 13px; margin-bottom: var(--space-8);">Powered by Modern Technology</p>
-</div>
-<div class="tech-marquee-wrapper reveal">
-<div class="tech-marquee">
-<!-- Duplicated for seamless loop -->
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
-</div>
-</div>
-</section>
+
 <!-- FINAL CTA -->
 <section class="section final-cta" id="contact">
 <div class="container">
-<h2 class="reveal">Ready to build something extraordinary?</h2>
-<p class="section-subtitle reveal reveal-delay-1">Let's talk about your project and how we can bring it to life.</p>
+<h2 class="reveal">Ready to automate your operations?</h2>
+<p class="section-subtitle reveal reveal-delay-1">Let's build intelligent systems that scale your business effortlessly.</p>
 <div class="final-cta__actions reveal reveal-delay-2">
 <a class="btn btn--primary btn--lg" href="../pages/contact.html">
-            Request a Proposal
+            Request an Audit
           </a>
 </div>
 <p class="final-cta__note reveal reveal-delay-3">No pressure. No hard sell. Just a conversation.</p>

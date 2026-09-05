@@ -420,7 +420,6 @@
 .nav__inner {
   display: flex;
   align-items: center;
-  justify-content: space-between;
   max-width: var(--max-width-wide);
   margin: 0 auto;
   padding: 0 var(--container-px);
@@ -448,6 +447,8 @@
   display: flex;
   align-items: center;
   gap: var(--space-1);
+  margin-left: auto;
+  margin-right: auto;
 }
 
 .nav__link {
@@ -784,4 +785,41 @@
   font-size: var(--text-sm);
   color: var(--color-text-secondary);
   line-height: var(--leading-relaxed);
+}
+
+/* ── Theme Toggle ─────────────────────────────────────────────────────── */
+.theme-toggle {
+  background: transparent;
+  border: none;
+  color: var(--color-text);
+  font-size: var(--text-xl);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: 40px;
+  height: 40px;
+  border-radius: var(--radius-pill);
+  cursor: pointer;
+  transition: background-color var(--duration-fast) var(--ease-out-quart),
+              color var(--duration-fast) var(--ease-out-quart);
+  margin-right: var(--space-2);
+}
+
+.theme-toggle:hover {
+  background-color: var(--color-bg-muted);
+}
+
+/* Hide the moon icon when in dark mode, show sun */
+[data-theme="dark"] .theme-toggle .ph-moon {
+  display: none;
+}
+[data-theme="dark"] .theme-toggle::before {
+  content: '\e90a'; /* Check phosphor icons or we can toggle classes in JS */
+  /* We will just toggle the class in JS: ph-moon vs ph-sun */
+}
+
+/* Invert the logo in dark theme globally */
+[data-theme="dark"] .nav__logo img,
+[data-theme="dark"] .footer__logo img {
+  filter: brightness(0) invert(1);
 }

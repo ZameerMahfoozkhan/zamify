@@ -25,10 +25,266 @@
 <link href="../css/base.css?v=6" rel="stylesheet"/>
 <link href="../css/components.css?v=6" rel="stylesheet"/>
 <link href="../css/sections.css?v=6" rel="stylesheet"/>
-<link href="../css/responsive.css?v=6" rel="stylesheet"/></head>
-<body><div class="animated-bg"></div>
+<link href="../css/responsive.css?v=6" rel="stylesheet"/>
+<style>
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* AI Video Specific Styles */
+  .dark-hero-section {
+    background: #09090B;
+    color: #FAFAFA;
+    padding-top: clamp(120px, 15vh, 160px);
+    padding-bottom: 100px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .dark-hero-section::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 80vw;
+    height: 80vw;
+    background: radial-gradient(circle, rgba(139, 92, 246, 0.15) 0%, rgba(0,0,0,0) 70%);
+    border-radius: 50%;
+    z-index: 0;
+    pointer-events: none;
+  }
+
+  .video-editor-mockup {
+    margin: 60px auto 0 auto;
+    max-width: 1000px;
+    background: #18181B;
+    border: 1px solid rgba(255,255,255,0.1);
+    border-radius: 20px;
+    overflow: hidden;
+    box-shadow: 0 30px 60px -15px rgba(0,0,0,0.8);
+    position: relative;
+    z-index: 2;
+  }
+
+  .editor-header {
+    background: #09090B;
+    padding: 12px 20px;
+    display: flex;
+    gap: 8px;
+    border-bottom: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .editor-dot {
+    width: 12px;
+    height: 12px;
+    border-radius: 50%;
+    background: #3F3F46;
+  }
+
+  .editor-viewport {
+    aspect-ratio: 16/9;
+    background: linear-gradient(45deg, #18181B, #27272A);
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .play-button-glow {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: rgba(255,255,255,0.1);
+    backdrop-filter: blur(8px);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FFF;
+    font-size: 32px;
+    border: 1px solid rgba(255,255,255,0.2);
+    box-shadow: 0 0 40px rgba(139, 92, 246, 0.4);
+    transition: transform 0.3s ease;
+    cursor: pointer;
+  }
+  
+  .play-button-glow:hover {
+    transform: scale(1.1);
+    box-shadow: 0 0 60px rgba(139, 92, 246, 0.6);
+  }
+
+  .editor-timeline {
+    padding: 24px;
+    background: #18181B;
+    border-top: 1px solid rgba(255,255,255,0.05);
+  }
+
+  .timeline-track {
+    height: 32px;
+    background: rgba(255,255,255,0.03);
+    border-radius: 6px;
+    margin-bottom: 12px;
+    position: relative;
+    overflow: hidden;
+  }
+  
+  .timeline-clip {
+    position: absolute;
+    top: 2px;
+    bottom: 2px;
+    border-radius: 4px;
+    background: rgba(139, 92, 246, 0.2);
+    border: 1px solid rgba(139, 92, 246, 0.5);
+  }
+  
+  .timeline-clip.blue { background: rgba(59, 130, 246, 0.2); border-color: rgba(59, 130, 246, 0.5); }
+  .timeline-clip.green { background: rgba(16, 185, 129, 0.2); border-color: rgba(16, 185, 129, 0.5); }
+
+  /* Film Strip Layout */
+  .film-strip-container {
+    padding: 60px 0;
+  }
+
+  .film-frame {
+    display: flex;
+    align-items: center;
+    gap: 60px;
+    margin-bottom: 60px;
+  }
+  
+  .film-frame:nth-child(even) {
+    flex-direction: row-reverse;
+  }
+
+  .film-frame-visual {
+    flex: 1;
+    aspect-ratio: 16/9;
+    background: #09090B;
+    border-radius: 20px;
+    position: relative;
+    overflow: hidden;
+    border: 1px solid var(--color-border);
+    box-shadow: 0 20px 40px -10px rgba(0,0,0,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #FAFAFA;
+  }
+  
+  /* sprocket holes effect */
+  .film-frame-visual::before, .film-frame-visual::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 24px;
+    background-image: radial-gradient(circle at 12px 12px, transparent 6px, #000 7px);
+    background-size: 24px 24px;
+    background-position: center;
+    opacity: 0.8;
+  }
+  .film-frame-visual::before { top: 0; }
+  .film-frame-visual::after { bottom: 0; }
+  
+  .film-frame-content {
+    flex: 1;
+  }
+
+  @media (max-width: 768px) {
+    .film-frame, .film-frame:nth-child(even) {
+      flex-direction: column;
+      gap: 32px;
+      margin-bottom: 48px;
+    }
+  }
+
+  /* Additional Detailed Sections */
+  .studio-timeline {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  .studio-timeline-step {
+    background: rgba(255, 255, 255, 0.03);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+    border-radius: 16px;
+    padding: 32px;
+    display: flex;
+    gap: 24px;
+    align-items: flex-start;
+    transition: background 0.3s ease;
+  }
+  .studio-timeline-step:hover {
+    background: rgba(255, 255, 255, 0.05);
+    border-color: rgba(167, 139, 250, 0.3);
+  }
+  .studio-step-num {
+    font-family: var(--font-display);
+    font-size: 48px;
+    line-height: 1;
+    color: transparent;
+    -webkit-text-stroke: 1px rgba(255,255,255,0.2);
+  }
+  .studio-timeline-step:hover .studio-step-num {
+    -webkit-text-stroke: 1px #A78BFA;
+    color: rgba(167, 139, 250, 0.1);
+  }
+  .studio-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+    gap: 24px;
+    margin-top: 48px;
+  }
+  .studio-feature-card {
+    background: #18181B;
+    border: 1px solid rgba(255,255,255,0.05);
+    padding: 40px 32px;
+    border-radius: 20px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+  }
+  .studio-feature-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 2px;
+    background: linear-gradient(90deg, transparent, #A78BFA, transparent);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+  }
+  .studio-feature-card:hover::before {
+    opacity: 1;
+  }
+  .studio-feature-icon {
+    font-size: 40px;
+    color: #A78BFA;
+    margin-bottom: 24px;
+  }
+  
+  /* Dark Nav Overrides for Hero Section */
+  .nav--dark:not(.is-scrolled):not(.is-menu-open) .nav__logo img {
+    filter: invert(1) brightness(100);
+  }
+  .nav--dark:not(.is-scrolled):not(.is-menu-open) .nav__link {
+    color: rgba(255, 255, 255, 0.8);
+  }
+  .nav--dark:not(.is-scrolled):not(.is-menu-open) .nav__link:hover {
+    color: #FFF;
+    background: rgba(255, 255, 255, 0.1);
+  }
+  .nav--dark:not(.is-scrolled):not(.is-menu-open) .nav__toggle span {
+    background-color: var(--color-bg-card);
+  }
+</style>
+</head>
+<body style="background: var(--color-bg-subtle);">
 <!-- NAVIGATION -->
-<nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
+<nav aria-label="Main navigation" class="nav nav--dark" id="nav" role="navigation">
 <div class="nav__inner">
 <a aria-label="Zamify Home" class="nav__logo" href="../index.html">
 <img alt="Zamify Logo" height="724" src="../assets/images/logo.webp" style="height: 32px; width: auto;" width="2172"/>
@@ -44,7 +300,10 @@
 <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
         Get a Free Strategy Call <span class="btn__arrow">→</span>
 </a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
+<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="ph-bold ph-moon"></i>
+      </button>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
 <span></span><span></span><span></span>
 </button>
 </div>
@@ -62,281 +321,113 @@
     </div>
   </nav>
 <main>
-<!-- ULTRA PREMIUM HERO -->
-<section class="hero-mesh" style="padding-top: clamp(110px, 12vh, 140px); padding-bottom: 60px;">
-<div class="container" style="text-align: center; max-width: 900px;">
-<div class="reveal theme-create" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--color-text); font-weight: 500; font-size: 13px; margin: 0 auto 20px auto; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-<span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);"></span>
-          Zamify AI Production
+<section class="dark-hero-section">
+<div class="container" style="text-align: center; max-width: 1000px; position: relative; z-index: 1;">
+<div class="reveal" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.1); border: 1px solid rgba(255, 255, 255, 0.15); backdrop-filter: blur(10px); color: #FAFAFA; font-weight: 500; font-size: 13px; margin: 0 auto 20px auto; letter-spacing: 0.02em;">
+<span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #A78BFA; box-shadow: 0 0 12px rgba(167, 139, 250, 0.8);"></span>
+          Zamify Generative Studio
         </div>
-<h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
+<h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.5rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
           Cinematic video at <br/>
-<span class="shimmer" style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">unprecedented speed.</span>
+<span style="background: linear-gradient(135deg, #A78BFA 0%, #F472B6 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">unprecedented speed.</span>
 </h1>
-<p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto 32px auto; line-height: 1.5;">
-          We produce high-quality, engaging video content utilizing cutting-edge AI technologies for faster turnaround.
+<p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-tertiary); max-width: 600px; margin: 0 auto 32px auto; line-height: 1.5;">
+          We produce studio-quality, engaging video content utilizing cutting-edge AI technologies, 3D avatars, and generative B-roll for a 10x faster turnaround.
         </p>
 <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-<a class="btn btn--primary btn--lg" href="../pages/contact.html" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
-            Start a Project <span class="btn__arrow">→</span>
+<a class="btn btn--primary btn--lg" href="../pages/contact.html" style="background: var(--color-bg-subtle); color: var(--color-text); border: none; box-shadow: 0 10px 25px -5px rgba(255, 255, 255, 0.2);">
+            Start Production <span class="btn__arrow">→</span>
 </a>
-<a class="btn btn--secondary btn--lg" href="../pages/work.html" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-            View Our Work
-          </a>
 </div>
-<div class="trust-badges reveal reveal-delay-4">
-<div class="trust-badge-item">
-<i class="ph-fill ph-check-circle"></i> 50+ Projects Delivered
-          </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-lightning"></i> Sub-second Load Times
-          </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-magnifying-glass"></i> Built for SEO
-          </div>
-</div>
-</div>
-</section>
-<!-- PREMIUM GLASS BENTO GRID -->
-<section class="section" style="background: var(--color-bg); position: relative; z-index: 2;">
-<div class="container">
-<h2 class="reveal shimmer" style="font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: -0.02em; margin-bottom: var(--space-4);">Engineering Excellence</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="margin-bottom: var(--space-12); max-width: 600px;">We don't use generic templates. Every line of code and every pixel is crafted to give your business an unfair advantage.</p>
-<div class="premium-bento-grid">
-<div class="premium-glass-card premium-glass-card--large reveal reveal-delay-1">
-<div class="premium-icon-wrapper" style="color: var(--color-accent);">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-film-strip"></i>
-</div>
-<h3>AI Avatar &amp; Voiceovers</h3>
-<p>Creating ultra-realistic AI spokespersons and studio-quality voiceovers in multiple languages for scalable video production.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-2">
-<div class="premium-icon-wrapper" style="color: #10b981;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-magic-wand"></i>
-</div>
-<h3>Generative Video</h3>
-<p>Using advanced diffusion models to generate b-roll, animations, and cinematic shots entirely from text prompts.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-3">
-<div class="premium-icon-wrapper" style="color: #f59e0b;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-scissors"></i>
-</div>
-<h3>Automated Editing</h3>
-<p>Utilizing AI to automatically cut, caption, and format long-form content into dozens of viral short-form clips.</p>
-</div>
-<div class="premium-glass-card premium-glass-card--wide reveal reveal-delay-4">
-<div class="premium-icon-wrapper" style="color: #ec4899;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-translate"></i>
-</div>
-<h3>Instant Localization</h3>
-<p>Automatically translating and dubbing your video content into 30+ languages with perfect lip-syncing technology.</p>
-</div>
+
+<!-- Custom Video Editor Mockup -->
+<div class="video-editor-mockup reveal reveal-delay-4">
+  <div class="editor-header">
+    <div class="editor-dot"></div>
+    <div class="editor-dot"></div>
+    <div class="editor-dot"></div>
+  </div>
+  <div class="editor-viewport">
+    <div class="play-button-glow">
+      <i class="ph-fill ph-play"></i>
+    </div>
+  </div>
+  <div class="editor-timeline">
+    <div class="timeline-track">
+      <div class="timeline-clip" style="left: 0%; width: 40%;"></div>
+      <div class="timeline-clip" style="left: 42%; width: 20%;"></div>
+      <div class="timeline-clip" style="left: 64%; width: 36%;"></div>
+    </div>
+    <div class="timeline-track">
+      <div class="timeline-clip blue" style="left: 5%; width: 30%;"></div>
+      <div class="timeline-clip blue" style="left: 45%; width: 45%;"></div>
+    </div>
+    <div class="timeline-track" style="height: 20px;">
+      <div class="timeline-clip green" style="left: 0%; width: 100%;"></div>
+    </div>
+  </div>
 </div>
 </div>
 </section>
-<section class="section">
+<!-- PRODUCTION TIMELINE -->
+<section class="section" style="background: #09090B;">
 <div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Visual Transformation</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">See the tangible difference our creative engine brings to a brand's aesthetic.</p>
-<div class="before-after-card reveal reveal-delay-2">
-<div class="ba-section before">
-<div class="ba-label">Before Zamify</div>
-<div class="ba-content">Generic templates, low engagement, inconsistent branding.</div>
-</div>
-<div class="ba-section after">
-<div class="ba-label">After Zamify</div>
-<div class="ba-content" style="font-weight: 600;">Custom AI-generated assets, highly engaging viral hooks, premium identity.</div>
-</div>
-</div>
-<h2 class="reveal" style="text-align: center; margin-top: 80px; margin-bottom: 16px;">Creative Portfolio Gallery</h2>
-<div class="masonry-gallery reveal reveal-delay-2">
-<div class="masonry-item">
-<img alt="Creative Mockup 1" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Brand Identity Design</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 2" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">AI Generated Campaign</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 3" src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Product Visualization</div>
-</div>
+<h2 class="reveal shimmer" style="text-align: center; color: #FAFAFA; margin-bottom: 16px;">Production Timeline</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px; color: var(--color-text-tertiary);">Our ultra-fast AI video pipeline.</p>
+<div class="studio-timeline">
+  <div class="studio-timeline-step reveal">
+    <div class="studio-step-num">01</div>
+    <div>
+      <h3 style="color: #FAFAFA; font-size: 20px; margin-bottom: 8px;">Scripting &amp; Hooks</h3>
+      <p style="color: var(--color-text-tertiary); line-height: 1.6;">Writing concise, high-retention scripts engineered specifically for short-form algorithms.</p>
+    </div>
+  </div>
+  <div class="studio-timeline-step reveal reveal-delay-1">
+    <div class="studio-step-num">02</div>
+    <div>
+      <h3 style="color: #FAFAFA; font-size: 20px; margin-bottom: 8px;">AI Avatar Generation</h3>
+      <p style="color: var(--color-text-tertiary); line-height: 1.6;">Selecting and posing photorealistic digital avatars to deliver the message.</p>
+    </div>
+  </div>
+  <div class="studio-timeline-step reveal reveal-delay-2">
+    <div class="studio-step-num">03</div>
+    <div>
+      <h3 style="color: #FAFAFA; font-size: 20px; margin-bottom: 8px;">Audio Synthesis</h3>
+      <p style="color: var(--color-text-tertiary); line-height: 1.6;">Generating emotional, pacing-aware voiceovers in 30+ languages.</p>
+    </div>
+  </div>
+  <div class="studio-timeline-step reveal reveal-delay-3">
+    <div class="studio-step-num">04</div>
+    <div>
+      <h3 style="color: #FAFAFA; font-size: 20px; margin-bottom: 8px;">Post-Production VFX</h3>
+      <p style="color: var(--color-text-tertiary); line-height: 1.6;">Adding dynamic captions, sound design, and viral-style transitions.</p>
+    </div>
+  </div>
 </div>
 </div>
 </section>
-<!-- WHAT'S INCLUDED CHECKLIST -->
-<section class="tech-stack-section">
+
+<!-- STUDIO CAPABILITIES -->
+<section class="section" style="background: #18181B;">
 <div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Technology &amp; Tools</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">We leverage industry-leading software to deliver world-class results.</p>
-<div class="tech-stack-grid reveal reveal-delay-2">
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-video"></i></div>
-<div class="tech-name">Runway Gen-2</div>
-<div class="tech-desc">Text-to-video generation</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-user"></i></div>
-<div class="tech-name">HeyGen/Synthesia</div>
-<div class="tech-desc">AI Avatars &amp; Presenters</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-waveform"></i></div>
-<div class="tech-name">ElevenLabs</div>
-<div class="tech-desc">Ultra-realistic voice cloning</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-magic-wand"></i></div>
-<div class="tech-name">CapCut Pro</div>
-<div class="tech-desc">Rapid short-form editing</div>
-</div>
-</div>
-</div>
-</section>
-<section class="process-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Our Process</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">A proven framework for consistent success.</p>
-<div class="process-timeline reveal reveal-delay-2">
-<div class="process-step">
-<div class="process-number">1</div>
-<div class="process-content">
-<h4>Scripting</h4>
-<p>Writing engaging hooks and concise scripts optimized for TikTok, Reels, and Shorts.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">2</div>
-<div class="process-content">
-<h4>Generation</h4>
-<p>Synthesizing AI voiceovers, generating B-roll, or creating photorealistic AI avatars.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">3</div>
-<div class="process-content">
-<h4>Post-Production</h4>
-<p>Adding dynamic captions, trending audio, and fast-paced visual effects to retain attention.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">4</div>
-<div class="process-content">
-<h4>Distribution</h4>
-<p>Exporting in multiple formats and deploying across all short-form video networks.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<section class="section" style="background: var(--color-bg-subtle);">
-<div class="container">
-<h2 class="reveal" style="font-size: clamp(2rem, 3vw, 2.5rem);">Built-in by Default</h2>
-<p class="section-subtitle reveal reveal-delay-1">The critical features other agencies charge extra for, we include as standard.</p>
-<div class="checklist-grid reveal reveal-delay-2">
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>UGC Style Generation</h4>
-<p>Creating authentic-feeling review videos using AI talent.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Dynamic Video Ads</h4>
-<p>Personalizing video content automatically for different audiences.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Animated Explainer Videos</h4>
-<p>Simplifying complex products with AI-generated animations.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Automated Captioning</h4>
-<p>High-retention, stylized subtitles added instantly.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Audio Enhancement</h4>
-<p>Using AI to make any audio recording sound studio-quality.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Rapid Storyboarding</h4>
-<p>Visualizing entire video concepts in minutes before production.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
-<!-- PROCESS TIMELINE -->
-<section class="section" style="background: var(--color-bg);">
-<div class="container">
-<h2 class="reveal" style="text-align: center;">How We Work</h2>
-<div class="process-timeline reveal reveal-delay-1">
-<div class="process-step">
-<div class="process-step__num">Phase 1</div>
-<h3>Discovery &amp; Strategy</h3>
-<p>We analyze your market, competitors, and technical requirements to architect the perfect solution.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 2</div>
-<h3>UX/UI Design</h3>
-<p>We design high-fidelity wireframes and interactive prototypes in Figma for your approval.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 3</div>
-<h3>Engineering</h3>
-<p>Our developers bring the designs to life using clean, scalable, and secure code architectures.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 4</div>
-<h3>Launch &amp; Scale</h3>
-<p>After rigorous QA testing, we deploy the site, integrate analytics, and train your team.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- CASE STUDY TEASERS -->
-<!-- TECH STACK MARQUEE -->
-<section class="section" style="padding: var(--space-12) 0; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
-<div class="container">
-<p style="text-align: center; color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 13px; margin-bottom: var(--space-8);">Powered by Modern Technology</p>
-</div>
-<div class="tech-marquee-wrapper reveal">
-<div class="tech-marquee">
-<!-- Duplicated for seamless loop -->
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
+<h2 class="reveal shimmer" style="text-align: center; color: #FAFAFA; margin-bottom: 16px;">Studio Capabilities</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px; color: var(--color-text-tertiary);">The technical specs of our generative engine.</p>
+<div class="studio-grid reveal reveal-delay-2">
+  <div class="studio-feature-card">
+    <i class="ph-duotone ph-aperture studio-feature-icon"></i>
+    <h3 style="color: #FAFAFA; font-size: 18px; margin-bottom: 8px;">4K Upscaling</h3>
+    <p style="color: var(--color-text-tertiary); font-size: 14px;">All generations are enhanced to crisp 4K resolution.</p>
+  </div>
+  <div class="studio-feature-card">
+    <i class="ph-duotone ph-translate studio-feature-icon"></i>
+    <h3 style="color: #FAFAFA; font-size: 18px; margin-bottom: 8px;">Auto-Dubbing</h3>
+    <p style="color: var(--color-text-tertiary); font-size: 14px;">Perfect lip-sync in over 30 languages globally.</p>
+  </div>
+  <div class="studio-feature-card">
+    <i class="ph-duotone ph-waveform studio-feature-icon"></i>
+    <h3 style="color: #FAFAFA; font-size: 18px; margin-bottom: 8px;">Voice Cloning</h3>
+    <p style="color: var(--color-text-tertiary); font-size: 14px;">Clone your founder's voice with 3 minutes of audio.</p>
+  </div>
 </div>
 </div>
 </section>

@@ -66,7 +66,7 @@
       max-width: 800px;
       margin: 60px auto 0;
       border-radius: 16px;
-      background: #FFF;
+      background: var(--color-bg-card);
       border: 1px solid var(--color-border-subtle);
       box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.1);
       overflow: hidden;
@@ -149,7 +149,7 @@
     }
     .tech-logo-card {
       display: inline-flex; align-items: center; gap: 8px;
-      padding: 12px 24px; background: #FFF; border: 1px solid var(--color-border-subtle);
+      padding: 12px 24px; background: var(--color-bg-card); border: 1px solid var(--color-border-subtle);
       border-radius: 100px; margin: 0 12px; font-weight: 500; font-size: 14px;
       box-shadow: 0 2px 10px rgba(0,0,0,0.02);
     }
@@ -181,6 +181,9 @@
       <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
         Get a Quote <span class="btn__arrow">→</span>
       </a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="ph-bold ph-moon"></i>
+      </button>
       <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
         <span></span><span></span><span></span>
       </button>

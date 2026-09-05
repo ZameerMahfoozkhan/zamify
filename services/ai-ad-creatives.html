@@ -25,7 +25,200 @@
 <link href="../css/base.css?v=6" rel="stylesheet"/>
 <link href="../css/components.css?v=6" rel="stylesheet"/>
 <link href="../css/sections.css?v=6" rel="stylesheet"/>
-<link href="../css/responsive.css?v=6" rel="stylesheet"/></head>
+<link href="../css/responsive.css?v=6" rel="stylesheet"/>
+<style>
+  html, body {
+    overflow-x: hidden;
+  }
+  
+  /* AI Ad Creatives Specific Styles */
+  .ad-hero-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 60px;
+    align-items: center;
+  }
+  
+  .dashboard-mockup {
+    background: #0F172A;
+    border-radius: 24px;
+    border: 1px solid rgba(255,255,255,0.1);
+    box-shadow: 0 25px 50px -12px rgba(0,0,0,0.5);
+    padding: 24px;
+    position: relative;
+    max-width: 100%;
+  }
+
+  .dashboard-mockup::before {
+    content: '';
+    position: absolute;
+    inset: -2px;
+    background: linear-gradient(135deg, #3B82F6, #10B981, #8B5CF6);
+    border-radius: 26px;
+    z-index: -1;
+    opacity: 0.5;
+    filter: blur(10px);
+  }
+
+  .dash-header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 24px;
+    padding-bottom: 16px;
+    border-bottom: 1px solid rgba(255,255,255,0.1);
+  }
+
+  .dash-metric {
+    background: rgba(255,255,255,0.05);
+    border-radius: 12px;
+    padding: 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  
+  .dash-metric-label {
+    color: #94A3B8;
+    font-size: 12px;
+    text-transform: uppercase;
+    letter-spacing: 0.05em;
+  }
+  
+  .dash-metric-value {
+    color: #FFF;
+    font-size: 24px;
+    font-weight: 700;
+    font-family: var(--font-display);
+  }
+
+  .dash-metric-value.success {
+    color: #10B981;
+  }
+  
+  .ab-test-card {
+    background: rgba(255,255,255,0.03);
+    border: 1px solid rgba(255,255,255,0.05);
+    border-radius: 16px;
+    padding: 16px;
+    margin-top: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  /* Funnel Layout */
+  .funnel-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 20px;
+    max-width: 800px;
+    margin: 0 auto;
+  }
+  
+  .funnel-stage {
+    width: 100%;
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 20px;
+    padding: 32px;
+    box-shadow: 0 10px 30px -10px var(--shadow-color, rgba(0,0,0,0.05));
+    display: flex;
+    align-items: center;
+    gap: 24px;
+    transition: transform 0.3s ease;
+  }
+  
+  .funnel-stage:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 20px 40px -10px var(--shadow-color, rgba(0,0,0,0.08));
+  }
+
+  .funnel-stage:nth-child(1) { width: 100%; }
+  .funnel-stage:nth-child(2) { width: 90%; }
+  .funnel-stage:nth-child(3) { width: 80%; }
+  .funnel-stage:nth-child(4) { width: 70%; }
+  
+  .funnel-icon {
+    width: 64px;
+    height: 64px;
+    border-radius: 16px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    flex-shrink: 0;
+  }
+  
+  /* Additional Detailed Sections */
+  .lifecycle-timeline {
+    position: relative;
+    max-width: 800px;
+    margin: 0 auto;
+    padding: 40px 0;
+  }
+  .lifecycle-timeline::before {
+    content: '';
+    position: absolute;
+    left: 40px;
+    top: 0;
+    bottom: 0;
+    width: 2px;
+    background: linear-gradient(to bottom, #10B981, transparent);
+  }
+  .lifecycle-item {
+    display: flex;
+    gap: 32px;
+    margin-bottom: 48px;
+    position: relative;
+  }
+  .lifecycle-icon {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    background: var(--color-bg-card);
+    border: 2px solid #10B981;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-size: 32px;
+    color: #10B981;
+    flex-shrink: 0;
+    z-index: 1;
+    box-shadow: 0 10px 20px rgba(16, 185, 129, 0.15);
+  }
+  .lifecycle-content {
+    padding-top: 12px;
+  }
+  .marketing-stack-grid {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 24px;
+    margin-top: 40px;
+  }
+  .marketing-stack-card {
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: 16px;
+    padding: 32px;
+    text-align: center;
+    box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+    transition: transform 0.3s ease;
+  }
+  .marketing-stack-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1);
+  }
+
+  @media (max-width: 991px) {
+    .ad-hero-grid { grid-template-columns: 1fr; }
+    .funnel-stage:nth-child(n) { width: 100%; }
+    .lifecycle-timeline::before { left: 24px; }
+    .lifecycle-icon { width: 48px; height: 48px; font-size: 20px; }
+  }
+</style>
+</head>
 <body><div class="animated-bg"></div>
 <!-- NAVIGATION -->
 <nav aria-label="Main navigation" class="nav" id="nav" role="navigation">
@@ -44,7 +237,10 @@
 <a class="btn btn--primary btn--sm nav__cta nav__cta-desktop" href="../pages/contact.html">
         Get a Free Strategy Call <span class="btn__arrow">→</span>
 </a>
-<button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
+<button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="ph-bold ph-moon"></i>
+      </button>
+      <button aria-controls="mobile-menu" aria-expanded="false" aria-label="Toggle menu" class="nav__toggle">
 <span></span><span></span><span></span>
 </button>
 </div>
@@ -62,281 +258,148 @@
     </div>
   </nav>
 <main>
-<!-- ULTRA PREMIUM HERO -->
 <section class="hero-mesh" style="padding-top: clamp(110px, 12vh, 140px); padding-bottom: 60px;">
-<div class="container" style="text-align: center; max-width: 900px;">
-<div class="reveal theme-create" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--color-text); font-weight: 500; font-size: 13px; margin: 0 auto 20px auto; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
-<span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);"></span>
-          Zamify AI Creative
+<div class="container">
+  <div class="ad-hero-grid">
+    <div class="hero-text" style="text-align: left;">
+      <div class="reveal theme-create" style="display: inline-flex; align-items: center; gap: 8px; padding: 6px 16px; border-radius: 100px; background: rgba(255, 255, 255, 0.05); border: 1px solid rgba(255, 255, 255, 0.1); backdrop-filter: blur(10px); color: var(--color-text); font-weight: 500; font-size: 13px; margin-bottom: 20px; letter-spacing: 0.02em; box-shadow: 0 4px 20px rgba(0,0,0,0.1);">
+      <span style="display: block; width: 8px; height: 8px; border-radius: 50%; background: #10b981; box-shadow: 0 0 12px rgba(16, 185, 129, 0.8);"></span>
+                Zamify AI Creative
+              </div>
+      <h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
+                High-performing ads powered by <br/>
+      <span class="shimmer" style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; background-clip: text; -webkit-text-fill-color: transparent; color: transparent;">artificial intelligence.</span>
+      </h1>
+      <p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 500px; margin-bottom: 32px; line-height: 1.5;">
+                We leverage advanced AI tools to generate stunning, conversion-optimized ad creatives at a fraction of the cost, testing hundreds of variations to find the perfect hook.
+              </p>
+      <div class="reveal reveal-delay-3" style="display: flex; gap: 16px; flex-wrap: wrap;">
+      <a class="btn btn--primary btn--lg" href="../pages/contact.html" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
+                  Start a Campaign <span class="btn__arrow">→</span>
+      </a>
+      <a class="btn btn--secondary btn--lg" href="../pages/work.html" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
+                  View ROAS Case Studies
+                </a>
+      </div>
+      <div class="trust-badges reveal reveal-delay-4" style="justify-content: flex-start; margin-top: 32px;">
+      <div class="trust-badge-item">
+      <i class="ph-fill ph-trend-up"></i> 3.5x Avg ROAS Increase
+                </div>
+      <div class="trust-badge-item">
+      <i class="ph-fill ph-images"></i> 100+ Variations Tested
+                </div>
+      </div>
+    </div>
+    
+    <div class="hero-visual reveal reveal-delay-4">
+      <div class="dashboard-mockup">
+        <div class="dash-header">
+          <div style="color: #FFF; font-weight: 600; font-family: var(--font-display);">Campaign Performance</div>
+          <div style="display: flex; gap: 8px;">
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #EF4444;"></span>
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #F59E0B;"></span>
+            <span style="width: 12px; height: 12px; border-radius: 50%; background: #10B981;"></span>
+          </div>
         </div>
-<h1 class="reveal reveal-delay-1" style="font-size: clamp(2.75rem, 5vw, 4.25rem); line-height: 1.1; letter-spacing: -0.02em; font-family: var(--font-heading); margin-bottom: 16px;">
-          High-performing ads powered by <br/>
-<span class="shimmer" style="background: linear-gradient(135deg, var(--color-text) 0%, rgba(255,255,255,0.4) 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent;">artificial intelligence.</span>
-</h1>
-<p class="reveal reveal-delay-2" style="font-size: clamp(1rem, 1.5vw, 1.125rem); color: var(--color-text-secondary); max-width: 600px; margin: 0 auto 32px auto; line-height: 1.5;">
-          We leverage advanced AI tools to generate stunning, conversion-optimized ad creatives at a fraction of the cost.
-        </p>
-<div class="reveal reveal-delay-3" style="display: flex; gap: 16px; justify-content: center; flex-wrap: wrap;">
-<a class="btn btn--primary btn--lg" href="../pages/contact.html" style="box-shadow: 0 10px 25px -5px rgba(99, 102, 241, 0.4);">
-            Start a Project <span class="btn__arrow">→</span>
-</a>
-<a class="btn btn--secondary btn--lg" href="../pages/work.html" style="background: rgba(255,255,255,0.05); border-color: rgba(255,255,255,0.1);">
-            View Our Work
-          </a>
-</div>
-<div class="trust-badges reveal reveal-delay-4">
-<div class="trust-badge-item">
-<i class="ph-fill ph-check-circle"></i> 50+ Projects Delivered
+        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
+          <div class="dash-metric">
+            <span class="dash-metric-label">CTR</span>
+            <span class="dash-metric-value success">4.82% <i class="ph-bold ph-arrow-up-right" style="font-size: 16px;"></i></span>
           </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-lightning"></i> Sub-second Load Times
+          <div class="dash-metric">
+            <span class="dash-metric-label">Cost per Lead</span>
+            <span class="dash-metric-value">$12.40</span>
           </div>
-<div class="trust-badge-item">
-<i class="ph-fill ph-magnifying-glass"></i> Built for SEO
+        </div>
+        
+        <div class="dash-metric-label" style="margin-top: 24px; margin-bottom: 8px;">Active A/B Tests</div>
+        
+        <div class="ab-test-card">
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #3B82F6, #8B5CF6); border-radius: 8px;"></div>
+            <div>
+              <div style="color: #FFF; font-size: 14px; font-weight: 600;">Creative Variation A</div>
+              <div style="color: #94A3B8; font-size: 12px;">AI Generated Image</div>
+            </div>
           </div>
-</div>
-</div>
-</section>
-<!-- PREMIUM GLASS BENTO GRID -->
-<section class="section" style="background: var(--color-bg); position: relative; z-index: 2;">
-<div class="container">
-<h2 class="reveal shimmer" style="font-size: clamp(2.5rem, 4vw, 3.5rem); letter-spacing: -0.02em; margin-bottom: var(--space-4);">Engineering Excellence</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="margin-bottom: var(--space-12); max-width: 600px;">We don't use generic templates. Every line of code and every pixel is crafted to give your business an unfair advantage.</p>
-<div class="premium-bento-grid">
-<div class="premium-glass-card premium-glass-card--large reveal reveal-delay-1">
-<div class="premium-icon-wrapper" style="color: var(--color-accent);">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-brain"></i>
-</div>
-<h3>AI Image Generation</h3>
-<p>Utilizing Midjourney and custom models to generate impossible, hyper-realistic ad imagery that stops the scroll.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-2">
-<div class="premium-icon-wrapper" style="color: #10b981;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-copy"></i>
-</div>
-<h3>Mass Variation Testing</h3>
-<p>Generating hundreds of creative variations instantly to test different hooks, angles, and emotional triggers at scale.</p>
-</div>
-<div class="premium-glass-card reveal reveal-delay-3">
-<div class="premium-icon-wrapper" style="color: #f59e0b;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-pen-nib"></i>
-</div>
-<h3>AI Copywriting</h3>
-<p>Training LLMs on your brand voice to write highly persuasive, conversion-optimized primary text and headlines.</p>
-</div>
-<div class="premium-glass-card premium-glass-card--wide reveal reveal-delay-4">
-<div class="premium-icon-wrapper" style="color: #ec4899;">
-<div class="premium-icon-glow"></div>
-<i class="ph-duotone ph-lightning"></i>
-</div>
-<h3>Rapid Iteration</h3>
-<p>Cutting creative production time by 80%, allowing us to refresh ad fatigue faster than traditional design agencies.</p>
-</div>
-</div>
+          <div style="color: #10B981; font-weight: 700; font-size: 14px;">Winner</div>
+        </div>
+        
+        <div class="ab-test-card" style="opacity: 0.6;">
+          <div style="display: flex; gap: 12px; align-items: center;">
+            <div style="width: 40px; height: 40px; background: #334155; border-radius: 8px;"></div>
+            <div>
+              <div style="color: #FFF; font-size: 14px; font-weight: 600;">Creative Variation B</div>
+              <div style="color: #94A3B8; font-size: 12px;">Stock Photo</div>
+            </div>
+          </div>
+          <div style="color: #EF4444; font-weight: 700; font-size: 14px;">Paused</div>
+        </div>
+      </div>
+    </div>
+  </div>
 </div>
 </section>
-<section class="section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Visual Transformation</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">See the tangible difference our creative engine brings to a brand's aesthetic.</p>
-<div class="before-after-card reveal reveal-delay-2">
-<div class="ba-section before">
-<div class="ba-label">Before Zamify</div>
-<div class="ba-content">Generic templates, low engagement, inconsistent branding.</div>
-</div>
-<div class="ba-section after">
-<div class="ba-label">After Zamify</div>
-<div class="ba-content" style="font-weight: 600;">Custom AI-generated assets, highly engaging viral hooks, premium identity.</div>
-</div>
-</div>
-<h2 class="reveal" style="text-align: center; margin-top: 80px; margin-bottom: 16px;">Creative Portfolio Gallery</h2>
-<div class="masonry-gallery reveal reveal-delay-2">
-<div class="masonry-item">
-<img alt="Creative Mockup 1" src="https://images.unsplash.com/photo-1618005182384-a83a8bd57fbe?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Brand Identity Design</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 2" src="https://images.unsplash.com/photo-1611162617474-5b21e879e113?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">AI Generated Campaign</div>
-</div>
-<div class="masonry-item">
-<img alt="Creative Mockup 3" src="https://images.unsplash.com/photo-1558655146-d09347e92766?q=80&amp;w=600&amp;auto=format&amp;fit=crop"/>
-<div class="masonry-caption">Product Visualization</div>
-</div>
-</div>
-</div>
-</section>
-<!-- WHAT'S INCLUDED CHECKLIST -->
-<section class="tech-stack-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Technology &amp; Tools</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">We leverage industry-leading software to deliver world-class results.</p>
-<div class="tech-stack-grid reveal reveal-delay-2">
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-robot"></i></div>
-<div class="tech-name">Midjourney V6</div>
-<div class="tech-desc">Hyper-realistic ad imagery</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-text-aa"></i></div>
-<div class="tech-name">ChatGPT-4</div>
-<div class="tech-desc">Ad copy variations</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-layout"></i></div>
-<div class="tech-name">Figma</div>
-<div class="tech-desc">Template scaling</div>
-</div>
-<div class="tech-card">
-<div class="tech-icon"><i class="ph-chart-bar"></i></div>
-<div class="tech-name">Meta Ads Manager</div>
-<div class="tech-desc">Performance validation</div>
-</div>
-</div>
-</div>
-</section>
-<section class="process-section">
-<div class="container">
-<h2 class="reveal" style="text-align: center; margin-bottom: 16px;">Our Process</h2>
-<p class="section-subtitle reveal reveal-delay-1" style="text-align: center;">A proven framework for consistent success.</p>
-<div class="process-timeline reveal reveal-delay-2">
-<div class="process-step">
-<div class="process-number">1</div>
-<div class="process-content">
-<h4>Angle Ideation</h4>
-<p>Brainstorming 5-10 different marketing angles and psychological hooks for your product.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">2</div>
-<div class="process-content">
-<h4>AI Generation</h4>
-<p>Using advanced prompting to generate dozens of unique, eye-catching visual assets.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">3</div>
-<div class="process-content">
-<h4>Assembly &amp; Copy</h4>
-<p>Adding text overlays, branding, and pairing visuals with high-converting ad copy.</p>
-</div>
-</div>
-<div class="process-step">
-<div class="process-number">4</div>
-<div class="process-content">
-<h4>Testing Matrix</h4>
-<p>Delivering a batch of creatives ready to be A/B tested to find the winning combination.</p>
-</div>
-</div>
-</div>
-</div>
-</section>
+<!-- CAMPAIGN LIFECYCLE -->
 <section class="section" style="background: var(--color-bg-subtle);">
 <div class="container">
-<h2 class="reveal" style="font-size: clamp(2rem, 3vw, 2.5rem);">Built-in by Default</h2>
-<p class="section-subtitle reveal reveal-delay-1">The critical features other agencies charge extra for, we include as standard.</p>
-<div class="checklist-grid reveal reveal-delay-2">
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Brand Consistency Training</h4>
-<p>Ensuring AI outputs perfectly match your brand guidelines.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Platform Optimization</h4>
-<p>Auto-resizing and formatting creatives for all ad placements.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Competitor Modeling</h4>
-<p>Analyzing winning competitor ads to inform our AI prompts.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>Dynamic Creative Assets</h4>
-<p>Building templates for automated localized or personalized ads.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>A/B Testing Frameworks</h4>
-<p>Systematic testing of AI vs. traditional human creatives.</p>
-</div>
-</div>
-<div class="checklist-item">
-<div class="checklist-icon"><i class="ph-bold ph-check"></i></div>
-<div class="checklist-content">
-<h4>High-Volume Production</h4>
-<p>Delivering dozens of fresh ad concepts every single week.</p>
-</div>
-</div>
+<h2 class="reveal shimmer" style="text-align: center; color: var(--color-text); margin-bottom: 16px;">The Campaign Lifecycle</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px;">How we consistently achieve lower CPAs.</p>
+<div class="lifecycle-timeline">
+  <div class="lifecycle-item reveal">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-lightbulb"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: var(--color-text); font-size: 24px; margin-bottom: 12px;">1. Market Research &amp; Angle Ideation</h3>
+      <p style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.6;">We deeply analyze your competitors and ideal customer profiles to establish 5-10 completely distinct psychological angles to attack.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-1">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-robot"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: var(--color-text); font-size: 24px; margin-bottom: 12px;">2. High-Volume Generation</h3>
+      <p style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.6;">Using our AI pipelines, we spin up dozens of variations for each angle, producing high-fidelity images and dynamic copy tailored to specific demographics.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-2">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-chart-line-up"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: var(--color-text); font-size: 24px; margin-bottom: 12px;">3. Multi-Variate Testing</h3>
+      <p style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.6;">We deploy the creatives into strict A/B testing environments, rapidly identifying which hooks capture attention and which visual styles convert.</p>
+    </div>
+  </div>
+  <div class="lifecycle-item reveal reveal-delay-3">
+    <div class="lifecycle-icon"><i class="ph-duotone ph-rocket-launch"></i></div>
+    <div class="lifecycle-content">
+      <h3 style="color: var(--color-text); font-size: 24px; margin-bottom: 12px;">4. Scaling Winners &amp; Fighting Fatigue</h3>
+      <p style="color: var(--color-text-secondary); font-size: 16px; line-height: 1.6;">We aggressively push budget into winning combinations while continuously feeding the algorithm slight variations to prevent ad fatigue.</p>
+    </div>
+  </div>
 </div>
 </div>
 </section>
-<!-- PROCESS TIMELINE -->
-<section class="section" style="background: var(--color-bg);">
+
+<!-- MARKETING STACK -->
+<section class="section">
 <div class="container">
-<h2 class="reveal" style="text-align: center;">How We Work</h2>
-<div class="process-timeline reveal reveal-delay-1">
-<div class="process-step">
-<div class="process-step__num">Phase 1</div>
-<h3>Discovery &amp; Strategy</h3>
-<p>We analyze your market, competitors, and technical requirements to architect the perfect solution.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 2</div>
-<h3>UX/UI Design</h3>
-<p>We design high-fidelity wireframes and interactive prototypes in Figma for your approval.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 3</div>
-<h3>Engineering</h3>
-<p>Our developers bring the designs to life using clean, scalable, and secure code architectures.</p>
-</div>
-<div class="process-step">
-<div class="process-step__num">Phase 4</div>
-<h3>Launch &amp; Scale</h3>
-<p>After rigorous QA testing, we deploy the site, integrate analytics, and train your team.</p>
-</div>
-</div>
-</div>
-</section>
-<!-- CASE STUDY TEASERS -->
-<!-- TECH STACK MARQUEE -->
-<section class="section" style="padding: var(--space-12) 0; border-top: 1px solid var(--color-border-subtle); border-bottom: 1px solid var(--color-border-subtle);">
-<div class="container">
-<p style="text-align: center; color: var(--color-text-tertiary); font-weight: 500; letter-spacing: 0.05em; text-transform: uppercase; font-size: 13px; margin-bottom: var(--space-8);">Powered by Modern Technology</p>
-</div>
-<div class="tech-marquee-wrapper reveal">
-<div class="tech-marquee">
-<!-- Duplicated for seamless loop -->
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
-<div class="tech-logo-card"><i class="ph-fill ph-atom" style="color: #61dafb; font-size: 24px;"></i> React</div>
-<div class="tech-logo-card"><i class="ph-fill ph-triangle" style="color: #fff; font-size: 24px;"></i> Next.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-hexagon" style="color: #68a063; font-size: 24px;"></i> Node.js</div>
-<div class="tech-logo-card"><i class="ph-fill ph-shopping-bag" style="color: #95bf47; font-size: 24px;"></i> Shopify</div>
-<div class="tech-logo-card"><i class="ph-fill ph-paint-brush" style="color: #f24e1e; font-size: 24px;"></i> Figma</div>
-<div class="tech-logo-card"><i class="ph-fill ph-browser" style="color: #4353ff; font-size: 24px;"></i> Webflow</div>
-<div class="tech-logo-card"><i class="ph-fill ph-pencil-circle" style="color: #21759b; font-size: 24px;"></i> WordPress</div>
-<div class="tech-logo-card"><i class="ph-fill ph-wind" style="color: #38bdf8; font-size: 24px;"></i> Tailwind CSS</div>
+<h2 class="reveal shimmer" style="text-align: center; color: var(--color-text); margin-bottom: 16px;">Our Marketing Stack</h2>
+<p class="section-subtitle reveal reveal-delay-1" style="text-align: center; margin-bottom: 48px;">The tools we use to drive unfair performance advantages.</p>
+<div class="marketing-stack-grid reveal reveal-delay-2">
+  <div class="marketing-stack-card">
+    <i class="ph-fill ph-meta-logo" style="font-size: 48px; color: #0668E1; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: var(--color-text);">Meta Ads</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-fill ph-google-logo" style="font-size: 48px; color: #EA4335; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: var(--color-text);">Google Ads</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-fill ph-tiktok-logo" style="font-size: 48px; color: #000000; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: var(--color-text);">TikTok Ads</h3>
+  </div>
+  <div class="marketing-stack-card">
+    <i class="ph-duotone ph-robot" style="font-size: 48px; color: #8B5CF6; margin-bottom: 16px;"></i>
+    <h3 style="font-size: 20px; color: var(--color-text);">AI Generators</h3>
+  </div>
 </div>
 </div>
 </section>
