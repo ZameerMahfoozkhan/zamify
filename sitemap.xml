@@ -1,124 +1,123 @@
-<?xml version="1.0" encoding="UTF-8"?>
+<?xml version='1.0' encoding='utf-8'?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url>
     <loc>https://zamify.online/</loc>
     <changefreq>weekly</changefreq>
     <priority>1.0</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/pages/about</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/pages/work</loc>
     <changefreq>weekly</changefreq>
     <priority>0.9</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/pages/contact</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/pages/privacy</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/pages/terms</loc>
     <changefreq>yearly</changefreq>
     <priority>0.3</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/ai-ad-creatives</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/ai-automation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/ai-chatbots</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/ai-video</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/app-development</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/branding</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/content-creation</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/digital-marketing</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/e-commerce</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/google-ads</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/landing-pages</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/local-seo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/meta-ads</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/performance</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/seo</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/social-media</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/web-development</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
   <url>
     <loc>https://zamify.online/services/website-redesign</loc>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
-  </url>
+  <lastmod>2026-09-09</lastmod></url>
 </urlset>
-
