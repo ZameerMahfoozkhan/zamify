@@ -2,4 +2,5 @@ User-agent: *
 Allow: /
 Disallow: /scratch/
 
-Sitemap: https://zamify.com/sitemap.xml
+Sitemap: https://zamify.online/sitemap.xml
+
