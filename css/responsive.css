@@ -123,9 +123,6 @@
 }
 
 /* ── Utilities ───────────────────────────────────────────────────────── */
-.hide-mobile {
-  display: block;
-}
 .mobile-only {
   display: none !important;
 }
@@ -414,6 +411,13 @@
   .final-cta__actions .btn {
     width: 100%;
     justify-content: center;
+  }
+
+  /* Disable intensive SVG animations on mobile for performance */
+  .net-line, .animated-arc, .node-ripple {
+    animation: none !important;
+    stroke-dasharray: none !important;
+    stroke-dashoffset: 0 !important;
   }
 }
 
