@@ -741,8 +741,8 @@ a.browser-mockup__url:hover {
   display: none;
 }
 
-/* Invert the logo in dark theme globally */
+/* Invert black text to white, but preserve the original logo's blue color */
 [data-theme="dark"] .nav__logo img,
 [data-theme="dark"] .footer__logo img {
-  filter: brightness(0) invert(1);
+  filter: invert(1) hue-rotate(180deg);
 }
