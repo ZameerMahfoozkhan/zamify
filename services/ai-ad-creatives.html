@@ -292,49 +292,22 @@
     </div>
     
     <div class="hero-visual reveal reveal-delay-4">
-      <div class="dashboard-mockup">
-        <div class="dash-header">
-          <div style="color: #FFF; font-weight: 600; font-family: var(--font-display);">Campaign Performance</div>
-          <div style="display: flex; gap: 8px;">
-            <span style="width: 12px; height: 12px; border-radius: 50%; background: #EF4444;"></span>
-            <span style="width: 12px; height: 12px; border-radius: 50%; background: #F59E0B;"></span>
-            <span style="width: 12px; height: 12px; border-radius: 50%; background: #10B981;"></span>
-          </div>
-        </div>
-        <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 16px;">
-          <div class="dash-metric">
-            <span class="dash-metric-label">CTR</span>
-            <span class="dash-metric-value success">4.82% <i class="ph-bold ph-arrow-up-right" style="font-size: 16px;"></i></span>
-          </div>
-          <div class="dash-metric">
-            <span class="dash-metric-label">Cost per Lead</span>
-            <span class="dash-metric-value">$12.40</span>
-          </div>
-        </div>
-        
-        <div class="dash-metric-label" style="margin-top: 24px; margin-bottom: 8px;">Active A/B Tests</div>
-        
-        <div class="ab-test-card">
-          <div style="display: flex; gap: 12px; align-items: center;">
-            <div style="width: 40px; height: 40px; background: linear-gradient(135deg, #3B82F6, #8B5CF6); border-radius: 8px;"></div>
-            <div>
-              <div style="color: #FFF; font-size: 14px; font-weight: 600;">Creative Variation A</div>
-              <div style="color: #94A3B8; font-size: 12px;">AI Generated Image</div>
-            </div>
-          </div>
-          <div style="color: #10B981; font-weight: 700; font-size: 14px;">Winner</div>
-        </div>
-        
-        <div class="ab-test-card" style="opacity: 0.6;">
-          <div style="display: flex; gap: 12px; align-items: center;">
-            <div style="width: 40px; height: 40px; background: #334155; border-radius: 8px;"></div>
-            <div>
-              <div style="color: #FFF; font-size: 14px; font-weight: 600;">Creative Variation B</div>
-              <div style="color: #94A3B8; font-size: 12px;">Stock Photo</div>
-            </div>
-          </div>
-          <div style="color: #EF4444; font-weight: 700; font-size: 14px;">Paused</div>
-        </div>
+      <div class="showreel-container" style="
+        position: relative;
+        width: 100%;
+        max-width: 260px;
+        margin: 0 auto;
+        aspect-ratio: 9/16;
+        background: rgba(255, 255, 255, 0.03);
+        border-radius: var(--radius-2xl);
+        padding: var(--space-2);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        box-shadow: 0 20px 40px rgba(0,0,0,0.2), inset 0 0 20px rgba(255,255,255,0.05);
+        backdrop-filter: blur(12px);
+        -webkit-backdrop-filter: blur(12px);
+        overflow: hidden;
+      ">
+        <iframe src="https://www.instagram.com/reel/DdJJj6vhjHQ/embed" width="100%" height="100%" frameborder="0" scrolling="no" allowtransparency="true" style="border-radius: var(--radius-xl); background: #000;"></iframe>
       </div>
     </div>
   </div>

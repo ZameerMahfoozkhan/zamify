@@ -5,7 +5,7 @@
 
 /* ── Hero ─────────────────────────────────────────────────────────────── */
 .hero {
-  min-height: 100dvh;
+  min-height: 80dvh;
   display: flex;
   align-items: center;
   padding-top: 80px;
@@ -23,11 +23,12 @@
   height: 70vw;
   max-width: 800px;
   max-height: 800px;
-  background: radial-gradient(circle, var(--color-glow-blue) 0%, transparent 70%);
+  background: radial-gradient(circle, rgba(99,102,241,0.12) 0%, rgba(168,85,247,0.08) 30%, transparent 70%);
   border-radius: 50%;
   z-index: -1;
   pointer-events: none;
   filter: blur(60px);
+  animation: glow-pulse 6s ease-in-out infinite;
 }
 
 @keyframes pulse-glow {
@@ -48,11 +49,13 @@
 
 .hero__headline {
   margin-bottom: var(--space-6);
+  font-weight: var(--weight-bold);
+  letter-spacing: -0.04em;
 }
 
 .hero__highlight {
   display: inline-block;
-  background: linear-gradient(135deg, #a855f7, #3b82f6);
+  background: linear-gradient(90deg, #8b5cf6, #3b82f6);
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   background-clip: text;
@@ -180,11 +183,21 @@
   flex-direction: column;
   gap: var(--space-2);
   z-index: 2;
-  transition: transform var(--duration-base) var(--ease-spring);
+  transition: transform var(--duration-base) var(--ease-spring),
+              box-shadow var(--duration-base) var(--ease-spring);
 }
 
+/* Float animation for each card with offset delays */
+.card-strategy { animation: float-bob 5s ease-in-out infinite; animation-delay: 0s; }
+.card-design { animation: float-bob-sm 6s ease-in-out infinite; animation-delay: 0.5s; }
+.card-ai { animation: float-bob 5.5s ease-in-out infinite; animation-delay: 1s; }
+.card-automation { animation: float-bob-sm 6.5s ease-in-out infinite; animation-delay: 1.5s; }
+.card-technology { animation: float-bob 5s ease-in-out infinite; animation-delay: 2s; }
+.card-growth { animation: float-bob-sm 6s ease-in-out infinite; animation-delay: 2.5s; }
+
 .hero-diagram-card:hover {
-  transform: translate(-50%, -50%) scale(1.05);
+  transform: translate(-50%, -50%) scale(1.08);
+  box-shadow: 0 16px 40px rgba(0,0,0,0.1);
 }
 
 .hero-diagram-card-header {
@@ -257,9 +270,10 @@
 
 .trust-strip__stat-value {
   font-family: var(--font-display);
-  font-size: var(--text-2xl);
+  font-size: var(--text-4xl);
   font-weight: var(--weight-bold);
   color: var(--color-text);
+  letter-spacing: var(--tracking-tighter);
 }
 
 .trust-strip__stat-label {
@@ -275,6 +289,19 @@
   color: var(--color-text-on-dark);
   position: relative;
   overflow: hidden;
+}
+
+/* Smooth gradient transition from light to dark */
+.problem-solution::before {
+  content: '';
+  position: absolute;
+  top: -80px;
+  left: 0;
+  right: 0;
+  height: 80px;
+  background: linear-gradient(to bottom, var(--color-bg), var(--color-bg-dark));
+  z-index: 1;
+  pointer-events: none;
 }
 
 /* Background Glow Orbs */
@@ -855,7 +882,7 @@
   border-radius: var(--radius-lg);
   background: var(--color-bg-dark);
   color: #ffffff;
-  border: 1px solid rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.08);
   transition: all var(--duration-base) var(--ease-out-quart);
   box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
   position: relative;
@@ -865,19 +892,22 @@
 .differentiator::before {
   content: "";
   position: absolute;
-  top: 0;
-  left: 0;
-  width: 100%;
-  height: 100%;
-  background: linear-gradient(135deg, transparent, rgba(255, 255, 255, 0.05) 100%);
+  inset: -1px;
+  border-radius: var(--radius-lg);
+  padding: 1px;
+  background: linear-gradient(135deg, transparent, rgba(99,102,241,0.3), rgba(168,85,247,0.3), transparent);
+  -webkit-mask: linear-gradient(#fff 0 0) content-box, linear-gradient(#fff 0 0);
+  -webkit-mask-composite: xor;
+  mask-composite: exclude;
   opacity: 0;
-  transition: opacity var(--duration-base) var(--ease-out-quart);
+  transition: opacity 0.5s var(--ease-out-quart);
+  pointer-events: none;
 }
 
 .differentiator:hover {
-  transform: translateY(-4px);
-  border-color: rgba(255, 255, 255, 0.2);
-  box-shadow: 0 15px 40px rgba(0, 0, 0, 0.1);
+  transform: translateY(-6px);
+  border-color: transparent;
+  box-shadow: 0 20px 50px rgba(99, 102, 241, 0.08);
 }
 
 .differentiator:hover::before {
@@ -1123,14 +1153,17 @@
 }
 
 .testimonial-card::before {
-  content: '"';
+  content: '\201C';
   position: absolute;
   top: -10px;
   right: 20px;
   font-family: var(--font-display);
-  font-size: 120px;
+  font-size: 140px;
   line-height: 1;
-  color: rgba(0, 0, 0, 0.03);
+  background: linear-gradient(135deg, rgba(99,102,241,0.08), rgba(168,85,247,0.08));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
   pointer-events: none;
 }
 
@@ -1181,6 +1214,20 @@
   display: grid;
   grid-template-columns: repeat(4, 1fr);
   gap: var(--space-8);
+}
+
+.stats-section .stat__number {
+  font-size: clamp(var(--text-5xl), 5vw, var(--text-7xl));
+  background: linear-gradient(135deg, var(--color-text) 0%, var(--color-text-secondary) 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+[data-theme="dark"] .stats-section .stat__number {
+  background: linear-gradient(135deg, #ffffff 0%, rgba(168,85,247,0.8) 100%);
+  -webkit-background-clip: text;
+  background-clip: text;
 }
 
 /* ── Global Reach ─────────────────────────────────────────────────────── */
@@ -1309,6 +1356,19 @@
   background: var(--color-bg-dark);
   color: var(--color-text-on-dark);
   text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+
+.final-cta::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: 
+    radial-gradient(ellipse 60% 50% at 20% 50%, rgba(99,102,241,0.15) 0%, transparent 70%),
+    radial-gradient(ellipse 60% 50% at 80% 50%, rgba(168,85,247,0.12) 0%, transparent 70%);
+  animation: glow-pulse 5s ease-in-out infinite;
+  pointer-events: none;
 }
 
 .final-cta h2 {

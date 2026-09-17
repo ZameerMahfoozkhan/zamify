@@ -47,6 +47,13 @@
   --color-glow-purple: rgba(147, 51, 234, 0.15);
   --color-glow-dark: rgba(0, 0, 0, 0.05);
 
+  /* Premium Accent Gradient */
+  --gradient-accent: linear-gradient(135deg, #6366f1 0%, #a855f7 50%, #ec4899 100%);
+  --gradient-accent-subtle: linear-gradient(135deg, rgba(99,102,241,0.08) 0%, rgba(168,85,247,0.08) 50%, rgba(236,72,153,0.08) 100%);
+  --gradient-border: linear-gradient(135deg, rgba(99,102,241,0.3), rgba(168,85,247,0.3), rgba(236,72,153,0.3));
+  --gradient-shimmer: linear-gradient(110deg, transparent 25%, rgba(255,255,255,0.15) 50%, transparent 75%);
+  --gradient-dark-shimmer: linear-gradient(110deg, transparent 25%, rgba(255,255,255,0.06) 50%, transparent 75%);
+
   /* ── Typography ─────────────────────────────────────────────────────── */
   --font-display: 'Outfit', system-ui, -apple-system, sans-serif;
   --font-body: 'Inter', system-ui, -apple-system, sans-serif;
