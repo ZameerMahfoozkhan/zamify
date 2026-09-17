@@ -1760,6 +1760,6 @@
 }
 
 [data-theme='dark'] .brands-showcase__logo-item img {
-  filter: brightness(0) invert(1);
-  opacity: 0.8;
+  filter: none;
+  opacity: 0.9;
 }
