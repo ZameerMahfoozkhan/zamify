@@ -13,6 +13,8 @@
   .hero__grid {
     grid-template-columns: 1fr;
     gap: var(--space-10);
+    max-width: 100%;
+    overflow-x: hidden;
   }
 
   .hero__visual {
@@ -26,7 +28,9 @@
   }
 
   .hero__content {
-    max-width: 640px;
+    max-width: 100%;
+    width: 100%;
+    overflow: hidden;
   }
 
   .services__grid {
@@ -155,10 +159,14 @@
   /* ── Hero Mobile ────────────────────────────────────────────────────── */
   .hero {
     padding-top: 100px;
-    padding-bottom: var(--space-12);
-    min-height: 70dvh;
+    padding-bottom: var(--space-10);
+    min-height: auto;
     display: flex;
     align-items: center;
+  }
+
+  .hero__content {
+    max-width: 100%;
   }
 
   .hero__headline {
@@ -180,14 +188,69 @@
 
   .hero__actions .btn {
     width: 100%;
+    max-width: 100%;
     justify-content: center;
-    padding: 16px 28px;
+    padding: 16px 24px;
+    box-sizing: border-box;
+    font-size: var(--text-sm);
   }
 
+  .hero__actions .btn.btn--lg {
+    padding: 16px 24px;
+  }
+
+  /* ── Mobile Ambient Glow ──────────────────────────────────────────── */
   .hero__glow {
-    width: 100vw;
-    height: 100vw;
-    opacity: 0.6;
+    top: 30%;
+    right: -30%;
+    width: 120vw;
+    height: 120vw;
+    opacity: 0.5;
+  }
+
+  /* ── Mobile Service Pills ────────────────────────────────────────── */
+  .hero__service-pills {
+    display: block;
+    margin-top: var(--space-8);
+    margin-left: calc(var(--container-px) * -1);
+    margin-right: calc(var(--container-px) * -1);
+    overflow: hidden;
+  }
+
+  .hero__pills-track {
+    display: flex;
+    gap: 10px;
+    width: max-content;
+    animation: pills-scroll 18s linear infinite;
+    padding: 0 var(--container-px);
+  }
+
+  .hero__pill {
+    display: inline-flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 18px;
+    font-size: 12px;
+    font-weight: 600;
+    letter-spacing: 0.02em;
+    color: var(--color-text-secondary);
+    background: var(--color-bg-card);
+    border: 1px solid var(--color-border-subtle);
+    border-radius: var(--radius-full);
+    white-space: nowrap;
+    box-shadow: 0 2px 8px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(8px);
+    -webkit-backdrop-filter: blur(8px);
+  }
+
+  .hero__pill i {
+    font-size: 14px;
+    color: #8b5cf6;
+  }
+
+  @keyframes pills-scroll {
+    0% { transform: translateX(0); }
+    100% { transform: translateX(-50%); }
   }
 
   /* ── Nav Mobile ─────────────────────────────────────────────────────── */
