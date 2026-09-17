@@ -474,11 +474,23 @@
 
   /* ── Testimonials Mobile ────────────────────────────────────────────── */
   .testimonials__grid {
-    grid-template-columns: 1fr;
+    display: flex;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
     gap: var(--space-4);
+    padding-bottom: var(--space-6);
+    /* Hide scrollbar */
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .testimonials__grid::-webkit-scrollbar {
+    display: none;
   }
 
   .testimonial-card {
+    flex: 0 0 85%;
+    scroll-snap-align: center;
     padding: var(--space-6);
   }
 
