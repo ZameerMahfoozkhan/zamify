@@ -125,6 +125,7 @@
   --radius-xl: 20px;
   --radius-2xl: 24px;
   --radius-pill: 999px;
+  --radius-full: 9999px;
 
   /* ── Shadows ────────────────────────────────────────────────────────── */
   --shadow-xs: 0 2px 4px rgba(0, 0, 0, 0.02);
