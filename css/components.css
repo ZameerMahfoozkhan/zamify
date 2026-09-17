@@ -73,7 +73,7 @@
 
 .btn--outline-white:hover {
   background-color: #ffffff;
-  color: var(--color-text); /* Switches text to dark so it's readable */
+  color: var(--color-black); /* Enforce dark text since background turns white */
   border-color: #ffffff;
 }
 
@@ -586,12 +586,30 @@
   background: var(--color-border);
 }
 
+.browser-mockup__dot:nth-child(1) {
+  background: #FF5F56;
+}
+
+.browser-mockup__dot:nth-child(2) {
+  background: #FFBD2E;
+}
+
+.browser-mockup__dot:nth-child(3) {
+  background: #27C93F;
+}
+
 .browser-mockup__url {
   flex: 1;
   text-align: center;
   font-size: var(--text-xs);
   color: var(--color-text-tertiary);
   font-family: var(--font-mono);
+  text-decoration: none;
+  transition: color var(--duration-fast) ease;
+}
+
+a.browser-mockup__url:hover {
+  color: var(--color-white);
 }
 
 .browser-mockup__content {
