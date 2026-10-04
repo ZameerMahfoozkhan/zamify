@@ -11,22 +11,25 @@ document.addEventListener('DOMContentLoaded', () => {
   let isMenuOpen = false;
 
   // ── Sticky nav on scroll ──────────────────────────────────────────────
-  let lastScroll = 0;
+  let isScrolled = false;
+  let ticking = false;
 
-  function handleScroll() {
-    const currentScroll = window.scrollY;
-
-    if (currentScroll > 60) {
-      nav.classList.add('is-scrolled');
-    } else {
-      nav.classList.remove('is-scrolled');
+  function updateNav() {
+    const shouldScroll = window.scrollY > 50;
+    if (shouldScroll !== isScrolled) {
+      isScrolled = shouldScroll;
+      nav.classList.toggle('is-scrolled', isScrolled);
     }
-
-    lastScroll = currentScroll;
+    ticking = false;
   }
 
-  window.addEventListener('scroll', handleScroll, { passive: true });
-  handleScroll();
+  window.addEventListener('scroll', () => {
+    if (!ticking) {
+      requestAnimationFrame(updateNav);
+      ticking = true;
+    }
+  }, { passive: true });
+  updateNav();
 
   // ── Mobile menu toggle ────────────────────────────────────────────────
   if (toggle && mobileMenu) {

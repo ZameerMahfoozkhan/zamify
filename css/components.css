@@ -14,7 +14,11 @@
   line-height: 1;
   padding: 14px 28px;
   border-radius: 9999px;
-  transition: all var(--duration-base) var(--ease-spring);
+  transition: background-color var(--duration-fast) ease,
+              color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease,
+              transform var(--duration-base) var(--ease-spring);
   white-space: nowrap;
   cursor: pointer;
   border: none;
@@ -156,7 +160,11 @@
   border: 1px solid var(--color-border-subtle);
   background: var(--color-bg-card);
   box-shadow: var(--shadow-card);
-  transition: all var(--duration-base) var(--ease-out-quart);
+  transition: border-color var(--duration-base) var(--ease-out-quart),
+              box-shadow var(--duration-base) var(--ease-out-quart),
+              background-color var(--duration-base) var(--ease-out-quart),
+              transform var(--duration-base) var(--ease-out-quart);
+  will-change: transform;
   cursor: pointer;
 }
 
@@ -176,7 +184,9 @@
   background: var(--color-bg-muted);
   margin-bottom: var(--space-5);
   color: var(--color-text);
-  transition: all var(--duration-base) var(--ease-out-quart);
+  transition: background-color var(--duration-fast) ease,
+              color var(--duration-fast) ease,
+              transform var(--duration-fast) ease;
 }
 
 /* Premium Category Themes */
@@ -332,8 +342,13 @@
   left: 0;
   right: 0;
   z-index: var(--z-sticky);
-  padding: var(--space-4) 0;
-  transition: all var(--duration-base) var(--ease-out-quart);
+  padding: 14px 0;
+  transition: background-color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              box-shadow var(--duration-fast) ease,
+              backdrop-filter var(--duration-fast) ease,
+              -webkit-backdrop-filter var(--duration-fast) ease;
+  transform: translateZ(0);
 }
 
 .nav.is-scrolled {
@@ -342,7 +357,6 @@
   -webkit-backdrop-filter: blur(16px) saturate(200%);
   border-bottom: 1px solid var(--color-border-subtle);
   box-shadow: 0 1px 3px rgba(0,0,0,0.04), 0 8px 24px rgba(0,0,0,0.02);
-  padding: var(--space-3) 0;
 }
 
 .nav.is-scrolled.is-menu-open {
@@ -422,7 +436,8 @@
   width: 22px;
   height: 1.5px;
   background: var(--color-text);
-  transition: all var(--duration-base) var(--ease-spring);
+  transition: transform var(--duration-base) var(--ease-spring),
+              opacity var(--duration-base) ease;
   transform-origin: center;
 }
 
@@ -699,6 +714,7 @@ a.browser-mockup__url:hover {
   letter-spacing: var(--tracking-tighter);
   line-height: 1;
   color: var(--color-text);
+  font-variant-numeric: tabular-nums;
 }
 
 .stat__label {

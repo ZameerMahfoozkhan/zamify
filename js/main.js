@@ -61,8 +61,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
       },
       {
-        threshold: 0.1,
-        rootMargin: '0px 0px -60px 0px',
+        threshold: 0.05,
+        rootMargin: '0px 0px 40px 0px',
       }
     );
 
@@ -134,8 +134,8 @@ document.addEventListener('DOMContentLoaded', () => {
         if (!ticking) {
           requestAnimationFrame(() => {
             const scrollY = window.scrollY;
-            if (scrollY < 1000) {
-              heroGlow.style.transform = `translate(-50%, calc(-50% + ${scrollY * 0.15}px))`;
+            if (scrollY < 900) {
+              heroGlow.style.setProperty('--glow-y', `${(scrollY * 0.15).toFixed(1)}px`);
               heroGlow.style.opacity = Math.max(0, 1 - scrollY / 600);
             }
             ticking = false;
@@ -151,16 +151,40 @@ document.addEventListener('DOMContentLoaded', () => {
     const magneticBtns = document.querySelectorAll('.btn--primary, .btn--on-dark');
     
     magneticBtns.forEach(btn => {
-      btn.addEventListener('mousemove', (e) => {
-        const rect = btn.getBoundingClientRect();
-        const x = e.clientX - rect.left - rect.width / 2;
-        const y = e.clientY - rect.top - rect.height / 2;
-        
-        btn.style.transform = `translateY(-2px) translate(${x * 0.15}px, ${y * 0.15}px)`;
+      let rect = null;
+      let rafId = null;
+      let targetX = 0;
+      let targetY = 0;
+
+      btn.addEventListener('mouseenter', () => {
+        rect = btn.getBoundingClientRect();
+        btn.style.transition = 'none';
       });
-      
+
+      btn.addEventListener('mousemove', (e) => {
+        if (!rect) rect = btn.getBoundingClientRect();
+        targetX = (e.clientX - rect.left - rect.width / 2) * 0.15;
+        targetY = (e.clientY - rect.top - rect.height / 2) * 0.15;
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(() => {
+            btn.style.transform = `translateY(-2px) translate3d(${targetX.toFixed(1)}px, ${targetY.toFixed(1)}px, 0)`;
+            rafId = null;
+          });
+        }
+      });
+
       btn.addEventListener('mouseleave', () => {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+        rect = null;
+        btn.style.transition = 'transform 0.35s cubic-bezier(0.32, 0.72, 0, 1)';
         btn.style.transform = '';
+        setTimeout(() => {
+          btn.style.transition = '';
+        }, 350);
       });
     });
   }
@@ -170,23 +194,42 @@ document.addEventListener('DOMContentLoaded', () => {
     const tiltCards = document.querySelectorAll('.service-card, .differentiator');
     
     tiltCards.forEach(card => {
+      let rect = null;
+      let rafId = null;
+      let rotX = 0;
+      let rotY = 0;
+
+      card.addEventListener('mouseenter', () => {
+        rect = card.getBoundingClientRect();
+        card.style.transition = 'none';
+      });
+
       card.addEventListener('mousemove', (e) => {
-        const rect = card.getBoundingClientRect();
+        if (!rect) rect = card.getBoundingClientRect();
         const x = (e.clientX - rect.left) / rect.width;
         const y = (e.clientY - rect.top) / rect.height;
-        
-        const rotateX = (y - 0.5) * -6;
-        const rotateY = (x - 0.5) * 6;
-        
-        card.style.transform = `perspective(800px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) translateY(-6px)`;
+        rotX = (y - 0.5) * -6;
+        rotY = (x - 0.5) * 6;
+
+        if (!rafId) {
+          rafId = requestAnimationFrame(() => {
+            card.style.transform = `perspective(800px) rotateX(${rotX.toFixed(2)}deg) rotateY(${rotY.toFixed(2)}deg) translateY(-6px)`;
+            rafId = null;
+          });
+        }
       });
-      
+
       card.addEventListener('mouseleave', () => {
+        if (rafId) {
+          cancelAnimationFrame(rafId);
+          rafId = null;
+        }
+        rect = null;
+        card.style.transition = 'transform 0.45s cubic-bezier(0.32, 0.72, 0, 1)';
         card.style.transform = '';
-        card.style.transition = 'transform 0.5s cubic-bezier(0.32, 0.72, 0, 1)';
         setTimeout(() => {
           card.style.transition = '';
-        }, 500);
+        }, 450);
       });
     });
   }

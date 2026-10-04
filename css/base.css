@@ -29,25 +29,8 @@ body {
   background-image: radial-gradient(circle at 50% 0%, var(--color-bg-subtle) 0%, transparent 60%);
 }
 
-/* Subtle grain texture overlay for organic depth */
-body::after {
-  content: '';
-  position: fixed;
-  inset: 0;
-  z-index: 9999;
-  pointer-events: none;
-  opacity: 0.025;
-  background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)'/%3E%3C/svg%3E");
-  background-repeat: repeat;
-  background-size: 128px 128px;
-}
-
-[data-theme="dark"] body::after {
-  opacity: 0.04;
-}
-
 html, body {
-  overflow-x: hidden;
+  overflow-x: clip;
 }
 
 img,
@@ -174,20 +157,28 @@ h3 {
 
 /* ── Visibility ───────────────────────────────────────────────────────── */
 
+/* ── Offscreen Section Rendering Optimization ────────────────────────── */
+.section:not(.hero),
+.section--lg,
+.stats-section,
+.final-cta {
+  content-visibility: auto;
+  contain-intrinsic-size: 1px 750px;
+}
+
 /* ── Scroll Animation Base ────────────────────────────────────────────── */
 .reveal {
   opacity: 0;
-  transform: translateY(32px);
-  filter: blur(4px);
-  transition: opacity 0.9s var(--ease-out-expo),
-              transform 0.9s var(--ease-out-expo),
-              filter 0.9s var(--ease-out-expo);
+  transform: translateY(24px);
+  will-change: opacity, transform;
+  transition: opacity 0.65s var(--ease-out-expo),
+              transform 0.65s var(--ease-out-expo);
 }
 
 .reveal.is-visible {
   opacity: 1;
   transform: translateY(0);
-  filter: blur(0);
+  will-change: auto;
 }
 
 .reveal-delay-1 { transition-delay: 100ms; }
