@@ -3,9 +3,24 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Privacy Policy — Zamify</title>
-  <meta name="description" content="Zamify's privacy policy. How we collect, use, and protect your information.">
+  <title>Privacy Policy | Zamify Global Digital Agency</title>
+  <meta name="description" content="Read the Zamify Privacy Policy. Understand how we collect, handle, protect, and process user data across our website and digital services.">
   <link rel="canonical" href="https://zamify.online/pages/privacy">
+
+  <!-- Open Graph / Facebook -->
+  <meta property="og:title" content="Privacy Policy | Zamify Global Digital Agency">
+  <meta property="og:description" content="How Zamify collects, uses, and safeguards your personal data and digital privacy.">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://zamify.online/pages/privacy">
+  <meta property="og:image" content="https://zamify.online/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
+
+  <!-- Twitter Card -->
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Privacy Policy | Zamify Global Digital Agency">
+  <meta name="twitter:description" content="How Zamify collects, uses, and safeguards your personal data and digital privacy.">
+  <meta name="twitter:image" content="https://zamify.online/assets/images/og-image.jpg">
   <!-- Favicon -->
   <link rel="icon" type="image/png" sizes="32x32" href="../assets/images/favicon-32x32.png">
   <link rel="icon" type="image/png" sizes="192x192" href="../assets/images/favicon-192x192.png">
@@ -14,11 +29,11 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="../css/tokens.css?v=6">
-  <link rel="stylesheet" href="../css/base.css?v=6">
-  <link rel="stylesheet" href="../css/components.css?v=6">
-  <link rel="stylesheet" href="../css/sections.css?v=6">
-  <link rel="stylesheet" href="../css/responsive.css?v=6">
+  <link rel="stylesheet" href="../css/tokens.css?v=7">
+  <link rel="stylesheet" href="../css/base.css?v=7">
+  <link rel="stylesheet" href="../css/components.css?v=7">
+  <link rel="stylesheet" href="../css/sections.css?v=7">
+  <link rel="stylesheet" href="../css/responsive.css?v=7">
   <style>
     .legal-content h2 { font-size: var(--text-2xl); margin-top: var(--space-10); margin-bottom: var(--space-4); }
     .legal-content h3 { font-size: var(--text-lg); margin-top: var(--space-6); margin-bottom: var(--space-3); }
@@ -28,6 +43,42 @@
   </style>
   <!-- Phosphor Icons -->
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  <!-- Structured Data (JSON-LD) -->
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "WebPage",
+        "@id": "https://zamify.online/pages/privacy#webpage",
+        "url": "https://zamify.online/pages/privacy",
+        "name": "Privacy Policy | Zamify",
+        "description": "How Zamify collects, uses, and safeguards your personal data.",
+        "isPartOf": {
+          "@id": "https://zamify.online/#website"
+        }
+      },
+      {
+        "@type": "BreadcrumbList",
+        "@id": "https://zamify.online/pages/privacy#breadcrumb",
+        "itemListElement": [
+          {
+            "@type": "ListItem",
+            "position": 1,
+            "name": "Home",
+            "item": "https://zamify.online"
+          },
+          {
+            "@type": "ListItem",
+            "position": 2,
+            "name": "Privacy Policy",
+            "item": "https://zamify.online/pages/privacy"
+          }
+        ]
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
   <nav class="nav" id="nav">
@@ -35,9 +86,9 @@
       <a href="/" class="nav__logo"><img src="../assets/images/logo.webp" width="2172" height="724" alt="Zamify"></a>
       <div class="nav__links">
         <a href="/#services" class="nav__link">Services</a>
-        <a href="work" class="nav__link">Work</a>
-        <a href="about" class="nav__link">About</a>
-        <a href="contact" class="nav__link">Contact</a>
+        <a href="/pages/work" class="nav__link">Work</a>
+        <a href="/pages/about" class="nav__link">About</a>
+        <a href="/pages/contact" class="nav__link">Contact</a>
       </div>
       <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
         <i class="ph-bold ph-moon"></i>
@@ -127,18 +178,18 @@
           <div class="footer__col-title">Navigation</div>
           <div class="footer__links">
             <a href="/#services" class="footer__link">Services</a>
-            <a href="../pages/work" class="footer__link">Work</a>
-            <a href="../pages/about" class="footer__link">About</a>
+            <a href="/pages/work" class="footer__link">Work</a>
+            <a href="/pages/about" class="footer__link">About</a>
             <a href="/#process" class="footer__link">Process</a>
-            <a href="../pages/contact" class="footer__link">Contact</a>
+            <a href="/pages/contact" class="footer__link">Contact</a>
           </div>
         </div>
 
         <div>
           <div class="footer__col-title">Legal</div>
           <div class="footer__links">
-            <a href="../pages/privacy" class="footer__link">Privacy Policy</a>
-            <a href="../pages/terms" class="footer__link">Terms of Service</a>
+            <a href="/pages/privacy" class="footer__link">Privacy Policy</a>
+            <a href="/pages/terms" class="footer__link">Terms of Service</a>
           </div>
         </div>
       </div>

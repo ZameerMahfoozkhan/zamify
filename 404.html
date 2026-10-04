@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>404 — Page Not Found | Zamify</title>
+  <meta name="description" content="The page you are looking for cannot be found. Return to Zamify's homepage or explore our services and portfolio.">
+  <meta name="robots" content="noindex, follow">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/png" sizes="32x32" href="/assets/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="192x192" href="/assets/images/favicon-192x192.png">
+  <link rel="apple-touch-icon" sizes="180x180" href="/assets/images/apple-touch-icon.png">
+  <link rel="manifest" href="/site.webmanifest">
+
+  <!-- Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+  <script defer src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+
+  <!-- Styles -->
+  <link rel="stylesheet" href="/css/tokens.css?v=7">
+  <link rel="stylesheet" href="/css/base.css?v=7">
+  <link rel="stylesheet" href="/css/components.css?v=7">
+  <link rel="stylesheet" href="/css/sections.css?v=7">
+  <link rel="stylesheet" href="/css/responsive.css?v=7">
+
+  <style>
+    .error-hero {
+      min-height: calc(100vh - 200px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 140px var(--space-6) 80px;
+      position: relative;
+    }
+    .error-code {
+      font-size: clamp(6rem, 15vw, 11rem);
+      font-weight: 800;
+      line-height: 1;
+      font-family: var(--font-heading);
+      background: linear-gradient(135deg, var(--color-primary, #6366f1) 0%, #a855f7 50%, #ec4899 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      margin-bottom: var(--space-4);
+      letter-spacing: -0.04em;
+    }
+    .error-title {
+      font-size: clamp(2rem, 4vw, 2.75rem);
+      font-weight: 700;
+      margin-bottom: var(--space-4);
+    }
+    .error-desc {
+      font-size: var(--text-lg);
+      color: var(--color-text-secondary);
+      max-width: 540px;
+      margin: 0 auto var(--space-8);
+      line-height: var(--leading-relaxed);
+    }
+    .error-actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: var(--space-4);
+      justify-content: center;
+      margin-bottom: var(--space-12);
+    }
+    .error-links-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+      gap: var(--space-4);
+      max-width: 800px;
+      width: 100%;
+      margin: 0 auto;
+      text-align: left;
+    }
+    .error-link-card {
+      padding: var(--space-5);
+      border-radius: var(--radius-lg);
+      border: 1px solid var(--color-border-subtle);
+      background: var(--color-bg-card);
+      transition: all var(--duration-base) var(--ease-out-quart);
+      display: flex;
+      flex-direction: column;
+      text-decoration: none;
+      color: inherit;
+    }
+    .error-link-card:hover {
+      border-color: var(--color-border-hover);
+      transform: translateY(-2px);
+      box-shadow: var(--shadow-md);
+    }
+    .error-link-card i {
+      font-size: 24px;
+      color: var(--color-primary);
+      margin-bottom: var(--space-3);
+    }
+    .error-link-card strong {
+      font-size: var(--text-base);
+      font-weight: 600;
+      margin-bottom: var(--space-1);
+    }
+    .error-link-card span {
+      font-size: var(--text-sm);
+      color: var(--color-text-secondary);
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navigation -->
+  <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
+    <div class="nav__inner">
+      <a href="/" class="nav__logo" aria-label="Zamify Home">
+        <img src="/assets/images/logo-sm.webp" alt="Zamify Logo" width="2172" height="724" style="height: 32px; width: auto;">
+      </a>
+      <div class="nav__links">
+        <a href="/#services" class="nav__link">Services</a>
+        <a href="/pages/work" class="nav__link">Work</a>
+        <a href="/pages/about" class="nav__link">About</a>
+        <a href="/#process" class="nav__link">Process</a>
+        <a href="/#faq" class="nav__link">Insights</a>
+        <a href="/pages/contact" class="nav__link">Contact</a>
+      </div>
+      <a href="/pages/contact" class="btn btn--primary btn--sm nav__cta nav__cta-desktop">
+        Get a Strategy Call <span class="btn__arrow">→</span>
+      </a>
+      <button class="theme-toggle" aria-label="Toggle dark mode" title="Toggle dark mode">
+        <i class="ph-bold ph-moon"></i>
+      </button>
+      <button class="nav__toggle" aria-label="Toggle menu" aria-expanded="false" aria-controls="mobile-menu">
+        <span></span><span></span><span></span>
+      </button>
+    </div>
+    <div class="nav__mobile" id="mobile-menu" role="dialog" aria-label="Navigation menu">
+      <a href="/#services" class="nav__mobile-link">Services</a>
+      <a href="/pages/work" class="nav__mobile-link">Work</a>
+      <a href="/pages/about" class="nav__mobile-link">About</a>
+      <a href="/#process" class="nav__mobile-link">Process</a>
+      <a href="/#faq" class="nav__mobile-link">Insights</a>
+      <a href="/pages/contact" class="nav__mobile-link">Contact</a>
+    </div>
+  </nav>
+
+  <main id="main-content">
+    <section class="error-hero">
+      <div class="container">
+        <div class="error-code">404</div>
+        <h1 class="error-title">Page Not Found</h1>
+        <p class="error-desc">
+          The page you're searching for might have been moved, renamed, or is temporarily unavailable. Let's get you back on track.
+        </p>
+
+        <div class="error-actions">
+          <a href="/" class="btn btn--primary">
+            Return to Homepage <span class="btn__arrow">→</span>
+          </a>
+          <a href="/pages/contact" class="btn btn--secondary">
+            Contact Support
+          </a>
+        </div>
+
+        <div class="error-links-grid">
+          <a href="/services/web-development" class="error-link-card">
+            <i class="ph-bold ph-code"></i>
+            <strong>Web Engineering</strong>
+            <span>High-performance web applications and portals.</span>
+          </a>
+          <a href="/services/seo" class="error-link-card">
+            <i class="ph-bold ph-magnifying-glass"></i>
+            <strong>Organic SEO</strong>
+            <span>Search optimization for organic rankings and traffic.</span>
+          </a>
+          <a href="/services/ai-automation" class="error-link-card">
+            <i class="ph-bold ph-cpu"></i>
+            <strong>AI Automation</strong>
+            <span>Intelligent workflows and conversational systems.</span>
+          </a>
+          <a href="/pages/work" class="error-link-card">
+            <i class="ph-bold ph-briefcase"></i>
+            <strong>Our Work</strong>
+            <span>Explore our recent client case studies and results.</span>
+          </a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <!-- Footer -->
+  <footer class="footer" role="contentinfo">
+    <div class="container">
+      <div class="footer__grid">
+        <div class="footer__brand">
+          <a href="/" class="footer__logo" aria-label="Zamify Home">
+            <img src="/assets/images/logo.webp" alt="Zamify Logo" loading="lazy" decoding="async" width="2172" height="724" style="height: 32px; width: auto;">
+          </a>
+          <p class="footer__tagline">Build, Create, Grow. A modern global digital agency helping businesses scale online.</p>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Navigation</h4>
+          <ul class="footer__list">
+            <li><a href="/" class="footer__link">Home</a></li>
+            <li><a href="/pages/about" class="footer__link">About Us</a></li>
+            <li><a href="/pages/work" class="footer__link">Case Studies</a></li>
+            <li><a href="/pages/contact" class="footer__link">Get in Touch</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Services</h4>
+          <ul class="footer__list">
+            <li><a href="/services/web-development" class="footer__link">Web Development</a></li>
+            <li><a href="/services/seo" class="footer__link">Search Optimization</a></li>
+            <li><a href="/services/ai-automation" class="footer__link">AI Automation</a></li>
+            <li><a href="/services/performance" class="footer__link">Performance Engineering</a></li>
+          </ul>
+        </div>
+        <div class="footer__col">
+          <h4 class="footer__heading">Legal</h4>
+          <ul class="footer__list">
+            <li><a href="/pages/privacy" class="footer__link">Privacy Policy</a></li>
+            <li><a href="/pages/terms" class="footer__link">Terms of Service</a></li>
+          </ul>
+        </div>
+      </div>
+      <div class="footer__bottom">
+        <p>&copy; 2026 Zamify. All rights reserved.</p>
+      </div>
+    </div>
+  </footer>
+
+  <script src="/js/navigation.js"></script>
+  <script src="/js/main.js"></script>
+</body>
+</html>

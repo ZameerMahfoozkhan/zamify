@@ -6,17 +6,20 @@
   <title>Zamify — Build, Create, Grow | Global Digital Agency</title>
   <meta name="description" content="Zamify is a global digital agency combining web development, AI-powered creative, SEO, advertising, and digital strategy to help ambitious businesses grow online.">
 
-  <!-- Open Graph -->
+  <!-- Open Graph / Facebook -->
   <meta property="og:title" content="Zamify — Build, Create, Grow | Global Digital Agency">
   <meta property="og:description" content="We build, grow, and transform brands for the digital world. Web development, AI creative, SEO, advertising, and digital strategy.">
   <meta property="og:type" content="website">
   <meta property="og:url" content="https://zamify.online">
   <meta property="og:image" content="https://zamify.online/assets/images/og-image.jpg">
+  <meta property="og:image:width" content="1200">
+  <meta property="og:image:height" content="630">
 
   <!-- Twitter Card -->
   <meta name="twitter:card" content="summary_large_image">
   <meta name="twitter:title" content="Zamify — Build, Create, Grow | Global Digital Agency">
   <meta name="twitter:description" content="We build, grow, and transform brands for the digital world.">
+  <meta name="twitter:image" content="https://zamify.online/assets/images/og-image.jpg">
 
   <!-- Canonical -->
   <link rel="canonical" href="https://zamify.online">
@@ -43,30 +46,87 @@
   <link rel="stylesheet" href="css/sections.css?v=7">
   <link rel="stylesheet" href="css/responsive.css?v=7">
 
-  <!-- Schema: Organization -->
+  
+  <!-- Structured Data: Organization, WebSite & FAQPage -->
   <script type="application/ld+json">
   {
     "@context": "https://schema.org",
-    "@type": "Organization",
-    "name": "Zamify",
-    "url": "https://zamify.online",
-    "description": "A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.",
-    "foundingDate": "2024",
-    "founder": [
-      { "@type": "Person", "name": "Zameer Mahfooz Khan" },
-      { "@type": "Person", "name": "Shreyansh Yadav" }
-    ],
-    "sameAs": []
-  }
-  </script>
-
-  <!-- Schema: Website -->
-  <script type="application/ld+json">
-  {
-    "@context": "https://schema.org",
-    "@type": "WebSite",
-    "name": "Zamify",
-    "url": "https://zamify.online"
+    "@graph": [
+      {
+        "@type": "WebSite",
+        "@id": "https://zamify.online/#website",
+        "url": "https://zamify.online",
+        "name": "Zamify",
+        "description": "Global Digital Agency — Build, Create, Grow",
+        "publisher": { "@id": "https://zamify.online/#organization" }
+      },
+      {
+        "@type": "ProfessionalService",
+        "@id": "https://zamify.online/#organization",
+        "name": "Zamify",
+        "url": "https://zamify.online",
+        "logo": "https://zamify.online/assets/images/logo.webp",
+        "image": "https://zamify.online/assets/images/og-image.jpg",
+        "description": "A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.",
+        "foundingDate": "2024",
+        "email": "hello@zamify.online",
+        "telephone": "+91-95806-59559",
+        "founder": [
+          { "@type": "Person", "name": "Zameer Mahfooz Khan", "jobTitle": "Co-Founder & Technical Director" },
+          { "@type": "Person", "name": "Shreyansh Yadav", "jobTitle": "Co-Founder & Creative Director" }
+        ],
+        "sameAs": [
+          "https://www.instagram.com/zamify.in",
+          "https://www.linkedin.com/in/zamify-in-576b2a432",
+          "https://x.com/zamifyin",
+          "https://wa.me/919580659559"
+        ],
+        "contactPoint": {
+          "@type": "ContactPoint",
+          "telephone": "+91-95806-59559",
+          "contactType": "customer service",
+          "availableLanguage": ["English", "Hindi"]
+        }
+      },
+      {
+        "@type": "FAQPage",
+        "@id": "https://zamify.online/#faq",
+        "mainEntity": [
+          {
+            "@type": "Question",
+            "name": "What does Zamify do?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Zamify is a global digital agency that helps businesses build stronger online presences through web development, app development, SEO, digital advertising, AI-powered creative production, and digital brand strategy."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "What types of businesses do you work with?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "We work with local businesses, real estate companies, restaurants, healthcare providers, consultants, e-commerce brands, personal brands, startups, international companies, and agencies looking for a reliable digital partner."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Do you work with clients outside India?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Yes. Zamify serves clients worldwide. Our processes, communication, and project management are designed to work seamlessly across time zones and regions."
+            }
+          },
+          {
+            "@type": "Question",
+            "name": "Can Zamify redesign my existing website?",
+            "acceptedAnswer": {
+              "@type": "Answer",
+              "text": "Absolutely. Website redesign is one of our core services. We evaluate your current site, identify what's working and what isn't, and create a modern, conversion-focused experience that better represents your brand."
+            }
+          }
+        ]
+      }
+    ]
   }
   </script>
 </head>
@@ -1408,22 +1468,22 @@
             <div class="contact-section__row">
               <div class="form-group">
                 <label for="form-name" class="form-label">Name</label>
-                <input type="text" id="form-name" name="name" class="form-input" placeholder="Your name" required>
+                <input type="text" id="form-name" name="name" class="form-input" placeholder="Your name" required autocomplete="name">
               </div>
               <div class="form-group">
                 <label for="form-email" class="form-label">Email</label>
-                <input type="email" id="form-email" name="email" class="form-input" placeholder="your@email.com" required>
+                <input type="email" id="form-email" name="email" class="form-input" placeholder="your@email.com" required autocomplete="email">
               </div>
             </div>
 
             <div class="contact-section__row">
               <div class="form-group">
                 <label for="form-whatsapp" class="form-label">WhatsApp</label>
-                <input type="tel" id="form-whatsapp" name="whatsapp" class="form-input" placeholder="+91 XXXXXXXXXX">
+                <input type="tel" id="form-whatsapp" name="whatsapp" class="form-input" placeholder="+91 XXXXXXXXXX" autocomplete="tel">
               </div>
               <div class="form-group">
                 <label for="form-business" class="form-label">Business</label>
-                <input type="text" id="form-business" name="business" class="form-input" placeholder="Your business name">
+                <input type="text" id="form-business" name="business" class="form-input" placeholder="Your business name" autocomplete="organization">
               </div>
             </div>
 
