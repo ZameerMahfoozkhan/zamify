@@ -1,6 +1,13 @@
 {
   "cleanUrls": true,
   "trailingSlash": false,
+  "redirects": [
+    {
+      "source": "/llm.txt",
+      "destination": "/llms.txt",
+      "permanent": true
+    }
+  ],
   "headers": [
     {
       "source": "/sitemap.xml",
@@ -16,7 +23,7 @@
       ]
     },
     {
-      "source": "/(robots.txt|llms.txt|llm.txt)",
+      "source": "/(robots.txt|llms.txt)",
       "headers": [
         {
           "key": "Content-Type",

@@ -1,7 +1,5 @@
 User-agent: *
 Allow: /
-Disallow: /scratch/
-Disallow: /assets/images/backup_logos/
 
 # AI Search & LLM Discovery
 User-agent: GPTBot
