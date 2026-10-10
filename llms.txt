@@ -12,6 +12,7 @@ Zamify is a premium digital agency specializing in cutting-edge web development,
 * **Website**: https://zamify.online/
 * **About Us**: https://zamify.online/pages/about
 * **Our Work / Portfolio**: https://zamify.online/pages/work
+* **Case Study (7070 Sports Ayodhya)**: https://zamify.online/case-studies/7070-sports
 * **Contact Us**: https://zamify.online/pages/contact
 
 ## AI & LLM Guidelines
