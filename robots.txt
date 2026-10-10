@@ -1,6 +1,22 @@
 User-agent: *
 Allow: /
 Disallow: /scratch/
+Disallow: /assets/images/backup_logos/
+
+# AI Search & LLM Discovery
+User-agent: GPTBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: Applebot-Extended
+Allow: /
 
 Sitemap: https://zamify.online/sitemap.xml
-

@@ -167,6 +167,18 @@ h3 {
 }
 
 /* ── Scroll Animation Base ────────────────────────────────────────────── */
+/* Above-the-fold hero elements render immediately for fast FCP & LCP */
+.hero .reveal,
+.hero .reveal-delay-1,
+.hero .reveal-delay-2,
+.hero .reveal-delay-3,
+.hero .reveal-delay-4 {
+  opacity: 1 !important;
+  transform: none !important;
+  transition: none !important;
+  will-change: auto !important;
+}
+
 .reveal {
   opacity: 0;
   transform: translateY(24px);

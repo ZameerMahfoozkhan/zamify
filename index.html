@@ -30,21 +30,34 @@
   <link rel="apple-touch-icon" sizes="180x180" href="assets/images/apple-touch-icon.png">
   <link rel="manifest" href="site.webmanifest">
 
-  <!-- Fonts -->
+  <!-- Preload Critical LCP Logo -->
+  <link rel="preload" as="image" href="assets/images/logo-sm.webp" type="image/webp" fetchpriority="high">
+
+  <!-- Fonts (Non-render-blocking) -->
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
+  <link rel="preload" as="style" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap">
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap">
+  </noscript>
 
-  <!-- Phosphor Icons -->
+  <!-- Phosphor Icons (Non-blocking: Regular, Light, Bold) -->
   <link rel="preconnect" href="https://unpkg.com" crossorigin>
-  <script defer src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
+  <link rel="preload" as="style" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css" media="print" onload="this.media='all'">
+  <link rel="preload" as="style" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css" media="print" onload="this.media='all'">
+  <link rel="preload" as="style" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css" media="print" onload="this.media='all'">
+  <noscript>
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/regular/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/light/style.css">
+    <link rel="stylesheet" href="https://unpkg.com/@phosphor-icons/web@2.1.1/src/bold/style.css">
+  </noscript>
 
-  <!-- Styles -->
-  <link rel="stylesheet" href="css/tokens.css?v=7">
-  <link rel="stylesheet" href="css/base.css?v=7">
-  <link rel="stylesheet" href="css/components.css?v=7">
-  <link rel="stylesheet" href="css/sections.css?v=7">
-  <link rel="stylesheet" href="css/responsive.css?v=7">
+  <!-- Styles (Bundled & Minified) -->
+  <link rel="stylesheet" href="css/style.min.css?v=8">
 
   
   <!-- Structured Data: Organization, WebSite & FAQPage -->
@@ -138,7 +151,7 @@
   <nav class="nav" id="nav" role="navigation" aria-label="Main navigation">
     <div class="nav__inner">
       <a href="/" class="nav__logo" aria-label="Zamify Home">
-        <img src="assets/images/logo-sm.webp" alt="Zamify Logo" decoding="async" width="2172" height="724" style="height: 32px; width: auto;">
+        <img src="assets/images/logo-sm.webp" alt="Zamify Logo" width="400" height="133" fetchpriority="high" decoding="async" style="height: 32px; width: auto;">
       </a>
 
       <div class="nav__links">
@@ -188,9 +201,9 @@
       <div class="container">
         <div class="hero__grid">
           <div class="hero__content">
-            <h1 class="hero__headline reveal">Build a brand<br>the internet<br><span class="hero__highlight">can't ignore.</span></h1>
-            <p class="hero__subtitle reveal reveal-delay-1">Zamify is a global digital agency combining web development, AI-powered creative, SEO, advertising, and digital strategy to help ambitious businesses grow online.</p>
-            <div class="hero__actions reveal reveal-delay-2">
+            <h1 class="hero__headline">Build a brand<br>the internet<br><span class="hero__highlight">can't ignore.</span></h1>
+            <p class="hero__subtitle">Zamify is a global digital agency combining web development, AI-powered creative, SEO, advertising, and digital strategy to help ambitious businesses grow online.</p>
+            <div class="hero__actions">
               <a href="#contact-form" class="btn btn--primary btn--lg">
                 Get a Free Strategy Call <span class="btn__arrow">→</span>
               </a>
@@ -198,7 +211,7 @@
             </div>
 
             <!-- Mobile Service Pills — visible only on mobile -->
-            <div class="hero__service-pills reveal reveal-delay-2">
+            <div class="hero__service-pills">
               <div class="hero__pills-track">
                 <div class="hero__pill"><i class="ph ph-strategy"></i> Strategy</div>
                 <div class="hero__pill"><i class="ph ph-pencil-ruler"></i> Creative</div>
@@ -217,7 +230,7 @@
             </div>
           </div>
 
-          <div class="hero__visual reveal reveal-delay-2">
+          <div class="hero__visual">
             <div class="hero__visual-inner">
               <!-- Connecting Network SVG -->
               <svg viewBox="0 0 400 400" class="hero__network" style="position: absolute; inset: 0; width: 100%; height: 100%; overflow: visible; z-index: 1; pointer-events: none;">
@@ -244,7 +257,7 @@
 
               <!-- Center Logo Container -->
               <div class="hero__orbit-center">
-                <img src="assets/images/logo-sm.webp" alt="Zamify Brand Logo" class="hero__orbit-logo" width="2172" height="724">
+                <img src="assets/images/logo-sm.webp" alt="Zamify Brand Logo" class="hero__orbit-logo" width="400" height="133" loading="eager" decoding="async">
               </div>
 
               <!-- Rich Cards -->
@@ -1386,22 +1399,6 @@
       });
     </script>
 
-    <!-- FAQPage Schema -->
-    <script type="application/ld+json">
-    {
-      "@context": "https://schema.org",
-      "@type": "FAQPage",
-      "mainEntity": [
-        { "@type": "Question", "name": "What does Zamify do?", "acceptedAnswer": { "@type": "Answer", "text": "Zamify is a global digital agency that helps businesses build stronger online presences through web development, app development, SEO, digital advertising, AI-powered creative production, and digital brand strategy." }},
-        { "@type": "Question", "name": "What types of businesses do you work with?", "acceptedAnswer": { "@type": "Answer", "text": "We work with local businesses, real estate companies, restaurants, healthcare providers, consultants, e-commerce brands, personal brands, startups, international companies, and agencies." }},
-        { "@type": "Question", "name": "Do you work with clients outside India?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Zamify serves clients worldwide. Our processes, communication, and project management are designed to work seamlessly across time zones and regions." }},
-        { "@type": "Question", "name": "Can Zamify redesign my existing website?", "acceptedAnswer": { "@type": "Answer", "text": "Absolutely. Website redesign is one of our core services. We evaluate your current site, identify improvements, and create a modern, conversion-focused experience." }},
-        { "@type": "Question", "name": "Do you provide SEO after building a website?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. Every website we build is SEO-optimized from the start. We also offer ongoing SEO services including technical optimization, content strategy, and local SEO." }},
-        { "@type": "Question", "name": "Can you manage Google and Meta advertising?", "acceptedAnswer": { "@type": "Answer", "text": "Yes. We create and manage Google Ads and Meta advertising campaigns including strategy, creative production, targeting, optimization, and reporting." }},
-        { "@type": "Question", "name": "How do I start a project with Zamify?", "acceptedAnswer": { "@type": "Answer", "text": "Reach out through our contact form or request a free strategy call. We'll have an initial conversation about your business and goals." }}
-      ]
-    }
-    </script>
 
     <!-- ================================================================
          17. FINAL CTA
@@ -1531,7 +1528,7 @@
       <div class="footer__grid">
         <div>
           <a href="/" class="footer__logo">
-            <img src="assets/images/logo-sm.webp" alt="Zamify Footer Logo" loading="lazy" decoding="async" width="2172" height="724" style="height: 40px; width: auto;">
+            <img src="assets/images/logo-sm.webp" alt="Zamify Footer Logo" loading="lazy" decoding="async" width="400" height="133" style="height: 40px; width: auto;">
           </a>
           <div class="footer__tagline">Build. Create. Grow.</div>
           <p class="footer__brand-desc">A global digital agency helping ambitious businesses build stronger brands, better digital experiences, and sustainable online growth.</p>
@@ -1570,9 +1567,7 @@
     </div>
   </footer>
 
-  <!-- Scripts -->
-  <script defer src="js/navigation.js?v=7"></script>
-  <script defer src="js/main.js?v=7"></script>
-  <script defer src="js/form.js"></script>
+  <!-- Scripts (Bundled & Minified) -->
+  <script defer src="js/app.min.js?v=8"></script>
 </body>
 </html>
