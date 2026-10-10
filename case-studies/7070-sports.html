@@ -125,12 +125,16 @@
       border-radius: var(--radius-pill);
       margin-bottom: var(--space-12);
       font-size: var(--text-sm);
+      width: 100%;
+      box-sizing: border-box;
     }
     .cs-meta-bar__item {
       display: flex;
       align-items: center;
       gap: var(--space-2);
       color: var(--color-text-secondary);
+      word-break: break-word;
+      overflow-wrap: break-word;
     }
     .cs-meta-bar__item strong {
       color: var(--color-text);
@@ -143,6 +147,8 @@
       box-shadow: var(--shadow-xl);
       background: var(--color-bg-card);
       margin-bottom: var(--space-16);
+      width: 100%;
+      box-sizing: border-box;
     }
     .cs-preview-frame img {
       width: 100%;
@@ -151,9 +157,12 @@
     }
     .cs-content-layout {
       display: grid;
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 280px minmax(0, 1fr);
       gap: var(--space-16);
       align-items: start;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .cs-sidebar {
       position: sticky;
@@ -194,9 +203,18 @@
     }
     .cs-article-body {
       max-width: 780px;
+      width: 100%;
+      min-width: 0;
+      box-sizing: border-box;
+      overflow-wrap: break-word;
+      word-break: break-word;
       font-size: 1.0625rem;
       line-height: 1.75;
       color: var(--color-text-secondary);
+    }
+    .cs-article-body * {
+      box-sizing: border-box;
+      max-width: 100%;
     }
     .cs-article-body h2 {
       font-size: clamp(1.75rem, 2.5vw, 2.25rem);
@@ -206,6 +224,8 @@
       padding-top: var(--space-6);
       border-top: 1px solid var(--color-border-subtle);
       line-height: 1.2;
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .cs-article-body h2:first-of-type {
       margin-top: 0;
@@ -217,9 +237,13 @@
       color: var(--color-text);
       margin-top: var(--space-8);
       margin-bottom: var(--space-3);
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .cs-article-body p {
       margin-bottom: var(--space-6);
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .cs-article-body ul, .cs-article-body ol {
       margin-bottom: var(--space-6);
@@ -227,6 +251,8 @@
     }
     .cs-article-body li {
       margin-bottom: var(--space-2);
+      overflow-wrap: break-word;
+      word-break: break-word;
     }
     .cs-quote-box {
       border-left: 3px solid #9333ea;
@@ -237,6 +263,21 @@
       font-style: italic;
       color: var(--color-text);
       font-size: 1.125rem;
+      overflow-wrap: break-word;
+      word-break: break-word;
+      box-sizing: border-box;
+      max-width: 100%;
+    }
+    .cs-url-box {
+      font-family: var(--font-mono) !important;
+      font-size: 0.8125rem !important;
+      font-style: normal !important;
+      word-break: break-all !important;
+      overflow-wrap: anywhere !important;
+      white-space: pre-wrap !important;
+      line-height: 1.55 !important;
+      background: var(--color-bg-muted) !important;
+      border-left-color: #10b981 !important;
     }
     .cs-quote-box cite {
       display: block;
@@ -249,12 +290,17 @@
     }
     .cs-table-wrap {
       overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
       margin: var(--space-8) 0;
       border: 1px solid var(--color-border-subtle);
       border-radius: var(--radius-lg);
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
     }
     .cs-comparison-table {
       width: 100%;
+      min-width: 580px;
       border-collapse: collapse;
       text-align: left;
       font-size: var(--text-sm);
@@ -289,6 +335,8 @@
       padding: var(--space-8);
       margin: var(--space-12) 0;
       box-shadow: var(--shadow-md);
+      box-sizing: border-box;
+      max-width: 100%;
     }
     .cs-cta-box {
       background: var(--color-bg-dark);
@@ -299,6 +347,8 @@
       margin: var(--space-16) 0;
       position: relative;
       overflow: hidden;
+      box-sizing: border-box;
+      max-width: 100%;
     }
     .cs-cta-box h2 {
       color: #ffffff;
@@ -314,7 +364,8 @@
     }
     @media (max-width: 991px) {
       .cs-content-layout {
-        grid-template-columns: 1fr;
+        grid-template-columns: minmax(0, 1fr);
+        gap: var(--space-8);
       }
       .cs-sidebar {
         display: none;
@@ -324,12 +375,57 @@
       }
     }
     @media (max-width: 600px) {
+      .cs-hero {
+        padding-top: 100px;
+        padding-bottom: var(--space-8);
+      }
+      .cs-hero__headline {
+        font-size: clamp(1.75rem, 6.5vw, 2.35rem);
+      }
+      .cs-hero__lead {
+        font-size: var(--text-base);
+        margin-bottom: var(--space-6);
+      }
       .cs-stats-grid {
         grid-template-columns: 1fr;
+        gap: var(--space-3);
+      }
+      .cs-stat-card {
+        padding: var(--space-4) var(--space-5);
       }
       .cs-meta-bar {
+        flex-direction: column;
+        align-items: flex-start;
         border-radius: var(--radius-lg);
-        gap: var(--space-4);
+        padding: var(--space-4) var(--space-5);
+        gap: var(--space-3);
+      }
+      .cs-meta-bar__item {
+        font-size: var(--text-xs);
+      }
+      .cs-quote-box {
+        padding: var(--space-4) var(--space-5);
+        font-size: 1rem;
+        margin: var(--space-6) 0;
+      }
+      .cs-article-body p,
+      .cs-article-body li {
+        font-size: 1rem;
+        line-height: 1.65;
+      }
+      .cs-article-body ul,
+      .cs-article-body ol {
+        padding-left: var(--space-5);
+      }
+      .cs-takeaways-card {
+        padding: var(--space-5) var(--space-4);
+        margin: var(--space-8) 0;
+        border-radius: var(--radius-lg);
+      }
+      .cs-cta-box {
+        padding: var(--space-8) var(--space-4);
+        margin: var(--space-10) 0;
+        border-radius: var(--radius-xl);
       }
     }
   </style>
@@ -430,8 +526,10 @@
       <a href="/#services" class="nav__mobile-link">Services</a>
       <a href="/pages/work" class="nav__mobile-link">Work</a>
       <a href="/pages/about" class="nav__mobile-link">About</a>
+      <a href="/#process" class="nav__mobile-link">Process</a>
+      <a href="/#faq" class="nav__mobile-link">Insights</a>
       <a href="/pages/contact" class="nav__mobile-link">Contact</a>
-      <a href="/pages/contact" class="btn btn--primary btn--lg" style="margin-top: var(--space-4); color: #ffffff !important; background-color: #000000 !important; opacity: 1 !important; transform: none !important; display: flex !important; justify-content: center !important;">Get a Free Strategy Call →</a>
+      <a href="/pages/contact" class="btn btn--primary btn--lg nav__mobile-link">Get a Free Strategy Call →</a>
     </div>
   </nav>
 
@@ -570,7 +668,7 @@
             <h2 id="whatsapp-conversion">6. Phase 4: Engineering the Frictionless 1-Click WhatsApp Funnel</h2>
             <p>Rather than leaving buyers to manually copy phone numbers or send generic messages like <em>"Hello, is this available?"</em>, we engineered a <strong>contextual WhatsApp CTA engine</strong>.</p>
             <p>Every single product showcase and catalog card contains an automated trigger that compiles product metadata into a customized, pre-filled WhatsApp link upon click:</p>
-            <div class="cs-quote-box" style="font-family: var(--font-mono); font-size: 0.9375rem; font-style: normal;">
+            <div class="cs-quote-box cs-url-box">
               https://wa.me/91XXXXXXXXXX?text=Hi%207070%20Sports!%20I%20am%20interested%20in%20ordering%20the%20Sublimated%20Cricket%20Jersey%20(SKU:%207070-CRK-04).%20Please%20share%20fabric%20options,%20bulk%20customization%20details,%20and%20pricing.
             </div>
             <p>This micro-optimization transformed their conversion funnel:</p>

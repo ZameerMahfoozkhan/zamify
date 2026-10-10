@@ -39,19 +39,21 @@ document.addEventListener('DOMContentLoaded', () => {
       mobileMenu.classList.toggle('is-open', isMenuOpen);
       nav.classList.toggle('is-menu-open', isMenuOpen);
       document.body.style.overflow = isMenuOpen ? 'hidden' : '';
+      document.documentElement.style.overflow = isMenuOpen ? 'hidden' : '';
 
       // Update ARIA
       toggle.setAttribute('aria-expanded', isMenuOpen.toString());
     });
 
-    // Close menu on link click
-    mobileLinks.forEach((link) => {
+    // Close menu on any link or button click inside mobile menu
+    mobileMenu.querySelectorAll('a, button').forEach((link) => {
       link.addEventListener('click', () => {
         isMenuOpen = false;
         toggle.classList.remove('is-active');
         mobileMenu.classList.remove('is-open');
         nav.classList.remove('is-menu-open');
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         toggle.setAttribute('aria-expanded', 'false');
       });
     });
@@ -64,6 +66,7 @@ document.addEventListener('DOMContentLoaded', () => {
         mobileMenu.classList.remove('is-open');
         nav.classList.remove('is-menu-open');
         document.body.style.overflow = '';
+        document.documentElement.style.overflow = '';
         toggle.setAttribute('aria-expanded', 'false');
         toggle.focus();
       }
