@@ -117,6 +117,92 @@
   transform: translateX(4px);
 }
 
+/* Highlighted Case Study Button with Cylindrical Border */
+.btn--case-study {
+  display: inline-flex;
+  align-items: center;
+  gap: var(--space-2);
+  font-family: var(--font-body);
+  font-size: 0.875rem;
+  font-weight: var(--weight-semibold);
+  line-height: 1;
+  padding: 12px 24px;
+  border-radius: 9999px;
+  background-color: var(--color-accent);
+  color: var(--color-accent-text) !important;
+  border: 1.5px solid var(--color-accent);
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.12), inset 0 1px 0 rgba(255, 255, 255, 0.15);
+  text-decoration: none;
+  cursor: pointer;
+  position: relative;
+  overflow: hidden;
+  transition: transform var(--duration-base) var(--ease-spring),
+              box-shadow var(--duration-fast) ease,
+              background-color var(--duration-fast) ease,
+              border-color var(--duration-fast) ease,
+              gap var(--duration-fast) ease;
+  width: fit-content;
+}
+
+.btn--case-study::after {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(110deg, transparent 25%, rgba(255, 255, 255, 0.15) 50%, transparent 75%);
+  background-size: 200% 100%;
+  animation: shimmer-sweep 3s ease-in-out infinite;
+  pointer-events: none;
+}
+
+.btn--case-study:hover {
+  background-color: var(--color-accent-hover);
+  border-color: var(--color-accent-hover);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25);
+  gap: var(--space-3);
+}
+
+.btn--case-study .btn__arrow {
+  display: inline-block;
+  transition: transform var(--duration-fast) ease;
+}
+
+.btn--case-study:hover .btn__arrow {
+  transform: translateX(4px);
+}
+
+/* ── Badges & Tags ────────────────────────────────────────────────────── */
+.badge {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  font-size: 0.75rem;
+  font-weight: var(--weight-medium);
+  letter-spacing: 0.02em;
+  padding: 5px 12px;
+  border-radius: 9999px;
+  line-height: 1;
+  white-space: nowrap;
+}
+
+.badge--outline {
+  background: var(--color-bg-subtle);
+  color: var(--color-text-secondary);
+  border: 1px solid var(--color-border);
+}
+
+.badge--featured {
+  background: var(--color-accent);
+  color: var(--color-accent-text);
+  border: 1px solid var(--color-accent);
+  font-weight: var(--weight-semibold);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+}
+
+.badge--featured i {
+  color: #fbbf24;
+}
+
 /* ── Cards ────────────────────────────────────────────────────────────── */
 .card {
   background: var(--color-bg-card);
