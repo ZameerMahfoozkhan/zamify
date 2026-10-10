@@ -34,7 +34,7 @@
 
   /* Accent — pure black for premium CTAs */
   --color-accent: #0A0A0A;
-  --color-accent-hover: #18181B;
+  --color-accent-hover: #27272A;
   --color-accent-text: #FFFFFF;
 
   /* Subtle accent for highlights */
@@ -184,7 +184,7 @@
 
   /* Accent */
   --color-accent: #FAFAFA;
-  --color-accent-hover: #E4E4E7;
+  --color-accent-hover: #FFFFFF;
   --color-accent-text: #09090B;
 
   /* Subtle accent for highlights */

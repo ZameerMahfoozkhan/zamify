@@ -140,6 +140,7 @@
               box-shadow var(--duration-fast) ease,
               background-color var(--duration-fast) ease,
               border-color var(--duration-fast) ease,
+              color var(--duration-fast) ease,
               gap var(--duration-fast) ease;
   width: fit-content;
 }
@@ -154,21 +155,33 @@
   pointer-events: none;
 }
 
-.btn--case-study:hover {
-  background-color: var(--color-accent-hover);
-  border-color: var(--color-accent-hover);
+.btn--case-study:hover,
+.btn--case-study:focus,
+.btn--case-study:active,
+.btn--case-study:visited:hover,
+a.btn--case-study:hover,
+a:hover .btn--case-study,
+.work-card:hover .btn--case-study {
+  background-color: var(--color-accent-hover) !important;
+  border-color: var(--color-accent-hover) !important;
+  color: var(--color-accent-text) !important;
   transform: translateY(-2px);
   box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22), inset 0 1px 0 rgba(255, 255, 255, 0.25);
   gap: var(--space-3);
+  text-decoration: none !important;
 }
 
 .btn--case-study .btn__arrow {
   display: inline-block;
   transition: transform var(--duration-fast) ease;
+  color: inherit !important;
 }
 
-.btn--case-study:hover .btn__arrow {
+.btn--case-study:hover .btn__arrow,
+.work-card:hover .btn--case-study .btn__arrow,
+a:hover .btn--case-study .btn__arrow {
   transform: translateX(4px);
+  color: inherit !important;
 }
 
 /* ── Badges & Tags ────────────────────────────────────────────────────── */

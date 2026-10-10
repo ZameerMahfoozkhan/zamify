@@ -33,11 +33,11 @@
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@500;600;700&display=swap" rel="stylesheet">
   <script src="https://unpkg.com/@phosphor-icons/web@2.1.1"></script>
 
-  <link rel="stylesheet" href="../css/tokens.css?v=7">
-  <link rel="stylesheet" href="../css/base.css?v=7">
-  <link rel="stylesheet" href="../css/components.css?v=7">
-  <link rel="stylesheet" href="../css/sections.css?v=7">
-  <link rel="stylesheet" href="../css/responsive.css?v=7">
+  <link rel="stylesheet" href="../css/tokens.css?v=10">
+  <link rel="stylesheet" href="../css/base.css?v=10">
+  <link rel="stylesheet" href="../css/components.css?v=10">
+  <link rel="stylesheet" href="../css/sections.css?v=10">
+  <link rel="stylesheet" href="../css/responsive.css?v=10">
 
   <style>
     .work-grid {
@@ -104,15 +104,24 @@
       border-radius: var(--radius-pill);
       margin-bottom: var(--space-5);
     }
-    .work-card:hover .btn--case-study {
-      background-color: var(--color-accent-hover);
-      border-color: var(--color-accent-hover);
+    .btn--case-study {
+      background-color: var(--color-accent) !important;
+      color: var(--color-accent-text) !important;
+      border-color: var(--color-accent) !important;
+    }
+    .work-card:hover .btn--case-study,
+    .btn--case-study:hover {
+      background-color: var(--color-accent-hover) !important;
+      border-color: var(--color-accent-hover) !important;
+      color: var(--color-accent-text) !important;
       transform: translateY(-2px);
       box-shadow: 0 8px 24px rgba(0, 0, 0, 0.22);
       gap: var(--space-3);
     }
-    .work-card:hover .btn--case-study .btn__arrow {
+    .work-card:hover .btn--case-study .btn__arrow,
+    .btn--case-study:hover .btn__arrow {
       transform: translateX(4px);
+      color: inherit !important;
     }
     .work-card:hover .card__link {
       gap: var(--space-3);
