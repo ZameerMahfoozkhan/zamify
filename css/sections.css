@@ -1034,12 +1034,14 @@
 /* ── Founders ─────────────────────────────────────────────────────────── */
 .founders__grid {
   display: grid;
-  grid-template-columns: repeat(2, 1fr);
+  grid-template-columns: repeat(3, 1fr);
   gap: var(--space-8);
   margin-top: var(--space-12);
 }
 
 .founder-card {
+  display: flex;
+  flex-direction: column;
   padding: var(--space-10);
   border-radius: var(--radius-xl);
   border: 1px solid rgba(0, 0, 0, 0.04);
@@ -1112,7 +1114,8 @@
   font-size: var(--text-sm);
   font-weight: var(--weight-medium);
   color: var(--color-text);
-  margin-top: var(--space-5);
+  margin-top: auto;
+  padding-top: var(--space-5);
   transition: gap var(--duration-base) var(--ease-spring);
 }
 

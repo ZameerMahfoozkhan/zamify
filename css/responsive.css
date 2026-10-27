@@ -72,10 +72,6 @@
     display: none;
   }
 
-  .founders__grid {
-    grid-template-columns: 1fr;
-  }
-
   .tech-stack__grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -459,9 +455,40 @@
     padding-top: var(--space-2);
   }
 
-  /* ── Founders Mobile ────────────────────────────────────────────────── */
-  .founder-card {
+  /* ── Founders — Horizontal Scroll Snap ──────────────────────────────── */
+  .founders__grid {
+    display: flex;
+    flex-direction: row;
+    overflow-x: auto;
+    scroll-snap-type: x mandatory;
+    gap: var(--space-4);
+    padding-top: var(--space-2);
+    padding-bottom: var(--space-6);
+    margin: var(--space-8) calc(var(--container-px) * -1) 0;
+    padding-left: var(--container-px);
+    padding-right: var(--container-px);
+    -webkit-overflow-scrolling: touch;
+    -ms-overflow-style: none;
+    scrollbar-width: none;
+  }
+
+  .founders__grid::-webkit-scrollbar {
+    display: none;
+  }
+
+  .founders__grid .founder-card {
+    flex: 0 0 78vw;
+    scroll-snap-align: center;
+    min-height: auto;
     padding: var(--space-6);
+  }
+
+  .founder-card:hover {
+    transform: none;
+  }
+
+  .founder-card:active {
+    transform: scale(0.98);
   }
 
   .founder-card__avatar {
@@ -472,6 +499,10 @@
 
   .founder-card__name {
     font-size: var(--text-lg);
+  }
+
+  .founder-card__bio {
+    font-size: var(--text-sm);
   }
 
   /* ── Testimonials Mobile ────────────────────────────────────────────── */
@@ -603,7 +634,8 @@
     grid-template-columns: 1fr;
   }
 
-  .founder-card {
+  .founders__grid .founder-card {
+    flex: 0 0 85vw;
     padding: var(--space-5);
   }
 
